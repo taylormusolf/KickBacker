@@ -9,14 +9,14 @@ const App = () => (
   <div>
     <header>
       <nav className='nav-bar'>
-        <div className= 'nav-left'>
-          <h2 className='nav-discover'><a href="">Discover</a></h2>
-          <h2><a href="">Start a Project</a></h2>
+        <div className= 'nav-box'>
+          <h2 className='nav-item'><a href="">Discover</a></h2>
+          <h2 className="nav-item"><a href="">Start a Project</a></h2>
         </div>
         <Link to="/" className="nav-header"><h1>KICKBACKER</h1></Link>
-        <div className= 'nav-right'>
-          <h2><a href="">Search</a></h2>
-          <GreetingContainer/>
+        <div className= 'nav-box'>
+          <h2 className="nav-item"><a href="">Search <i class="fa fa-search"></i></a></h2>
+          <h2 className="nav-item"><GreetingContainer /></h2>
         </div>
         
       </nav>

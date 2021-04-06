@@ -1,0 +1,5 @@
+html, head, body, header,
+nav, h1, a, ul, li, main,
+section, p, footer, small, h2, h3 {
+  font-family: Arial, Helvetica, sans-serif;
+}
