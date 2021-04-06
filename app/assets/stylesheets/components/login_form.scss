@@ -4,9 +4,12 @@
   margin-top: 75px;
   width: 350px;
   background-color: white;
+  padding-top: 25px; 
+  padding-bottom: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+ 
 }
-
-
 
 .login-form-container h1{
   font-size: 30px;
@@ -16,6 +19,20 @@
   display: flex;
   flex-direction: column;
   background-color: white;
+  
+}
+
+.login-input{
+  width: 100%;
+  padding: 12px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.login-input:focus{
+  border: 2px solid #028858
 }
 
 .session-submit{
@@ -46,8 +63,3 @@
   background-color:#015738
 }
 
-.login-input{
-  width: 100%;
-  padding: 12px;
-  
-}
