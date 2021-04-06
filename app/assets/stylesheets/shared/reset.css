@@ -1,0 +1,15 @@
+html, head, body, header,
+nav, h1, a, ul, li, main,
+section, p, footer, small, h2, h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}

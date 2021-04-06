@@ -81,13 +81,12 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    if(this.props.formType !== 'login'){
+    if(this.props.formType === 'Sign Up'){
       return (
         <div className="login-form-container">
           <form onSubmit={this.handleSubmit} className="login-form-box">
-            Welcome to KickBacker!
             <br/>
-            Please {this.props.formType} or {this.props.navLink}
+            {this.props.formType}
             {this.renderErrors()}
             <div className="login-form">
               <br/>
@@ -100,6 +99,8 @@ class SessionForm extends React.Component {
               <input className="session-submit" type="submit" value={this.props.formType} />
               <br/>
               <button onClick={this.demoUser}>Demo User</button>
+              <br/>
+              {this.props.navLink}
             </div>
           </form>
         </div>
@@ -108,9 +109,8 @@ class SessionForm extends React.Component {
         return (
         <div className="login-form-container">
           <form onSubmit={this.handleSubmit} className="login-form-box">
-            Welcome to KickBacker!
             <br/>
-            Please {this.props.formType} or {this.props.navLink}
+            {this.props.formType}
             {this.renderErrors()}
             <div className="login-form">
               <br/>
@@ -121,6 +121,8 @@ class SessionForm extends React.Component {
               <input className="session-submit" type="submit" value={this.props.formType} />
               <br/>
               <button onClick={this.demoUser}>Demo User</button>
+              <br/>
+              {this.props.navLink}
             </div>
           </form>
         </div>

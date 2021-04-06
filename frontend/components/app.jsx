@@ -8,16 +8,21 @@ import GreetingContainer from './greeting/greeting_container';
 const App = () => (
   <div>
     <header>
-      <Link to="/" className="header-link">
-        <h1>KickBacker</h1>
-      </Link>
+      <nav className='nav-bar'>
+        <h2><a href="">Discover</a></h2>
+        <h2><a href="">Start a Project</a></h2>
+        <Link to="/" className="header-link"><h1>KICKBACKER</h1></Link>
+        <h2><a href="">Search</a></h2>
+        <GreetingContainer/>
+      </nav>
       
     </header>
+
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      <Route exact path="/" component={GreetingContainer}/>
-      <Redirect to="/" component={GreetingContainer}/>
+      <Route exact path="/"/>
+      <Redirect to="/"/>
     </Switch>
   </div>
 );
