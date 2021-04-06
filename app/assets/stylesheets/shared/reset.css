@@ -13,3 +13,12 @@ section, p, footer, small, h2, h3 {
   box-sizing: inherit;
   background: transparent;
 }
+
+header, nav, main, section,
+footer, small {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
