@@ -39,6 +39,43 @@ class SessionForm extends React.Component {
     );
   }
 
+  renderUsername(){
+    return (
+      <label>Username:
+        <input type="text" 
+                value={this.state.username} 
+                onChange={this.update('username')}
+                className="login-input"
+                />
+      </label>
+    );
+  }
+
+  renderPassword(){
+    return(
+      <label>Password:
+        <input type="password"
+                value={this.state.password}
+                onChange={this.update('password')}
+                className="login-input"
+                />
+      </label>
+    );      
+  }
+
+  renderEmail(){
+    return(
+      <label>Email:
+        <input type="text"
+                value={this.state.email}
+                onChange={this.update('email')}
+                className="login-input"
+                />
+      </label>
+    )
+  }
+
+
   componentDidMount(){
     this.props.resetSessionErrors();
   }
@@ -54,29 +91,11 @@ class SessionForm extends React.Component {
             {this.renderErrors()}
             <div className="login-form">
               <br/>
-              <label>Username:
-                <input type="text"
-                  value={this.state.username}
-                  onChange={this.update('username')}
-                  className="login-input"
-                />
-              </label>
+              {this.renderUsername()}
               <br/>
-              <label>Email:
-                <input type="text"
-                  value={this.state.email}
-                  onChange={this.update('email')}
-                  className="login-input"
-                />
-              </label>
+              {this.renderEmail()}
               <br/>
-              <label>Password:
-                <input type="password"
-                  value={this.state.password}
-                  onChange={this.update('password')}
-                  className="login-input"
-                />
-              </label>
+              {this.renderPassword()}
               <br/>
               <input className="session-submit" type="submit" value={this.props.formType} />
               <br/>
@@ -95,21 +114,9 @@ class SessionForm extends React.Component {
             {this.renderErrors()}
             <div className="login-form">
               <br/>
-              <label>Username:
-                <input type="text"
-                  value={this.state.username}
-                  onChange={this.update('username')}
-                  className="login-input"
-                />
-              </label>
+              {this.renderUsername()}
               <br/>
-              <label>Password:
-                <input type="password"
-                  value={this.state.password}
-                  onChange={this.update('password')}
-                  className="login-input"
-                />
-              </label>
+              {this.renderPassword()}
               <br/>
               <input className="session-submit" type="submit" value={this.props.formType} />
               <br/>
