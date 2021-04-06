@@ -86,7 +86,7 @@ class SessionForm extends React.Component {
         <div className="login-form-container">
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <br/>
-            {this.props.formType}
+            <h1>{this.props.formType}</h1>
             {this.renderErrors()}
             <div className="login-form">
               <br/>
@@ -98,9 +98,9 @@ class SessionForm extends React.Component {
               <br/>
               <input className="session-submit" type="submit" value={this.props.formType} />
               <br/>
-              <button onClick={this.demoUser}>Demo User</button>
+              <button className="demo-user-submit" onClick={this.demoUser}>Demo User</button>
               <br/>
-              {this.props.navLink}
+              <div>Already have an account? {this.props.navLink}</div>
             </div>
           </form>
         </div>
@@ -110,7 +110,7 @@ class SessionForm extends React.Component {
         <div className="login-form-container">
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <br/>
-            {this.props.formType}
+            <h1>{this.props.formType}</h1>
             {this.renderErrors()}
             <div className="login-form">
               <br/>
@@ -120,9 +120,9 @@ class SessionForm extends React.Component {
               <br/>
               <input className="session-submit" type="submit" value={this.props.formType} />
               <br/>
-              <button onClick={this.demoUser}>Demo User</button>
+              <button className="demo-user-submit" onClick={this.demoUser}>Demo User</button>
               <br/>
-              {this.props.navLink}
+              <div>New to KickBacker? {this.props.navLink}</div>
             </div>
           </form>
         </div>

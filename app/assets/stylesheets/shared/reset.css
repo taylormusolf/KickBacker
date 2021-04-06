@@ -1,6 +1,8 @@
-html, head, body, header,
-nav, h1, a, ul, li, main,
-section, p, footer, small, h2, h3 {
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
   margin: 0;
   padding: 0;
   border: 0;
@@ -14,11 +16,32 @@ section, p, footer, small, h2, h3 {
   background: transparent;
 }
 
-header, nav, main, section,
-footer, small {
+img {
   display: block;
+  width: 100%;
+  height: auto;
 }
 
-ul {
+ol, ul {
   list-style: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }

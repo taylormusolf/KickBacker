@@ -22,13 +22,18 @@ const App = () => (
       </nav>
       
     </header>
-
-    <Switch>
-      <AuthRoute exact path="/login" component={LogInFormContainer} />
-      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      <Route exact path="/"/>
-      <Redirect to="/"/>
-    </Switch>
+    <body>
+      <div className= 'main-content'>
+        <Switch>
+          <AuthRoute exact path="/login" component={LogInFormContainer} />
+          <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+          <Route exact path="/"/>
+          <Redirect to="/"/>
+        </Switch>
+      </div>
+      
+    </body>
+    
   </div>
 );
 

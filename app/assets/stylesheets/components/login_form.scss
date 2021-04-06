@@ -1,0 +1,53 @@
+
+.login-form-container{
+  margin: auto;
+  margin-top: 75px;
+  width: 350px;
+  background-color: white;
+}
+
+
+
+.login-form-container h1{
+  font-size: 30px;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.session-submit{
+  cursor: pointer;
+  color: white;
+  background-color: #028858;
+  padding: 12px;
+  font-size: 14px;
+  border-style: none;
+  text-align: center;
+}
+
+.demo-user-submit{
+  cursor: pointer;
+  color: white;
+  background-color: red;
+  padding: 12px;
+  font-size: 14px;
+  border-style: none;
+  text-align: center;
+}
+
+.demo-user-submit:hover{
+  background-color:rgb(104, 3, 3)
+}
+
+.session-submit:hover{
+  background-color:#015738
+}
+
+.login-input{
+  width: 100%;
+  padding: 12px;
+  
+}
