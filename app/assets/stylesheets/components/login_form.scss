@@ -82,3 +82,16 @@
   color: black;
 }
 
+.login-errors{
+  color: red;
+  margin: auto;
+  margin-top: 10px;
+  animation-name: flash;
+  animation-duration: 3s;
+}
+
+@keyframes flash {
+  from {background-color: red;}
+  to {background-color: white;}
+}
+

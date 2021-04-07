@@ -84,7 +84,6 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <br/>
             <h1>{this.props.formType}</h1>
-            {this.renderErrors()}
             <div className="login-form">
               <br/>
               {this.renderUsername()}
@@ -99,9 +98,9 @@ class SessionForm extends React.Component {
               <br/>
               <div className='login-footer'>
                <div className="login-subscript">Already have an account? </div>
-               <div className='login-link'>{this.props.navLink}</div> 
+               <div className='login-link'>{this.props.navLink}</div>
               </div>
-              
+              <div className='login-errors'>{this.renderErrors()}</div> 
             </div>
           </form>
         </div>
@@ -112,7 +111,6 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="login-form-box">
             <br/>
             <h1>{this.props.formType}</h1>
-            {this.renderErrors()}
             <div className="login-form">
               <br/>
               {this.renderUsername()}
@@ -127,7 +125,7 @@ class SessionForm extends React.Component {
                <div className="login-subscript">New to KickBacker? </div> 
                <div className='login-link'>{this.props.navLink}</div>
               </div>
-              
+              <div className='login-errors'>{this.renderErrors()}</div>
             </div>
           </form>
         </div>
