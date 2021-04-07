@@ -15,14 +15,13 @@ const App = () => (
         </div>
         <Link to="/" className="nav-header"><h1>KICKBACKER</h1></Link>
         <div className= 'nav-box'>
-          <h2 className="nav-item"><a href="">Search <i class="fa fa-search"></i></a></h2>
+          <h2 className="nav-item"><a href="">Search <i className="fa fa-search"></i></a></h2>
           <h2 className="nav-item"><GreetingContainer /></h2>
         </div>
         
       </nav>
       
     </header>
-    <body>
       <div className= 'main-content'>
         <Switch>
           <AuthRoute exact path="/login" component={LogInFormContainer} />
@@ -32,7 +31,6 @@ const App = () => (
         </Switch>
       </div>
       
-    </body>
     
   </div>
 );
