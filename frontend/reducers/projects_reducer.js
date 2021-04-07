@@ -6,12 +6,12 @@ const projectsReducer = (state = {}, action) => {
   let newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_PROJECTS:
-      return action.projects;
+      return action.projects.projects;
     case RECEIVE_PROJECT:
-      newState[action.project.id] = action.project;
+      newState[action.project.id] = action.project.project;
       return newState;
     case REMOVE_PROJECT:
-      delete newState[action.project.id]
+      delete newState[action.projectId]
       return newState;
     default:
       return state;

@@ -6,7 +6,7 @@ export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const RESET_PROJECT_ERRORS = 'RESET_PROJECT_ERRORS';
 
-export const receiveProjects = projects => ({
+export const receiveProjects = (projects) => ({
   type: RECEIVE_PROJECTS,
   projects,
 });
@@ -30,15 +30,15 @@ export const resetProjectErrors = () => ({
   type: RESET_PROJECT_ERRORS
 });
 
-export const fetchProjects = filters => dispatch => (
-  APIUtil.fetchProjects(filters).then(projects => (
+export const fetchProjects = () => dispatch => (
+  APIUtil.fetchProjects().then(projects => (
     dispatch(receiveProjects(projects))
   ))
 );
 
-export const fetchProject = id => dispatch => (
-  APIUtil.fetchProject(id).then(payload => (
-    dispatch(receiveProject(payload))
+export const fetchProject = projectId => dispatch => (
+  APIUtil.fetchProject(projectId).then(project => (
+    dispatch(receiveProject(project))
   ))
 );
 
@@ -55,7 +55,7 @@ export const updateProject = project => dispatch => (
 );
 
 export const deleteProject = projectId => dispatch => (
-  APIUtil.removeProject(projectId).then(() => (
+  APIUtil.deleteProject(projectId).then(() => (
     dispatch(removeProject(projectId))
   ))
 );

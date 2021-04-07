@@ -5,18 +5,14 @@ import { withRouter } from 'react-router';
 class ProjectForm extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      description: '',
-      campaign: '',
-      updates: '',
-      faq: '',
-      location: '',
-      start_date: '',
-      end_date: '',
-      funding_goal: ''
-    };
+    this.state = this.props.project;
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount(){
+    this.props.resetProjectErrors();
+    if(this.props.type === 'edit'){
+      this.props.fetchProject(this.props.match.params.projectId)
+    }
   }
   update(field) {
     return e => this.setState({
@@ -35,7 +31,7 @@ class ProjectForm extends React.Component{
     formData.append('project[start_date]', this.state.start_date);
     formData.append('project[end_date]', this.state.end_date);
     formData.append('project[funding_goal]', this.state.funding_goal);
-    this.props.createBench(formData);
+    this.props.createProject(formData);
   }
   renderErrors() {
     return(

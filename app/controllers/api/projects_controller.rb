@@ -12,8 +12,13 @@ class Api::ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.create!(project_params)
-    render :show
+    @project = Project.new(project_params)
+    if @project.save
+      render :show
+    else
+      render json: @user.errors.full_messages, status: 422
+    end
+
   end
 
   def update
@@ -21,13 +26,14 @@ class Api::ProjectsController < ApplicationController
     if @project && @project.update(project_params)
       render :show
     else
-      render :show
+      render json: @project.errors.full_messages, status: 422
   end
 
   def destroy
     @project = current_user.projects.find_by(id: params[:id])
     if @project && @project.delete
-      redirect_to :index
+    else
+      render json: ["Unable to delete project"], status: 422  
     end
   end
 

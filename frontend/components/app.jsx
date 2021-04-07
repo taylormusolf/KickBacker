@@ -4,7 +4,7 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
-import ProjectFormContainer from './project_form/project_form_container';
+import ProjectFormContainer from './project_form/project_new_container';
 
 const App = () => (
   <div>
@@ -12,7 +12,7 @@ const App = () => (
       <nav className='nav-bar'>
         <div className= 'nav-box'>
           <h2 className='nav-item'><a href="">Discover</a></h2>
-          <h2 className="nav-item"><a href="">Start a Project</a></h2>
+          <Link to="/projects/new" className="nav-item"><h2>Start a Project</h2></Link>
         </div>
         <Link to="/" className="nav-header"><h1>KICKBACKER</h1></Link>
         <div className= 'nav-box'>
@@ -32,6 +32,16 @@ const App = () => (
           <Redirect to="/"/>
         </Switch>
       </div>
+      <footer>
+       <nav className='footer-box'>
+          <div>
+            <section className="social-media">
+              <a href="https://github.com/taylormusolf" target="_blank"><i className="fab fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/taylor-musolf-4454a876/" target="_blank"><i className="fab fa-linkedin-in"></i></a>
+            </section>
+          </div>
+       </nav>
+      </footer>
       
     
   </div>
