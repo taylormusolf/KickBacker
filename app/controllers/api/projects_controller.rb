@@ -2,11 +2,13 @@ class Api::ProjectsController < ApplicationController
   before_action :require_logged_in, only: [:create, :update, :destroy]
 
   def index
-
+    @projects = Project.all
+    render :index
   end
 
   def show
     @project = Project.find_by(id: params[:id])
+    render :show
   end
 
   def create
@@ -15,7 +17,11 @@ class Api::ProjectsController < ApplicationController
   end
 
   def update
-
+    @project = current_user.projects.find_by(id: params[:id])
+    if @project && @project.update(project_params)
+      render :show
+    else
+      render :show
   end
 
   def destroy
