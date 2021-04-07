@@ -5,8 +5,10 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6}, allow_nil: true
 
   after_initialize :ensure_session_token!
-
   attr_reader :password
+
+  has_many :projects,
+    foreign_key: :creator_id
 
   def self.find_by_crendentials(username, password)
     user = User.find_by(username: username)
