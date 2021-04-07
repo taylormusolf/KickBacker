@@ -8,6 +8,7 @@ class ProjectForm extends React.Component{
     this.state = {
       title: '',
       description: '',
+      campaign: '',
       updates: '',
       faq: '',
       location: '',
@@ -15,78 +16,112 @@ class ProjectForm extends React.Component{
       end_date: '',
       funding_goal: ''
     };
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   update(field) {
     return e => this.setState({
       [field]: e.target.value
     });
   }
+  handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('project[title]', this.state.title);
+    formData.append('project[description]', this.state.description);
+    formData.append('project[campaign]', this.state.campaign);
+    formData.append('project[updates]', this.state.updates);
+    formData.append('project[faq]', this.state.faq);
+    formData.append('project[location]', this.state.location);
+    formData.append('project[start_date]', this.state.start_date);
+    formData.append('project[end_date]', this.state.end_date);
+    formData.append('project[funding_goal]', this.state.funding_goal);
+    this.props.createBench(formData);
+  }
+  renderErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+
 
   render() {
 
     return (
       <div className="new-project-container">
         <div className="new-project-form">
-          <h3 className="new-project-title">Create A Project!</h3>
+          <h1 className="new-project-title">Create a Project!</h1>
 
           <form onSubmit={this.handleSubmit}>
-            <label className="project-field">Description</label>
+          <input
+              type="text"
+              value={this.state.title}
+              placeholder="Title" 
+              onChange={this.update('title')}
+              className="project-field"
+            />
             <input
               type="text"
               value={this.state.description}
+              placeholder="Description" 
               onChange={this.update('description')}
               className="project-field"
             />
 
-            <label className="project-field">Campaign</label>
             <input
               type="text"
               value={this.state.campaign}
+              placeholder="Campaign" 
               onChange={this.update('campaign')}
               className="project-field"
             />
 
-            <label className="project-field">Updates</label>
             <input
               type="text"
               value={this.state.updates}
+              placeholder="Updates" 
               onChange={this.update('updates')}
               className="project-field"
             />
 
-            <label className="project-field">FAQ</label>
             <input
               type="text"
               value={this.state.faq}
+              placeholder="FAQ" 
               onChange={this.update('faq')}
               className="project-field"
             />
-            <label className="project-field">Location</label>
             <input
               type="text"
               value={this.state.location}
+              placeholder="Location" 
               onChange={this.update('location')}
               className="project-field"
             />
-            <label className="project-field">Start Date</label>
             <input
               type="text"
               value={this.state.start_date}
+              placeholder="Start Date"
               onChange={this.update('start_date')}
               className="project-field"
             />
-            <label className="project-field">End Date</label>
             <input
               type="text"
               value={this.state.end_date}
+              placeholder="End Date"
               onChange={this.update('end_date')}
               className="project-field"
             />
-             <label className="project-field">Funding Goal</label>
             <input
               type="text"
               value={this.state.funding_goal}
+              placeholder="Funding Goal"
               onChange={this.update('funding_goal')}
               className="project-field"
             />
@@ -99,6 +134,7 @@ class ProjectForm extends React.Component{
                 className="new-project-button"
               />
             </div>
+            <div className='project-errors'>{this.renderErrors()}</div>
           </form>
         </div>
       </div>

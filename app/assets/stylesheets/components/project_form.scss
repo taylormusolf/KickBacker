@@ -1,0 +1,66 @@
+
+.new-project-container{
+  margin: auto;
+  margin-top: 75px;
+  width: 350px;
+  background-color: white;
+  padding-top: 25px; 
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+ 
+}
+
+.new-project-title{
+  font-size: 30px;
+}
+
+.new-project-form{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  
+}
+
+.project-field{
+  width: 100%;
+  padding: 12px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid rgb(228, 227, 227);
+}
+
+.project-field:focus{
+  border: 1px solid #028858
+}
+
+.new-project-button{
+  cursor: pointer;
+  color: white;
+  background-color: #028858;
+  padding: 12px;
+  font-size: 14px;
+  border-style: none;
+  text-align: center;
+}
+
+
+.new-project-button:hover{
+  background-color:#015738
+}
+
+
+.project-errors{
+  color: red;
+  margin: auto;
+  margin-top: 10px;
+  animation-name: flash;
+  animation-duration: 3s;
+}
+
+@keyframes flash {
+  from {background-color: red;}
+  to {background-color: white;}
+}
