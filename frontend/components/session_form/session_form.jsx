@@ -97,7 +97,11 @@ class SessionForm extends React.Component {
               <br/>
               <button className="demo-user-submit" onClick={this.demoUser}>Demo User</button>
               <br/>
-              <div>Already have an account? {this.props.navLink}</div>
+              <div className='login-footer'>
+               <div className="login-subscript">Already have an account? </div>
+               <div className='login-link'>{this.props.navLink}</div> 
+              </div>
+              
             </div>
           </form>
         </div>
@@ -119,7 +123,11 @@ class SessionForm extends React.Component {
               <br/>
               <button className="demo-user-submit" onClick={this.demoUser}>Demo User</button>
               <br/>
-              <div>New to KickBacker? {this.props.navLink}</div>
+              <div className='login-footer'>
+               <div className="login-subscript">New to KickBacker? </div> 
+               <div className='login-link'>{this.props.navLink}</div>
+              </div>
+              
             </div>
           </form>
         </div>
