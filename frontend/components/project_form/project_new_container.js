@@ -5,7 +5,6 @@ import ProjectForm from './project_form';
 
 const mSTP = (state) => ({
   errors: state.errors.project,
-  creatorId: state.session.id,
   formType: 'Create Project',
   project: {
     title: '',
@@ -16,7 +15,8 @@ const mSTP = (state) => ({
     location: '',
     start_date: '',
     end_date: '',
-    funding_goal: '' 
+    funding_goal: '',
+    creator_id: state.session.id
   }
 });
 

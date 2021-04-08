@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 const Profile = (props) =>{
     return(
@@ -22,7 +23,7 @@ const Profile = (props) =>{
             <li className="profile-section">
               <span className="dropdown-subtitle">CREATED PROJECTS</span>
               <ul className="profile-subsection">
-                <li><a href="#">New</a></li>
+                <li><Link to="/projects/new" onClick={()=>props.closeModal()}>New</Link></li>
               </ul>
             </li>
           </ul>

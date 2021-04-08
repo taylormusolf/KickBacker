@@ -1,5 +1,5 @@
 class Api::ProjectsController < ApplicationController
-  before_action :require_logged_in, only: [:create, :update, :destroy]
+  before_action :require_logged_in!, only: [:create, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -13,10 +13,14 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    if @project.save
+    start_date = Project.convert_to_date(project_params[:start_date])
+    @project.start_date = start_date
+    end_date = Project.convert_to_date(project_params[:end_date])
+    @project.end_date = end_date
+    if @project.save!
       render :show
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: @project.errors.full_messages, status: 422
     end
 
   end
@@ -27,6 +31,7 @@ class Api::ProjectsController < ApplicationController
       render :show
     else
       render json: @project.errors.full_messages, status: 422
+    end
   end
 
   def destroy
@@ -39,8 +44,9 @@ class Api::ProjectsController < ApplicationController
 
 
   private
+
   def project_params
-    params.require(:project).permit(:title, :description, :campaign, :updates, :faq, :location, :start_date, :end_date, :funding_goal)
+    params.require(:project).permit(:title, :description, :campaign, :updates, :faq, :location, :start_date, :end_date, :funding_goal, :creator_id)
   end
 
 

@@ -53,73 +53,89 @@ class ProjectForm extends React.Component{
       <div className="new-project-container">
         <h1 className="new-project-title">{this.props.formType}</h1>
         <form className="new-project-form" onSubmit={this.handleSubmit}>
-          <input
+          <label>Project Title
+            <input
               type="text"
               value={this.state.title}
-              placeholder="Title" 
+              placeholder="Your title here" 
               onChange={this.update('title')}
               className="project-field"
             />
-          <input
-              type="text"
+            </label>
+          <label>Project Description
+            <textarea
               value={this.state.description}
-              placeholder="Description" 
+              placeholder="What is your project about?" 
               onChange={this.update('description')}
               className="project-field"
             />
-
-          <input
+          </label>
+          
+          <label>Campaign
+            <textarea
               type="text"
               value={this.state.campaign}
               placeholder="Campaign" 
               onChange={this.update('campaign')}
               className="project-field"
             />
-
-        <input
+          </label>
+          
+          <label>Updates
+            <textarea
               type="text"
               value={this.state.updates}
               placeholder="Updates" 
               onChange={this.update('updates')}
               className="project-field"
             />
-
-          <input
+          </label>
+          
+          <label>FAQ
+            <textarea
               type="text"
               value={this.state.faq}
               placeholder="FAQ" 
               onChange={this.update('faq')}
               className="project-field"
             />
-          <input
+          </label>
+          
+          <label>Location
+            <input
               type="text"
               value={this.state.location}
-              placeholder="Location" 
+              placeholder="Where you at?" 
               onChange={this.update('location')}
               className="project-field"
             />
-          <input
-              type="text"
+          </label>
+          <label>Project Start Date
+            <input
+              type='date'              
               value={this.state.start_date}
-              placeholder="Start Date"
               onChange={this.update('start_date')}
               className="project-field"
             />
-          <input
-              type="text"
+          </label>
+          <label>Project End Date
+            <input
+              type='date'              
               value={this.state.end_date}
-              placeholder="End Date"
               onChange={this.update('end_date')}
               className="project-field"
             />
-          <input
-              type="text"
+          </label>
+          <label>Funding Goal
+            <input
+              type="currency"
               value={this.state.funding_goal}
-              placeholder="Funding Goal"
+              placeholder="$$$$"
               onChange={this.update('funding_goal')}
               className="project-field"
             />
-
+          </label>
+          
           <input
                 type="submit"
                 value={this.props.formType}

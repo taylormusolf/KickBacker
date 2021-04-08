@@ -8,7 +8,7 @@ class EditProjectForm extends React.Component {
     this.props.fetchProject(this.props.match.params.projectId);
   }
   render() {
-    const { action, formType, post } = this.props;
+    const { action, formType, project } = this.props;
     if (!project) return null;
     return (
       <ProjectForm
@@ -27,7 +27,7 @@ const mSTP = (state, ownProps) => {
   return {
     errors: state.errors.project,
     creatorId: state.session.id,
-    project: state.projects[ownProps.match.params.projectId],
+    project: state.entities.projects[ownProps.match.params.projectId],
     type: 'Update Project'
   };
 };

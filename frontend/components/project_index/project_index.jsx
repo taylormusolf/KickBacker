@@ -5,27 +5,28 @@ import CreateProjectFormContainer from '../project_form/project_new_container';
 class ProjectIndex extends React.Component {
   componentDidMount() {
     this.props.fetchProjects();
+    console.log('hello')
+    console.log(this.props)
   }
 
   render() {
-    const { posts, deleteProject } = this.props;
-
-    return (
-      <div>
-        <ul>
-          {
-            projects.map(project => (
-              <ProjectIndexItem
-                project={project}
-                deleteProject={deleteProject}
-                key={project.id}
-              />
-            ))
-          }
-        </ul>
-        <CreateProjectFormContainer />
-      </div>
-    );
+    const { projects, deleteProject } = this.props;
+    if (!projects) return null;
+      return (
+        <div>
+          <ul>
+            {
+              projects.map(project => (
+                <ProjectIndexItem
+                  project={project}
+                  deleteProject={deleteProject}
+                  key={project.id}
+                />
+              ))
+            }
+          </ul>
+        </div>
+      );
   }
 }
 
