@@ -7,7 +7,9 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import GreetingContainer from './greeting/greeting_container';
 import ProjectFormContainer from './project_form/project_new_container';
-
+import ProjectIndexContainer from './project_index/project_index_container';
+import ProjectShowContainer from "./project_show/project_show_container";
+import EditProjectFormContainer from "./project_form/project_edit_container";
 
 
 const App = () => (
@@ -32,7 +34,9 @@ const App = () => (
           <AuthRoute exact path="/login" component={LogInFormContainer} />
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <ProtectedRoute exact path="/projects/new" component={ProjectFormContainer} />
-          <Route exact path="/"/>
+          <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
+          <ProtectedRoute path="/projects/:projectId/edit" component={EditProjectFormContainer} />
+          <Route exact path="/"component={ProjectIndexContainer}/>
           <Redirect to="/"/>
         </Switch>
       </div>

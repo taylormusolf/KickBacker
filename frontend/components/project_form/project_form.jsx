@@ -10,28 +10,28 @@ class ProjectForm extends React.Component{
   }
   componentDidMount(){
     this.props.resetProjectErrors();
-    if(this.props.type === 'edit'){
+    if(this.props.formType === 'Update Project'){
       this.props.fetchProject(this.props.match.params.projectId)
     }
   }
   update(field) {
-    return e => this.setState({
-      [field]: e.target.value
-    });
+    return e => this.setState({[field]: e.target.value});
   }
+
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('project[title]', this.state.title);
-    formData.append('project[description]', this.state.description);
-    formData.append('project[campaign]', this.state.campaign);
-    formData.append('project[updates]', this.state.updates);
-    formData.append('project[faq]', this.state.faq);
-    formData.append('project[location]', this.state.location);
-    formData.append('project[start_date]', this.state.start_date);
-    formData.append('project[end_date]', this.state.end_date);
-    formData.append('project[funding_goal]', this.state.funding_goal);
-    this.props.createProject(formData);
+    this.props.action(this.state);
+    // const formData = new FormData();
+    // formData.append('project[title]', this.state.title);
+    // formData.append('project[description]', this.state.description);
+    // formData.append('project[campaign]', this.state.campaign);
+    // formData.append('project[updates]', this.state.updates);
+    // formData.append('project[faq]', this.state.faq);
+    // formData.append('project[location]', this.state.location);
+    // formData.append('project[start_date]', this.state.start_date);
+    // formData.append('project[end_date]', this.state.end_date);
+    // formData.append('project[funding_goal]', this.state.funding_goal);
+    // this.props.createProject(formData);
   }
   renderErrors() {
     return(
@@ -51,10 +51,8 @@ class ProjectForm extends React.Component{
 
     return (
       <div className="new-project-container">
-        <div className="new-project-form">
-          <h1 className="new-project-title">Create a Project!</h1>
-
-          <form onSubmit={this.handleSubmit}>
+        <h1 className="new-project-title">{this.props.formType}</h1>
+        <form className="new-project-form" onSubmit={this.handleSubmit}>
           <input
               type="text"
               value={this.state.title}
@@ -62,7 +60,7 @@ class ProjectForm extends React.Component{
               onChange={this.update('title')}
               className="project-field"
             />
-            <input
+          <input
               type="text"
               value={this.state.description}
               placeholder="Description" 
@@ -70,7 +68,7 @@ class ProjectForm extends React.Component{
               className="project-field"
             />
 
-            <input
+          <input
               type="text"
               value={this.state.campaign}
               placeholder="Campaign" 
@@ -78,7 +76,7 @@ class ProjectForm extends React.Component{
               className="project-field"
             />
 
-            <input
+        <input
               type="text"
               value={this.state.updates}
               placeholder="Updates" 
@@ -86,35 +84,35 @@ class ProjectForm extends React.Component{
               className="project-field"
             />
 
-            <input
+          <input
               type="text"
               value={this.state.faq}
               placeholder="FAQ" 
               onChange={this.update('faq')}
               className="project-field"
             />
-            <input
+          <input
               type="text"
               value={this.state.location}
               placeholder="Location" 
               onChange={this.update('location')}
               className="project-field"
             />
-            <input
+          <input
               type="text"
               value={this.state.start_date}
               placeholder="Start Date"
               onChange={this.update('start_date')}
               className="project-field"
             />
-            <input
+          <input
               type="text"
               value={this.state.end_date}
               placeholder="End Date"
               onChange={this.update('end_date')}
               className="project-field"
             />
-            <input
+          <input
               type="text"
               value={this.state.funding_goal}
               placeholder="Funding Goal"
@@ -122,17 +120,13 @@ class ProjectForm extends React.Component{
               className="project-field"
             />
 
-
-            <div className="button-holder">
-              <input
+          <input
                 type="submit"
-                value="Create project"
+                value={this.props.formType}
                 className="new-project-button"
               />
-            </div>
-            <div className='project-errors'>{this.renderErrors()}</div>
-          </form>
-        </div>
+          <div className='project-errors'>{this.renderErrors()}</div>
+        </form>
       </div>
     );
   }

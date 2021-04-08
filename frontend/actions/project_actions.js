@@ -31,15 +31,13 @@ export const resetProjectErrors = () => ({
 });
 
 export const fetchProjects = () => dispatch => (
-  APIUtil.fetchProjects().then(projects => (
-    dispatch(receiveProjects(projects))
-  ))
+  APIUtil.fetchProjects()
+    .then(projects => (dispatch(receiveProjects(projects))))
 );
 
 export const fetchProject = projectId => dispatch => (
-  APIUtil.fetchProject(projectId).then(project => (
-    dispatch(receiveProject(project))
-  ))
+  APIUtil.fetchProject(projectId)
+    .then(project => (dispatch(receiveProject(project))))
 );
 
 export const createProject = project => dispatch => (
@@ -49,8 +47,8 @@ export const createProject = project => dispatch => (
 );
 
 export const updateProject = project => dispatch => (
-  APIUtil.updateProject(project.id).then(project => (
-    dispatch(receiveProject(project))
+  APIUtil.updateProject(project)
+    .then(project => (dispatch(receiveProject(project))
   ))
 );
 

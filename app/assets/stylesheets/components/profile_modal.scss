@@ -29,53 +29,34 @@
 
 }
 
-.profile-top{
+.profile-content{
   display: flex;
+  justify-content: space-between;
 }
-.header-group{
+.profile-footer{
+  margin: 24px 36px 0px 36px;
+  padding: 24px 0px;
+  border-top: 0.1rem solid #DCDEDD;
+  font-size:  14px;
+}
+
+.profile-section{
+  padding: 24px 36px 0px;
+}
+
+.profile-subsection{
   position:relative;
-  
+  font-size: 14px;
+  padding-top: 36px;
+  padding-bottom: 18px;
+}
+.profile-subsection li{
+  padding: 5px;
 }
 
-.header-group:hover{
-  .profile-dropdown{
-    display: block;
-  }
-}
 
-.your-account{
-  li{
-    padding: 5px;
-  }
-}
-
-.your-account li:hover{
-  background: lightgray;
-}
-
-.backed-projects{
-  li{
-    padding: 5px;
-  }
-}
-
-.backed-projects a:hover{
-  text-decoration: underline;
-}
-
-.created-projects{
-  li{
-    padding: 5px;
-  }
-  border-bottom: gray solid 1px;
-}
-
-.created-projects a:hover{
-  text-decoration: underline;
-}
 
 .dropdown-subtitle{
-  font-size: 8px;
-  color: darkgray;
-  font-weight: 300;
+  font-size: 14px;
+  color: black;
 }

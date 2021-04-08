@@ -1,7 +1,7 @@
 export const fetchProjects = () => (
   $.ajax({
     method: 'GET',
-    url: '/api/projects'
+    url: '/api/projects/'
   })
 );
 
@@ -16,10 +16,8 @@ export const fetchProject = projectId => (
 export const createProject = project => (
   $.ajax({
     method: 'POST',
-    url: '/api/projects',
-    data: project,
-    contentType: false,
-    processData: false
+    url: '/api/projects/',
+    data: {project}
   })
 );
 
@@ -27,9 +25,7 @@ export const updateProject = project => (
   $.ajax({
     method: 'PATCH',
     url: `/api/projects/${project.id}`,
-    data: project,
-    contentType: false,
-    processData: false
+    data: {project}
   })
 );
 
