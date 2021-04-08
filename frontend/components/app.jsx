@@ -35,7 +35,7 @@ const App = () => (
       <footer>
        <nav className='footer-box'>
           <div>
-            <section className="social-media">
+            <section className="social-links">
               <a href="https://github.com/taylormusolf" target="_blank"><i className="fab fa-github"></i></a>
               <a href="https://www.linkedin.com/in/taylor-musolf-4454a876/" target="_blank"><i className="fab fa-linkedin-in"></i></a>
             </section>
