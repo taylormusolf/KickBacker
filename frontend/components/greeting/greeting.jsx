@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const Greeting = ({ currentUser, logout }) => {
+const Greeting = ({ currentUser, logout, openModal }) => {
   const loginLink = () => (
     <nav>
       <Link to="/login">Log In</Link>
@@ -11,8 +11,7 @@ const Greeting = ({ currentUser, logout }) => {
   );
   const profile = () => (
     <div className="header-group">
-      <h2 className="header-name" >{currentUser.username}</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
+      <button className="header-name" onClick={() => openModal('profile')}>{currentUser.username}</button>
     </div>
   );
 

@@ -1,13 +1,18 @@
 import React from 'react';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+
+import Modal from './modal/modal';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import ProjectFormContainer from './project_form/project_new_container';
 
+
+
 const App = () => (
   <div>
+    <Modal />
     <header>
       <nav className='nav-bar'>
         <div className= 'nav-box'>
@@ -21,7 +26,6 @@ const App = () => (
         </div>
         
       </nav>
-      
     </header>
       <div className= 'main-content'>
         <Switch>

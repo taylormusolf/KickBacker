@@ -1,9 +1,81 @@
-.modal-header, h4, .close {
-  background-color: #5cb85c;
-  color:white !important;
-  text-align: center;
-  font-size: 30px;
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
 }
-.modal-footer {
-  background-color: #f9f9f9;
+
+.modal-child {
+  position: relative;
+  top: 7%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+
+.profile-box{
+  position: absolute;
+  background: white;
+  border: gray solid 1px;
+  padding: 15px;
+  box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.09);
+  font-family: Arial;
+  color: black;
+  width: 900px;
+  height: 300px;
+  top: 25px;
+  right: 0px;
+
+}
+
+.profile-top{
+  display: flex;
+}
+.header-group{
+  position:relative;
+  
+}
+
+.header-group:hover{
+  .profile-dropdown{
+    display: block;
+  }
+}
+
+.your-account{
+  li{
+    padding: 5px;
+  }
+}
+
+.your-account li:hover{
+  background: lightgray;
+}
+
+.backed-projects{
+  li{
+    padding: 5px;
+  }
+}
+
+.backed-projects a:hover{
+  text-decoration: underline;
+}
+
+.created-projects{
+  li{
+    padding: 5px;
+  }
+  border-bottom: gray solid 1px;
+}
+
+.created-projects a:hover{
+  text-decoration: underline;
+}
+
+.dropdown-subtitle{
+  font-size: 8px;
+  color: darkgray;
+  font-weight: 300;
 }
