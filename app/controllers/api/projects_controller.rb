@@ -13,15 +13,20 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    start_date = Project.convert_to_date(project_params[:start_date])
-    @project.start_date = start_date
-    end_date = Project.convert_to_date(project_params[:end_date])
-    @project.end_date = end_date
-    if @project.save!
-      render :show
+    if project_params[:start_date] != '' && project_params[:end_date] != ''
+      start_date = Project.convert_to_date(project_params[:start_date])
+      @project.start_date = start_date
+      end_date = Project.convert_to_date(project_params[:end_date])
+      @project.end_date = end_date
+      if @project.save
+        render :show
+      else
+        render json: @project.errors.full_messages, status: 422
+      end
     else
-      render json: @project.errors.full_messages, status: 422
+      render json: ['Date not correctly entered'], status: 422
     end
+    
 
   end
 

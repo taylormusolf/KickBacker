@@ -6,7 +6,7 @@ const projectErrorsReducer = (state=[], action) => {
     case RECEIVE_PROJECT:
       return [];
     case RECEIVE_PROJECT_ERRORS:
-      return action.errors;
+        return action.errors;
     case RESET_PROJECT_ERRORS:
       return [];
     default: 

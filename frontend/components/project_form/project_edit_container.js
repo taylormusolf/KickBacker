@@ -8,12 +8,14 @@ class EditProjectForm extends React.Component {
     this.props.fetchProject(this.props.match.params.projectId);
   }
   render() {
-    const { action, formType, project } = this.props;
+    const { action, formType, project, errors } = this.props;
     if (!project) return null;
     return (
       <ProjectForm
+        errors={errors}
         action={action}
         formType={formType}
+        resetProjectErrors={resetProjectErrors}
         project={project} />
     );
   }

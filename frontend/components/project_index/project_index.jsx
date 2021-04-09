@@ -5,8 +5,6 @@ import CreateProjectFormContainer from '../project_form/project_new_container';
 class ProjectIndex extends React.Component {
   componentDidMount() {
     this.props.fetchProjects();
-    console.log('hello')
-    console.log(this.props)
   }
 
   render() {

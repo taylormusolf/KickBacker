@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import {Link, Redirect} from 'react-router-dom';
+
 
 
 class ProjectForm extends React.Component{
@@ -7,6 +9,7 @@ class ProjectForm extends React.Component{
     super(props);
     this.state = this.props.project;
     this.handleSubmit = this.handleSubmit.bind(this);
+    console.log(this.props)
   }
   componentDidMount(){
     this.props.resetProjectErrors();
@@ -20,7 +23,8 @@ class ProjectForm extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state);
+    this.props.action(this.state).then(this.props.history.push(`/`))
+
     // const formData = new FormData();
     // formData.append('project[title]', this.state.title);
     // formData.append('project[description]', this.state.description);

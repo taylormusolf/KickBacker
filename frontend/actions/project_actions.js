@@ -43,14 +43,14 @@ export const fetchProject = projectId => dispatch => (
 export const createProject = project => dispatch => (
   APIUtil.createProject(project)
   .then(project => (dispatch(receiveProject(project))),
-  error => (dispatch(receiveProjectErrors(error.responseJSON))
+  errors => (dispatch(receiveProjectErrors(errors.responseJSON))
   ))
 );
 
 export const updateProject = project => dispatch => (
   APIUtil.updateProject(project)
     .then(project => (dispatch(receiveProject(project))),
-    error => (dispatch(receiveProjectErrors(error.responseJSON))
+    errors => (dispatch(receiveProjectErrors(errors.responseJSON))
     ))
 );
 
