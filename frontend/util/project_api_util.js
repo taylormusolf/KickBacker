@@ -13,21 +13,33 @@ export const fetchProject = projectId => (
 );
 
 
-export const createProject = project => (
+export const createProject = FormData => (
   $.ajax({
     method: 'POST',
     url: '/api/projects/',
-    data: {project}
+    data: FormData,
+    contentType: false,
+    processData: false
   })
 );
 
-export const updateProject = project => (
+export const updateProject = (FormData, projectId) => (
   $.ajax({
     method: 'PATCH',
-    url: `/api/projects/${project.id}`,
-    data: {project}
+    url: `/api/projects/${projectId}`,
+    data: FormData,
+    contentType: false,
+    processData: false
   })
 );
+
+export const updateProjectNoImg = (project, projectId) => {
+  return $.ajax({
+      url: `/api/projects/${projectId}`,
+      method: 'PATCH',
+      data: {project}
+  })
+} 
 
 export const deleteProject = projectId => (
   $.ajax({

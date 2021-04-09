@@ -8,7 +8,7 @@ class EditProjectForm extends React.Component {
     this.props.fetchProject(this.props.match.params.projectId);
   }
   render() {
-    const { action, formType, project, errors } = this.props;
+    const { action, formType, project, errors, resetProjectErrors,fetchProject, creatorId} = this.props;
     if (!project) return null;
     return (
       <ProjectForm
@@ -16,7 +16,10 @@ class EditProjectForm extends React.Component {
         action={action}
         formType={formType}
         resetProjectErrors={resetProjectErrors}
-        project={project} />
+        project={project}
+        creatorId={creatorId}
+        fetchProject={fetchProject}
+        />
     );
   }
 }
@@ -30,12 +33,12 @@ const mSTP = (state, ownProps) => {
     errors: state.errors.project,
     creatorId: state.session.id,
     project: state.entities.projects[ownProps.match.params.projectId],
-    type: 'Update Project'
+    formType: 'Update Project'
   };
 };
 
 const mDTP = dispatch => ({
-  action: project => dispatch(updateProject(project)),
+  action: (project, id) => dispatch(updateProject(project, id)),
   fetchProject: projectId => dispatch(fetchProject(projectId)),
   resetProjectErrors: () => dispatch(resetProjectErrors()),
 });

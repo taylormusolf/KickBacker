@@ -16,8 +16,9 @@ const mSTP = (state) => ({
     start_date: '',
     end_date: '',
     funding_goal: '',
-    creator_id: state.session.id
-  }
+    creator_id: ''
+  },
+  creatorId: state.session.id
 });
 
 const mDTP = dispatch => ({

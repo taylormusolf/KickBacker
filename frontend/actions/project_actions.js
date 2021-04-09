@@ -47,12 +47,14 @@ export const createProject = project => dispatch => (
   ))
 );
 
-export const updateProject = project => dispatch => (
-  APIUtil.updateProject(project)
-    .then(project => (dispatch(receiveProject(project))),
-    errors => (dispatch(receiveProjectErrors(errors.responseJSON))
-    ))
-);
+export const updateProject = (project, id) => dispatch => {
+    return APIUtil.updateProject(project, id)
+      .then(project => (dispatch(receiveProject(project))),
+      errors => (dispatch(receiveProjectErrors(errors.responseJSON))
+      ))
+}
+  
+;
 
 export const deleteProject = projectId => dispatch => (
   APIUtil.deleteProject(projectId).then(() => (

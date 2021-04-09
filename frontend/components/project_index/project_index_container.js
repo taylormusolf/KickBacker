@@ -14,7 +14,8 @@ const mapStateToProps = state => {
   return{
       projects: projects,
       project: projects[index],
-      array: array
+      array: array,
+      type: 'main'
     }
   
 }

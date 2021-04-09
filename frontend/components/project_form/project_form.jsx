@@ -9,7 +9,8 @@ class ProjectForm extends React.Component{
     super(props);
     this.state = this.props.project;
     this.handleSubmit = this.handleSubmit.bind(this);
-    console.log(this.props)
+    this.handleFile = this.handleFile.bind(this);
+    console.log(props)
   }
   componentDidMount(){
     this.props.resetProjectErrors();
@@ -23,20 +24,65 @@ class ProjectForm extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state).then(this.props.history.push(`/`))
+    // if (this.state.formType === "Create Project" || this.state.photoFile){
+      const formData = new FormData();
+      formData.append('id', this.state.id);
+      formData.append('project[title]', this.state.title);
+      formData.append('project[description]', this.state.description);
+      formData.append('project[campaign]', this.state.campaign);
+      formData.append('project[updates]', this.state.updates);
+      formData.append('project[faq]', this.state.faq);
+      formData.append('project[location]', this.state.location);
+      formData.append('project[start_date]', this.state.start_date);
+      formData.append('project[end_date]', this.state.end_date);
+      formData.append('project[funding_goal]', this.state.funding_goal);
+      formData.append('project[creator_id]', this.props.creatorId);
+      if (this.state.imageFile) {
+        formData.append('project[photo]', this.state.imageFile);
+      }
+    // } else {
+    //   const projectProps = 
+    //   {
+    //     title: this.props.project.title, 
+    //     imageFile: this.props.project.photoFile, 
+    //     description: this.props.project.description, 
+    //     funding_goal: this.props.project.fundingGoal,
+    //     campaign: this.props.project.campaign, 
+    //     faq: this.props.project.faq, 
+    //     updates: this.props.project.updates, 
+    //     location: this.props.project.location,
+    //     start_date: this.props.project.start_date,
+    //     end_date: this.props.project.end_date,
+    //     creator_id: this.props.creatorId
+    //   }
+    // }
 
-    // const formData = new FormData();
-    // formData.append('project[title]', this.state.title);
-    // formData.append('project[description]', this.state.description);
-    // formData.append('project[campaign]', this.state.campaign);
-    // formData.append('project[updates]', this.state.updates);
-    // formData.append('project[faq]', this.state.faq);
-    // formData.append('project[location]', this.state.location);
-    // formData.append('project[start_date]', this.state.start_date);
-    // formData.append('project[end_date]', this.state.end_date);
-    // formData.append('project[funding_goal]', this.state.funding_goal);
-    // this.props.createProject(formData);
+    
+    this.props.action((this.state.formType === "Create Project" || this.state.photoFile) ? formData : formData, this.props.project.id)
+    .then((action) => this.props.history.push(`/projects/${action.project.id}`));
+    // this.props.action(this.state).then(this.props.history.push(`/`))
+
+    
   }
+
+  handleFile(e){
+    this.setState({existingPhoto: null})
+    const file = e.currentTarget.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.setState({imageFile: file, imageUrl: reader.result})
+    }
+    if (file) {
+      reader.readAsDataURL(file)
+    } else {
+      this.setState({imageUrl: '', imageFile: null})
+    }
+    this.setState({
+      imageFile: e.currentTarget.files[0],
+      imageUrl: e.currentTarget.files[0],
+    })
+  }
+  
   renderErrors() {
     return(
       <ul>
@@ -52,7 +98,9 @@ class ProjectForm extends React.Component{
 
 
   render() {
-
+    const { project } = this.props;
+    if (!project) return null;
+    const preview = this.state.existingPhoto ? <img src={this.state.existingPhoto}/> : this.state.imageUrl ? <img src={this.state.imageUrl}/> : null
     return (
       <div className="new-project-container">
         <h1 className="new-project-title">{this.props.formType}</h1>
@@ -139,7 +187,19 @@ class ProjectForm extends React.Component{
               className="project-field"
             />
           </label>
-          
+          <label>Project Image
+            <div>
+              <input 
+              type="file"
+              onChange={this.handleFile}
+              />
+              <div>
+                <span>Upload Image</span>
+              </div>
+              {preview}
+            </div>
+            
+          </label>
           <input
                 type="submit"
                 value={this.props.formType}
