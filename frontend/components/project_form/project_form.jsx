@@ -10,13 +10,12 @@ class ProjectForm extends React.Component{
     this.state = this.props.project;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
-    console.log(props)
   }
   componentDidMount(){
     this.props.resetProjectErrors();
-    if(this.props.formType === 'Update Project'){
-      this.props.fetchProject(this.props.match.params.projectId)
-    }
+    // if(this.props.formType === 'Update Project'){
+    //   this.props.fetchProject(this.props.match.params.projectId)
+    // }
   }
   update(field) {
     return e => this.setState({[field]: e.target.value});
@@ -58,7 +57,7 @@ class ProjectForm extends React.Component{
     // }
 
     
-    this.props.action((this.state.formType === "Create Project" || this.state.photoFile) ? formData : formData, this.props.project.id)
+    this.props.action((this.state.formType === "Create Project" || this.state.imageFile) ? formData : formData, this.state.id)
     .then((action) => this.props.history.push(`/projects/${action.project.id}`));
     // this.props.action(this.state).then(this.props.history.push(`/`))
 
@@ -165,7 +164,7 @@ class ProjectForm extends React.Component{
           <label>Project Start Date
             <input
               type='date'              
-              value={this.state.start_date}
+              value={this.state.start_date.slice(0,10)}
               onChange={this.update('start_date')}
               className="project-field"
             />
@@ -173,7 +172,7 @@ class ProjectForm extends React.Component{
           <label>Project End Date
             <input
               type='date'              
-              value={this.state.end_date}
+              value={this.state.end_date.slice(0,10)}
               onChange={this.update('end_date')}
               className="project-field"
             />
