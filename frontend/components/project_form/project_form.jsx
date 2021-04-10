@@ -81,6 +81,14 @@ class ProjectForm extends React.Component{
       imageUrl: e.currentTarget.files[0],
     })
   }
+
+  hasPhoto(){
+    if(this.state.photo_url.length){
+      return(
+        <p>Project has existing photo attached</p>
+      )
+    }
+  }
   
   renderErrors() {
     return(
@@ -123,7 +131,7 @@ class ProjectForm extends React.Component{
           </label>
           
           <label>Campaign
-            <textarea
+            <textarea 
               type="text"
               value={this.state.campaign}
               placeholder="Campaign" 
@@ -178,7 +186,7 @@ class ProjectForm extends React.Component{
             />
           </label>
           <label>Funding Goal
-            <input
+            <input required
               type="currency"
               value={this.state.funding_goal}
               placeholder="$$$$"
@@ -186,15 +194,13 @@ class ProjectForm extends React.Component{
               className="project-field"
             />
           </label>
-          <label>Project Image
+          {this.hasPhoto()}
+          <label>Upload Project Image
             <div>
-              <input 
+              <input
               type="file"
               onChange={this.handleFile}
               />
-              <div>
-                <span>Upload Image</span>
-              </div>
               {preview}
             </div>
             

@@ -22,7 +22,7 @@ project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     campaign: "The ORBIT is a suspended camera system that ORBITS around people, objects, or environments, at variable speeds and distances",
     updates: "Wow. We did it, we met our funding goal!  I'm speachless",
     faq: "Q: How do you film large objects with the Orbit Pro? A: So this is a perfect set up for the Orbit Pro. With the Pro, the Arms are a little bit longer, and will give you the reach that you need in order for get far enough out from the pianist playing. I'm assuming the goal being, get a wide enough field of view so you can see the piano, see his face, and orbit around him to see his hands move. But you don't want too wide so you see the orbit motor or the scaffold.", 
-    location: "Lost Angeles, CA", 
+    location: "Los Angeles, CA", 
     start_date: Date.new(2021,7,12),
     end_date: Date.new(2021,8,12), 
     funding_goal: 7500,
@@ -33,9 +33,15 @@ project2 = Project.create!(title: "Orbit Gum",
     campaign: "The ORBIT is a suspended camera system that ORBITS around people, objects, or environments, at variable speeds and distances",
     updates: "Wow. We did it, we met our funding goal!  I'm speachless",
     faq: "Q: How do you film large objects with the Orbit Pro? A: So this is a perfect set up for the Orbit Pro. With the Pro, the Arms are a little bit longer, and will give you the reach that you need in order for get far enough out from the pianist playing. I'm assuming the goal being, get a wide enough field of view so you can see the piano, see his face, and orbit around him to see his hands move. But you don't want too wide so you see the orbit motor or the scaffold.", 
-    location: "Lost Angeles, CA", 
+    location: "Los Angeles, CA", 
     start_date: Date.new(2021,7,12),
     end_date: Date.new(2021,8,12), 
     funding_goal: 7500,
     creator_id: user4.id
 )
+
+file1 = open("https://kickbacker-seed.s3-us-west-1.amazonaws.com/rap_academy.jpeg")
+project1.photo.attach(io: file1, filename: "img_#{project1.id}.jpg")
+
+file2 = open("https://kickbacker-seed.s3-us-west-1.amazonaws.com/flying_skateboard.jpg")
+project2.photo.attach(io: file2, filename: "img_#{project2.id}.jpg")

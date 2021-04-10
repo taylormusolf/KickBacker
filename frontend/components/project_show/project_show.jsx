@@ -14,7 +14,7 @@ class ProjectShow extends React.Component {
   handleDelete(e) {
     this.props.deleteProject(this.props.project.id)
         .then(action => {
-            return this.props.path.push(`/`)
+            return this.props.history.push(`/`)
         }) 
   }
   handleCreator(){
