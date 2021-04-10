@@ -1,0 +1,16 @@
+.project-list-item{
+  display: flex;
+}
+.project-list-item img{
+  width: 170px;
+  max-height: 100px;
+}
+
+.project-list-link:hover{
+  text-decoration: underline;
+  color: #028858;
+}
+
+.project-list-funding{
+  color: #028858;
+}

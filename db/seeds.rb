@@ -10,6 +10,8 @@ require 'open-uri'
 
 User.destroy_all
 Project.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('projects')
 
 user1 = User.create!(username:'Demo User', email: 'demo@demo', password: '123456', bio: 'Just your basic user.')
 user2 = User.create!(username:'Taylor Musolf', email: 't@email.com', password: '123456', bio: 'Bay Area based friendly, mild-mannered content creator')
@@ -23,7 +25,8 @@ user9 = User.create!(username:'D-CELL GAMES', email: 'buddy@D-CELL GAMES.com', p
 user10 = User.create!(username:'Project SOAPBOTTLE', email: 'soapy@ProjectSOAPBOTTLE.com', password: '123456', bio: 'Jonna Breitenhuber created and developed the concept SOAPBOTTLE during her master studies. Through her work as a packaging designer for cosmetic products, she was frustrated that there is hardly any sustainable packaging for liquid personal care products.')
 user11 = User.create!(username:'Chris Lin', email: 'chris@greensalt.com', password: '123456', bio: 'Co-founder of Green Salt, a healthy salt alternative made from Salicornia and Founder at AMOR Handmade, a collaboration that empowers women through artisan dog collars. Based in Los Angeles and Ensenada, Mexico.')
 user12 = User.create!(username:'Unbound', email: 'unbound@unbound.com', password: '123456', bio: 'Hi, were Unbound, the crowdfunding publisher. We bring writers and readers closer together. Authors pitch their ideas, we choose the best ones and if enough people pledge, we turn them into great books.')
-user12 = User.create!(username:'Third Editions', email: '3rd@thirdeditions.com', password: '123456', bio: 'Third Éditions is a French publisher dedicated to video games and popular culture, founded in 2015 by Nicolas Courcier and Mehdi El Kanafi, both lovers of quality books and video games.')
+user13 = User.create!(username:'Third Editions', email: '3rd@thirdeditions.com', password: '123456', bio: 'Third Éditions is a French publisher dedicated to video games and popular culture, founded in 2015 by Nicolas Courcier and Mehdi El Kanafi, both lovers of quality books and video games.')
+user14 = User.create!(username:'Josh Yeo', email: 'josh@makeartnow.com', password: '123456', bio: 'Josh Yeo is the Artist behind Youtube Channel, MAKE ART NOW. He has a "hands on", DIY approach to most crafts, including cinematography, storytelling, and creative projects. He is an autodidact Polymath, and this is his first time making a physical product.')
 
 project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     description: "What tool does a cinematographer build for himself? A stealthy silent, bluetooth controlled, orbiting camera dolly with lighting.",
@@ -34,9 +37,9 @@ project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     start_date: Date.new(2021,3,15),
     end_date: Date.new(2021,4,15), 
     funding_goal: 7500,
-    creator_id: user2.id
+    creator_id: user14.id
 )
-file1 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/orbit.gif")
+file1 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/orbit.gif")
 project1.photo.attach(io: file1, filename: "#{project1.id}.gif")
 
 project2 = Project.create!(title: "ForeverPen",
@@ -56,7 +59,7 @@ project2 = Project.create!(title: "ForeverPen",
     funding_goal: 3500,
     creator_id: user5.id
 )
-file2 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/forever_pen.jpg")
+file2 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/forever_pen.jpg")
 project2.photo.attach(io: file2, filename: "#{project2.id}.jpg")
 
 project3 = Project.create!(title: "GAMMA: All-Season 100% Graphene Infused Heated Jacket",
@@ -78,14 +81,14 @@ project3 = Project.create!(title: "GAMMA: All-Season 100% Graphene Infused Heate
     creator_id: user6.id
 )
 
-file3 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/gamma.gif")
+file3 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/gamma.gif")
 project3.photo.attach(io: file3, filename: "#{project3.id}.gif")
 
 project4 = Project.create!(title: "100 Conversations about Antiracism",
     description: "Conversations about race, equity and justice made easier.",
     campaign: "THE TIME IS NOW
 
-    Everyone can agree that racism is wrong. It hurts our schools, our communities and divides our nation. More and more people are realizing that it is not enough to simply be "not racist." If we are to heal and grow we must all do our part to be actively ANTI-RACIST.  We see the effects of racism every day as it threatens to tear us further apart. From protests ignited by the killing of George Floyd to the storming of our capitol by white supremacists, it is clear we can no longer ignore the cost of racism. The time is right to talk about the racism before it is too late.  ",
+    Everyone can agree that racism is wrong. It hurts our schools, our communities and divides our nation. More and more people are realizing that it is not enough to simply be not racist. If we are to heal and grow we must all do our part to be actively ANTI-RACIST.  We see the effects of racism every day as it threatens to tear us further apart. From protests ignited by the killing of George Floyd to the storming of our capitol by white supremacists, it is clear we can no longer ignore the cost of racism. The time is right to talk about the racism before it is too late.  ",
     updates: "I’m so excited to make these cards availble to thr public. Let’s make it happen folks!",
     faq: "", 
     location: "Oakland, CA", 
@@ -95,7 +98,7 @@ project4 = Project.create!(title: "100 Conversations about Antiracism",
     creator_id: user7.id
 )
 
-file4 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/conversations_about_antiracism.png")
+file4 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/conversations_about_antiracism.png")
 project4.photo.attach(io: file4, filename: "#{project4.id}.png")
 
 project5 = Project.create!(title: "Ruffmuffs",
@@ -112,7 +115,7 @@ project5 = Project.create!(title: "Ruffmuffs",
     creator_id: user8.id
 )
 
-file5 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/ruffmuffs.jpg")
+file5 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/ruffmuffs.jpg")
 project5.photo.attach(io: file5, filename: "#{project5.id}.jpg")
 
 project6 = Project.create!(title: "UNBEATABLE - A game where music is illegal and you do crimes",
@@ -127,7 +130,7 @@ project6 = Project.create!(title: "UNBEATABLE - A game where music is illegal an
     creator_id: user9.id
 )
 
-file6 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/unbeatable.png")
+file6 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/unbeatable.png")
 project6.photo.attach(io: file6, filename: "#{project6.id}.png")
 
 
@@ -137,7 +140,7 @@ project7 = Project.create!(title: "S O A P B O T T L E",
     updates: "Help us share the project with more friends, making more people be aware of our innovation and be part of it!
 
     More pledges also mean that we can start in the product development sooner and find the best materials to change this plastic-packaging world!",
-    faq: "Q: Why do we need crowdfunding? A: We are developing a product that opens an entirely new product category in the personal care market. Meaning that we have extensive material research, tests and the time-costly registration of our products ahead of us. Nevertheless, we are committed to realizing the concept. Because we have a clear vision and, in the end, we just know it will be worth it. But we need you!", 
+    faq: "Q: Why do we need crowdfunding? A: We are developing a product that URI.opens an entirely new product category in the personal care market. Meaning that we have extensive material research, tests and the time-costly registration of our products ahead of us. Nevertheless, we are committed to realizing the concept. Because we have a clear vision and, in the end, we just know it will be worth it. But we need you!", 
     location: "Amsterdam, Netherlands", 
     start_date: Date.new(2021,3,22),
     end_date: Date.new(2021,4,22), 
@@ -145,7 +148,7 @@ project7 = Project.create!(title: "S O A P B O T T L E",
     creator_id: user10.id
 )
 
-file7 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/soapbottle.jpg")
+file7 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/soapbottle.jpg")
 project7.photo.attach(io: file7, filename: "#{project7.id}.jpg")
 
 project8 = Project.create!(title: "Green Salt: the healthy salt alternative",
@@ -164,7 +167,7 @@ project8 = Project.create!(title: "Green Salt: the healthy salt alternative",
     creator_id: user11.id
 )
 
-file8 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/greensalt.jpeg")
+file8 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/greensalt.jpeg")
 project8.photo.attach(io: file8, filename: "#{project8.id}.jpeg")
 
 project9 = Project.create!(title: "42: the wildly improbable ideas of Douglas Adams",
@@ -183,7 +186,7 @@ project9 = Project.create!(title: "42: the wildly improbable ideas of Douglas Ad
     creator_id: user12.id
 )
 
-file9 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/42_douglas_adams.gif")
+file9 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/42_douglas_adams.gif")
 project9.photo.attach(io: file9, filename: "#{project9.id}.gif")
 
 project10 = Project.create!(title: "Third Editions: the Anime Library - JoJo's Bizarre Adventure",
@@ -200,5 +203,5 @@ project10 = Project.create!(title: "Third Editions: the Anime Library - JoJo's B
     creator_id: user13.id
 )
 
-file10 = open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/jojo_bizarre.jpg")
+file10 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/jojo_bizarre.jpg")
 project10.photo.attach(io: file10, filename: "#{project10.id}.jpg")

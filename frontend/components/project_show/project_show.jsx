@@ -51,7 +51,7 @@ class ProjectShow extends React.Component {
               <img src={project.photo_url}/>
               <ul className='under-photo-items'>
                 <li>Category</li>
-                <li>{project.location}</li>
+                <li><i class="fas fa-map-marker-alt"></i> {project.location}</li>
               </ul>
             </div>
                     
@@ -60,6 +60,7 @@ class ProjectShow extends React.Component {
               <li># of backers</li>
               <li># of days to go</li>
               <li>Back this project</li>
+              <li className='small-text'>All or nothing.  This project will only be fundened if it reaches its goal by {project.end_date.slice(0,10)}</li>
             </ul>
           </section>
         </div>

@@ -10,6 +10,7 @@ const Profile = (props) =>{
             <li className="profile-section">
               <span className="dropdown-subtitle">YOUR ACCOUNT</span>
               <ul className="profile-subsection">
+                <li>{props.currentUser.username}</li>
                 <li><a href="#">Saved projects</a></li>
                 <li><a href="#">Recommended for you</a></li>
               </ul>
