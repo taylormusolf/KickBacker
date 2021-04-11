@@ -6,7 +6,7 @@ import Profile from './profile'
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.users[state.session.id]
+    currentUser: state.entities.users[state.session.id]
   };
 };
 

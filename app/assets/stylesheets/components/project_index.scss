@@ -1,3 +1,24 @@
+.category-links-container{
+  background-color: white;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+.category-links{
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 850px;
+  padding: 28px;
+}
+.category-links li{
+  font-size: 16px;
+}
+.category-links li:hover{
+  color: #028858;
+  text-decoration: underline;
+}
+
+
 .project-list-item{
   display: flex;
 }
@@ -6,11 +27,25 @@
   max-height: 100px;
 }
 
+.project-list-item ul li{
+  margin-bottom: 6px;
+}
+
+
 .project-list-link:hover{
   text-decoration: underline;
   color: #028858;
 }
 
+.project-list-link{
+  font-size: 14px;
+}
+
 .project-list-funding{
   color: #028858;
+  font-size: 12px;
+}
+
+.project-list-creator{
+  font-size: 12px;
 }

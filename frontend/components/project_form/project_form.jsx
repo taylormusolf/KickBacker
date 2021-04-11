@@ -65,7 +65,7 @@ class ProjectForm extends React.Component{
   }
 
   handleFile(e){
-    this.setState({existingPhoto: null})
+    // this.setState({existingPhoto: null})
     const file = e.currentTarget.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -83,7 +83,7 @@ class ProjectForm extends React.Component{
   }
 
   hasPhoto(){
-    if(this.state.photo_url.length){
+    if(this.props.formType === 'Update Project' && this.state.photo_url.length){
       return(
         <p>Project has existing photo attached</p>
       )

@@ -59,6 +59,19 @@
 
 .show-side-bar li{
   padding: 10px;
+  color: #028858;
+}
+.show-back-button{
+  cursor: pointer;
+  color: white;
+  background-color: #028858;
+  padding: 12px;
+  font-size: 14px;
+  border-style: none;
+  text-align: center;
+}
+.show-back-button:hover{
+  background-color:#015738
 }
 
 .show-main{

@@ -54,9 +54,51 @@
   padding: 5px;
 }
 
+.profile-new-project-container{
+  display: flex;
+  flex-direction: column;
+  padding: 18px 0px;
+  width: 100%;
+  transition: all 0.3s;
+  background-image: linear-gradient(to right, transparent 51%, blue 49%);
+  background-position: 0 0;
+  background-size: 200%;
+  color: #4C6CF8;
+}
+
+.profile-new-project-container:hover{
+  color: white;
+  fill: white;
+  transform: translateY(-1px);
+  background-image: linear-gradient(to right, transparent 50%, blue 50%);
+  background-position: -100% 0;
+}
+.profile-new-project-container div{
+  display: flex;
+}
+.profile-new-project-container div > * {
+  padding: 5px;
+}
 
 
 .dropdown-subtitle{
   font-size: 14px;
   color: #282828;
+}
+
+.profile-backed-container{
+
+}
+
+.small-img{
+  width: 52px;
+  height: 30px
+}
+
+.profile-created-project{
+  display: flex;
+}
+
+.profile-created-project span:hover{
+  color: #028858;
 }
