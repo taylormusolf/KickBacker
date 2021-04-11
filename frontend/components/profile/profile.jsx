@@ -5,7 +5,6 @@ const Profile = (props) =>{
 
 
     const userProjects = () =>{
-      debugger
       if (props.currentUser.projects){
         return(
           Object.values(props.currentUser.projects).map((project => (

@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectIndexItem from './project_index_item';
+import ProjectFeaturedItem from './project_featured_item'
 
 class ProjectIndex extends React.Component {
   constructor(props){
@@ -34,21 +35,27 @@ class ProjectIndex extends React.Component {
       return (
         <div >
           {this.categories()}
-          <div id='featured-project'>
-            <ProjectIndexItem 
-            project={project}
-            />
+          <div className='projects-header'>
+            <div id='featured-project'>
+              FEATURED PROJECT
+              <ProjectFeaturedItem
+                project={project}
+              />
+            </div>
+             <ul className='projects-list-container'>
+               RECOMMENDED FOR YOU
+                {
+                  array.map(i => (
+                    <ProjectIndexItem
+                      project={this.props.projects[i]}
+                      key={[i + 1]}
+                    />
+                  ))
+                }
+              </ul>
           </div>
-          <ul className='projects-list-container'>
-            {
-              array.map(i => (
-                <ProjectIndexItem
-                  project={this.props.projects[i]}
-                  key={[i + 1]}
-                />
-              ))
-            }
-          </ul>
+          
+         
           {this.categories()}
         </div>
       );

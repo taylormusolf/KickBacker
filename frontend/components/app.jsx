@@ -43,6 +43,7 @@ const App = () => (
       <footer>
        <nav className='footer-box'>
           <div>
+            <div>Kickbacker, <i className="far fa-copyright"></i> PBC 2021</div>
             <section className="social-links">
               <a href="https://github.com/taylormusolf" target="_blank"><i className="fab fa-github"></i></a>
               <a href="https://www.linkedin.com/in/taylor-musolf-4454a876/" target="_blank"><i className="fab fa-linkedin-in"></i></a>

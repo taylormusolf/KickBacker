@@ -7,7 +7,17 @@ import { fetchProjects} from '../../actions/project_actions';
 const mapStateToProps = state => {
   let projects = Object.values(state.entities.projects)
   let array = [];
-  let index = Math.floor(Math.random()*(projects.length))
+
+  //set featured project based on hour of the day
+  let d = new Date();
+  let cof = d.getHours()/12
+  let index = Math.floor(cof *(projects.length))
+  
+  
+  //random featured project
+  // let index = Math.floor(Math.random()*(projects.length))
+
+  //random 9 projects
   if(projects.length){
     while(array.length < 9){
       let rand = Math.floor(Math.random()*(projects.length))
@@ -16,6 +26,17 @@ const mapStateToProps = state => {
       }
     };
   }
+
+  //set 9 projects for hour
+  // if(projects.length){
+  //   let rand = Math.floor(Math.random()*(projects.length))
+  //   while(array.length < 9){
+  //     if (rand !== index && !array.includes(rand)){
+  //       array.push(rand);
+  //       rand = Math.floor(rand *(projects.length))
+  //     }
+  //   };
+  // }
   
   return{
       projects: projects,
