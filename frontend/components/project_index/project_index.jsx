@@ -1,8 +1,10 @@
 import React from 'react';
 import ProjectIndexItem from './project_index_item';
-import CreateProjectFormContainer from '../project_form/project_new_container';
 
 class ProjectIndex extends React.Component {
+  constructor(props){
+    super(props)
+  }
   componentDidMount() {
     this.props.fetchProjects();
   }
@@ -26,18 +28,23 @@ class ProjectIndex extends React.Component {
   }
 
   render() {
-    const { projects, deleteProject } = this.props;
-    if (!projects) return null;
+    const { projects, project, array } = this.props;
+    if (!projects || !project) return null;
+   
       return (
-        <div>
+        <div >
           {this.categories()}
-          <ul>
+          <div id='featured-project'>
+            <ProjectIndexItem 
+            project={project}
+            />
+          </div>
+          <ul className='projects-list-container'>
             {
-              projects.map(project => (
+              array.map(i => (
                 <ProjectIndexItem
-                  project={project}
-                  deleteProject={deleteProject}
-                  key={project.id}
+                  project={this.props.projects[i]}
+                  key={[i + 1]}
                 />
               ))
             }

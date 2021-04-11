@@ -18,13 +18,43 @@
   text-decoration: underline;
 }
 
+#featured-project{
+  padding: 15px;
+  background-color: white;
+}
+#featured-project li{
+  margin:auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#featured-project li ul{
+  
+}
+
+#featured-project img{
+  width: 625px;
+  max-height: 350px;
+  padding: 15px;
+}
+
+
+
+
+.projects-list-container{
+  border-bottom: 1px solid lightgray;
+  background-color: white;
+}
+
 
 .project-list-item{
   display: flex;
+  padding: 15px;
 }
 .project-list-item img{
   width: 170px;
   max-height: 100px;
+  padding: 5px;
 }
 
 .project-list-item ul li{
