@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_203012) do
+ActiveRecord::Schema.define(version: 2021_04_12_215352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,25 @@ ActiveRecord::Schema.define(version: 2021_04_10_203012) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "backings", force: :cascade do |t|
+    t.float "amount_pledged", null: false
+    t.integer "backer_id", null: false
+    t.integer "project_id", null: false
+    t.integer "reward_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["backer_id"], name: "index_backings_on_backer_id"
+    t.index ["project_id"], name: "index_backings_on_project_id"
+    t.index ["reward_id"], name: "index_backings_on_reward_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title", null: false
     t.string "description", null: false
@@ -51,6 +70,16 @@ ActiveRecord::Schema.define(version: 2021_04_10_203012) do
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_projects_on_creator_id"
     t.index ["title"], name: "index_projects_on_title", unique: true
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "description", null: false
+    t.integer "project_id", null: false
+    t.float "cost", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_rewards_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
