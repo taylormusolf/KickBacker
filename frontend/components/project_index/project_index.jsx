@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectIndexItem from './project_index_item';
 import ProjectFeaturedItem from './project_featured_item'
-import ProjectPages from './project_featured_item'
+import ProjectPages from './project_pages'
 
 class ProjectIndex extends React.Component {
   constructor(props){
@@ -31,12 +31,23 @@ class ProjectIndex extends React.Component {
     )
   }
 
+
   selectPage(num) {
     this.setState({currentPage: num});
   }
 
   render() {
     const { projects, project, array } = this.props;
+    const filtered = (array) =>{
+      if(this.state.currentPage === 1){
+        return array.slice(0, 3)
+      } else if (this.state.currentPage === 2){
+        return array.slice(3, 6)
+      } else {
+        return array.slice(6)
+      }
+    }
+      
     if (!projects || !project) return null;
       return (
         <div >
@@ -52,19 +63,19 @@ class ProjectIndex extends React.Component {
               <ul className='projects-list-container'>
                <h1>RECOMMENDED FOR YOU</h1>
                <div>
-                {array.map(i => (
+                {filtered(array).map(i => (
                   <ProjectIndexItem
                     project={this.props.projects[i]}
                     key={[i + 1]}
                   />
                   ))}
                </div>
-               {/* <div>
+               <div>
                  <ProjectPages
-                    selectedPage={this.state.selectedPage}
+                    selectedPage={this.state.currentPage}
                     onPageChosen={this.selectPage}
                   />
-               </div> */}
+               </div>
 
               </ul>
             </div>

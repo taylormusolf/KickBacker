@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 const ProjectFeaturedItem = props => {
-  
+  if (!props.project) return null;
   return (
     <li className='featured-list-item'>
       <span>

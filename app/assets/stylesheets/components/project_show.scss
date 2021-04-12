@@ -1,13 +1,11 @@
 .show-page{
   width: 100%;
   color: #282828;
-  background-color: #F7F7F6;
-  
+  background-color: white;
+
 }
 
-.active{
-  font-weight: bold;
-}
+
 
 .show-header{
   width: 1246px;
@@ -20,6 +18,7 @@
   margin: 0px 18px 36px 18px;
   text-align: center;
   margin: auto;
+  padding-bottom: 35px;
 }
 
 .show-title h1{
@@ -117,22 +116,90 @@
   color: #282828
 }
 
+.show-main-container{
+  // width: 100%;
+  // background-color: white;
+  width: 1246px;
+  min-height: 500px;
+  margin: auto;
+  padding: 0px 60px 0 60px;
+}
+
 .show-main{
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid lightgray;
+  margin:auto;
+  // width: 1325px;
+  border-top: 0.1rem solid #E8E8E8;
+  background-color: white;
 }
 
 .show-tabs{
-  font-size: 28px;
+  // width: 1246px;
+  // 
+  margin: 0px 60px;
+  text-align: center;
+}
+.show-tab-header{
   display: flex;
 }
-.show-tabs p{
-  padding: 10px;
+.show-tab-header li{
+  font-size: 14px;
+  margin: 0px 36px 0px 0px;
+  padding: 20px 5px;
+  cursor: pointer;
+}
+.active{
+  font-weight: bold;
+  text-decoration: underline;
+}
+.show-section-container{
+  
+}
+
+.show-section{
+  padding: 48px 18px 48px 60px;
+  margin:auto;
+  display: flex;
+  border-top: 0.1rem solid #E8E8E8;
+}
+
+.show-tab-content{
+  width: 850px;
+  padding: 0px 18px;
+}
+
+.show-tab-content h1{
+  color: #282828;
+  font-size: 24px;
+  margin: 0px 18px;
+  padding: 5px 15px;
+}
+
+.show-tab-content article{
+  font-size: 16px;
+  line-height: 3rem;
 }
 
 .show-rewards-side-bar{
-  font-size: 28px;
+  font-size: 16px;
+  padding: 0px 18px 20px 60px;
+  width: 294px;
+  overflow-y: scroll;
+}
+
+.show-rewards-creator{
+  font-size: 16px;
+  border: 0.1rem solid #E8E8E8;
+  padding: 34px 18px 18px 18px;
+  margin-bottom: 36px;
+}
+
+.show-rewards-creator-name{
+  font-size: 16px;
+  margin-bottom: 18px;
+  font-weight: bold;
+}
+.show-rewards-creator-bio{
+  font-size: 14px;
 }
 
 .show-edit-links{

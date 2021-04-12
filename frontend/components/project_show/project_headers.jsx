@@ -18,7 +18,7 @@ class Headers extends React.Component {
       );
     });
     return (
-      <ul className='tab-header'>
+      <ul className='show-tab-header'>
         {headers}
       </ul>
 

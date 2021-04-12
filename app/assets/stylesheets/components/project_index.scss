@@ -88,7 +88,7 @@
 }
 .project-list-item img{
   width: 170px;
-  max-height: 100px;
+  height: 100px;
   padding-right: 24px;
 }
 
@@ -140,5 +140,15 @@
 
 .featured-list-item{
   width: 625px;
+}
+
+.num-pages{
+  display: flex;
+  margin: 6px 0px;
+}
+
+.num-pages li{
+ padding: 0px 10px; 
+ cursor: pointer;
 }
 

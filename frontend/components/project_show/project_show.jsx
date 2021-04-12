@@ -46,22 +46,52 @@ class ProjectShow extends React.Component {
     if(this.state.selectedPane === 0){
       return(
         <article>
+          <h1>Story:</h1>
           {this.props.project.campaign}
         </article>
       )
     } else if(this.state.selectedPane === 1){
-      return(
-        <article>
-          {this.props.project.faq}
-        </article>
-      )
+        if(this.props.project.faq === ''){
+          return(
+            <article>
+              <h1>Frequently Asked Questions:</h1>
+              Looks like there aren't any frequently asked questions yet. Ask the project creator directly.
+            </article>
+          )
+        } else {
+          return(
+            <article>
+              <h1>Frequently Asked Questions:</h1>
+              {this.props.project.faq}
+            </article>
+          )
+        }
     } else {
-      return(
-        <article>
-          {this.props.project.updates}
-        </article>
-      )
+        if(this.props.project.updates === ''){
+          return(
+            <article>
+              <h1>Updates:</h1>
+              Looks like there aren't any updates yet.
+            </article>
+          )
+        } else {
+          return(
+            <article>
+              <h1>Updates:</h1>
+              {this.props.project.updates}
+            </article>
+          )
+        }
     }
+  }
+
+
+  daysLeft(endDate){
+    const today = new Date();
+    const endingDate = new Date(endDate);
+    const diffTime = Math.abs(endingDate - today);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
   }
   
   render() {
@@ -95,7 +125,7 @@ class ProjectShow extends React.Component {
                   <li className='show-text-total'>of backers</li>
                 </div>
                 <div className='show-subbar-sub'>
-                  <li className='show-days-total'>#</li>
+                  <li className='show-days-total'>{this.daysLeft(project.end_date)}</li>
                 <li className='show-text-total'>days to go</li>
                 </div>
                 
@@ -106,7 +136,7 @@ class ProjectShow extends React.Component {
             </ul>
           </section>
         </div>
-        
+        <div className='show-main-container'>
         <div className='show-main'>
           <div className='show-tabs'>
             <Headers
@@ -114,15 +144,26 @@ class ProjectShow extends React.Component {
               onTabChosen={this.selectTab}
               panes={this.props.panes}
               />
-            <div className='tab-content'>
-              {this.selectedContent()}
-            </div>
           </div>
-          <ul className='show-rewards-side-bar'>
-            <li>Creator: {project.creator.username}</li>
-          </ul>
+          <div className='show-section-container'>
+            <section className='show-section'>
+              <div className='show-tab-content'>
+                {this.selectedContent()}
+              </div>
+              <ul className='show-rewards-side-bar'>
+                <ul className='show-rewards-creator'>
+                  <li className='show-rewards-creator-name'>{project.creator.username}</li>
+                  <li className='show-rewards-creator-bio'>{project.creator.bio}</li>
+                </ul>       
+              </ul>
+            </section>
+          </div>
+          
+          
         </div>
         {this.handleCreator()}
+        </div>
+        
       </div>
       );
     
