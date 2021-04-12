@@ -1,0 +1,1 @@
+json.extract! backing, :id, :amount_pledged, :reward_id, :project_id

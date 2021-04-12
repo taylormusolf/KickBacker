@@ -91,6 +91,9 @@ class ProjectShow extends React.Component {
     const endingDate = new Date(endDate);
     const diffTime = Math.abs(endingDate - today);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    if(diffDays <= 0){
+      diffDays = 0;
+    }
     return diffDays;
   }
   

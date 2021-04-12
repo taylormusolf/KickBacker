@@ -6,6 +6,18 @@ class Project < ApplicationRecord
     foreign_key: :creator_id,
     class_name: :User
 
+  has_many :rewards,
+    foreign_key: :project_id,
+    class_name: :Reward
+
+  has_many :backings,
+    foreign_key: :project_id,
+    class_name: :Backing
+
+  has_many :backers,
+    through: :backings,
+    source: :backer
+
   has_one_attached :photo
 
 

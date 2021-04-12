@@ -10,8 +10,15 @@ require 'open-uri'
 
 User.destroy_all
 Project.destroy_all
+Backing.destroy_all
+Reward.destroy_all
+Category.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('projects')
+ActiveRecord::Base.connection.reset_pk_sequence!('backings')
+ActiveRecord::Base.connection.reset_pk_sequence!('rewards')
+ActiveRecord::Base.connection.reset_pk_sequence!('categories')
+
 
 user1 = User.create!(username:'Demo User', email: 'demo@demo', password: '123456', bio: 'Just your basic user.')
 user2 = User.create!(username:'Taylor Musolf', email: 't@email.com', password: '123456', bio: 'Bay Area based friendly, mild-mannered content creator')
@@ -28,6 +35,18 @@ user12 = User.create!(username:'Unbound', email: 'unbound@unbound.com', password
 user13 = User.create!(username:'Third Editions', email: '3rd@thirdeditions.com', password: '123456', bio: 'Third Éditions is a French publisher dedicated to video games and popular culture, founded in 2015 by Nicolas Courcier and Mehdi El Kanafi, both lovers of quality books and video games.')
 user14 = User.create!(username:'Josh Yeo', email: 'josh@makeartnow.com', password: '123456', bio: 'Josh Yeo is the Artist behind Youtube Channel, MAKE ART NOW. He has a "hands on", DIY approach to most crafts, including cinematography, storytelling, and creative projects. He is an autodidact Polymath, and this is his first time making a physical product.')
 
+
+category1 = Category.create!(name: "Art");
+category2 = Category.create!(name: "Comics & Illustration");
+category3 = Category.create!(name: "Design & Tech");
+category4 = Category.create!(name: "Film");
+category5 = Category.create!(name: "Food & Craft");
+category6 = Category.create!(name: "Games");
+category7 = Category.create!(name: "Music");
+category8 = Category.create!(name: "Publishing");
+
+
+
 project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     description: "What tool does a cinematographer build for himself? A stealthy silent, bluetooth controlled, orbiting camera dolly with lighting.",
     campaign: "The ORBIT is a suspended camera system that ORBITS around people, objects, or environments, at variable speeds and distances",
@@ -37,7 +56,7 @@ project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     start_date: Date.new(2021,3,15),
     end_date: Date.new(2021,4,15), 
     funding_goal: 7500,
-    creator_id: user14.id
+    creator_id: user1.id
 )
 file1 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/orbit.gif")
 project1.photo.attach(io: file1, filename: "#{project1.id}.gif")
@@ -205,3 +224,32 @@ project10 = Project.create!(title: "Third Editions: the Anime Library - JoJo's B
 
 file10 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/jojo_bizarre.jpg")
 project10.photo.attach(io: file10, filename: "#{project10.id}.jpg")
+
+
+reward1 = Reward.create!(
+    title: "You are the BEST", 
+    description: "You will have a branded t-shirt with school logo",
+    project_id: project1.id, 
+    cost: 50)
+
+
+
+
+    projects = Project.all.to_a
+    backers = User.all.to_a
+    backings_hash = Hash.new {|h,k| h[k] = []}
+    
+    projects.each do |project|
+        until backings_hash[project.id].length == 2
+            backer = backers.sample
+            if !backings_hash[project.id].include?(backer.id) && project.creator_id != backer.id
+                 backings_hash[project.id] << backer.id
+            end
+        end
+        backings_hash[project.id].each do |backer|
+            Backing.create!(amount_pledged: project.rewards[0].cost, backer_id: backer, reward_id: project.rewards[0].id, project_id: project.id)
+        end
+        backer = backers.sample
+        amount = rand(1..1000)
+        Backing.create!(amount_pledged: amount, backer_id: backer.id, project_id: project.id)
+    end
