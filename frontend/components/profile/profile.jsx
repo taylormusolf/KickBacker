@@ -53,7 +53,7 @@ const Profile = (props) =>{
             </li>
           </ul>
           <div className='profile-footer'>
-            <button className="header-button" onClick={()=>props.logout().then(props.closeModal())}>Log Out</button>
+            <button className="header-button" onClick={()=>props.logout().then(props.closeModal())}>Log out</button>
           </div>
         </div>
       </div>

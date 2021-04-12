@@ -1,14 +1,19 @@
-
-.login-form-container{
+.login-form-box{
   margin: auto;
-  margin-top: 75px;
   width: 350px;
   background-color: white;
-  padding-top: 25px; 
-  padding-bottom: 30px;
+  padding-top: 20px; 
+  padding-bottom: 20px;
   padding-left: 30px;
   padding-right: 30px;
- 
+  border: 1px solid rgb(233, 233, 233);
+}
+
+.login-form-container{
+  // margin-top: 75px;
+  
+  margin: 60px 18px 60px 18px;
+  
 }
 
 .login-form-container h1{
@@ -16,6 +21,7 @@
 }
 
 .login-form{
+  
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -65,6 +71,9 @@
 .login-footer{
   display: flex;
   margin: auto;
+  padding: 20px;
+  // border-top: 0.1rem solid #E8E8E8;
+  // border-bottom: 0.1rem solid #E8E8E8;
 }
 
 .login-subscript{

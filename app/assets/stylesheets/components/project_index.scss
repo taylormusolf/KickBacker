@@ -1,29 +1,51 @@
 .category-links-container{
   background-color: white;
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+  // border-top: 0.1rem solid #E8E8E8;
+  border-bottom: 0.1rem solid #E8E8E8;
+}
+
+.category-links-container-bottom{
+  background-color: white;
+  border-top: 0.1rem solid #E8E8E8;
+  border-bottom: 0.1rem solid #E8E8E8;
 }
 .category-links{
   margin: auto;
   display: flex;
   justify-content: space-between;
   width: 850px;
-  padding: 28px;
+  padding: 20px;
 }
 .category-links li{
   font-size: 16px;
+  color: #656969;
 }
+
 .category-links li:hover{
   color: #028858;
   text-decoration: underline;
 }
 
 #featured-project{
-  padding: 15px;
+  margin-top: 24px;
+  padding-top: 30px;
+  padding-right: 60px;
   background-color: white;
+  border-right: 0.1rem solid #E8E8E8;
 }
+
+#featured-project h1{
+  font-size: 13px;
+  color: #656969;
+  margin-bottom: 18px;
+}
+
+.projects-list-container h1{
+  font-size: 13px;
+  color: #656969;
+}
+
 #featured-project li{
-  margin:auto;
   display: flex;
   flex-direction: column;
 }
@@ -35,28 +57,39 @@
 #featured-project img{
   width: 625px;
   max-height: 350px;
-  padding: 15px;
+}
+
+.projects-header-container{
+  background-color: white;
 }
 
 .projects-header{
   display: flex;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin: auto;
+
+  width: 1300px;
 }
 
 
 .projects-list-container{
-  border-bottom: 1px solid lightgray;
   background-color: white;
+  padding: 30px 0px 0px 60px;
+  margin-top: 24px;
 }
 
 
 .project-list-item{
   display: flex;
-  padding: 15px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-bottom: 0.1rem solid #E8E8E8;
 }
 .project-list-item img{
   width: 170px;
   max-height: 100px;
-  padding: 5px;
+  padding-right: 24px;
 }
 
 .project-list-item ul li{
@@ -64,13 +97,14 @@
 }
 
 
-.project-list-link:hover{
+.project-list-link:hover, .featured-list-link:hover{
   text-decoration: underline;
   color: #028858;
 }
 
 .project-list-link{
   font-size: 14px;
+  margin-bottom: 6px;
 }
 
 .project-list-funding{
@@ -80,4 +114,31 @@
 
 .project-list-creator{
   font-size: 12px;
+  color: #656969;
 }
+
+.featured-list-link{
+  font-size: 28px;
+  color: #282828;
+  padding: 18px 0px 12px 0px;
+
+}
+
+.featured-list-description{
+  font-size: 18px;
+  color: #282828;
+  padding-bottom: 24px;
+
+}
+
+.featured-list-creator{
+  font-size: 12px;
+  color: #656969;
+  padding-bottom: 24px;
+
+}
+
+.featured-list-item{
+  width: 625px;
+}
+

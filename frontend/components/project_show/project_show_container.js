@@ -3,9 +3,15 @@ import ProjectShow from './project_show';
 import { fetchProject, deleteProject, updateProject } from '../../actions/project_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  let project = state.entities.projects[ownProps.match.params.projectId]
   return{
-    project: state.entities.projects[ownProps.match.params.projectId],
-    session: state.session.id
+    project: project,
+    session: state.session.id,
+    panes: [
+      {title: 'Campaign'}, 
+      {title: 'FAQ'}, 
+      {title: 'Updates'}
+    ]
   }
   
 };

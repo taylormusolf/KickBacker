@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   background: white;
+  border-bottom: 0.1rem solid #E8E8E8;
 }
 .nav-box{
   display: flex;
@@ -20,7 +21,8 @@
 
 .nav-item{
   padding: 10px;
-  font-size: 13px;
+  font-size: 14px;
+  margin-right: 12px;
 }
 
 .nav-item:hover{

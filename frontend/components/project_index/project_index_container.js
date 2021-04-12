@@ -9,14 +9,14 @@ const mapStateToProps = state => {
   let array = [];
 
   //set featured project based on hour of the day
-  let d = new Date();
-  let cof = d.getHours()/12
-  let index = Math.floor(cof *(projects.length))
+  // let d = new Date();
+  // let cof = d.getHours()/30
+  // let index = Math.floor(cof *(projects.length))
   
   
   //random featured project
-  // let index = Math.floor(Math.random()*(projects.length))
-
+  let index = Math.floor(Math.random()*(projects.length))
+  
   //random 9 projects
   if(projects.length){
     while(array.length < 9){
@@ -37,7 +37,7 @@ const mapStateToProps = state => {
   //     }
   //   };
   // }
-  
+  // debugger
   return{
       projects: projects,
       project: projects[index],

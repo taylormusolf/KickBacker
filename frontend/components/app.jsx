@@ -11,6 +11,24 @@ import ProjectIndexContainer from './project_index/project_index_container';
 import ProjectShowContainer from "./project_show/project_show_container";
 import EditProjectFormContainer from "./project_form/project_edit_container";
 
+const categories = () =>{
+  return(
+    <div className='category-links-container-bottom'>
+        <ul className='category-links'>
+        <li><a href="">Arts</a></li>
+        <li><a href="">Comics & Illustration</a></li>
+        <li><a href="">Design & Tech</a></li>
+        <li><a href="">Film</a></li>
+        <li><a href="">Food & Craft</a></li>
+        <li><a href="">Games</a></li>
+        <li><a href="">Music</a></li>
+        <li><a href="">Publishing</a></li>
+      </ul>
+    </div>
+    
+  )
+}
+
 
 const App = () => (
   <div>
@@ -40,10 +58,12 @@ const App = () => (
           <Redirect to="/"/>
         </Switch>
       </div>
+      {categories()}
       <footer>
        <nav className='footer-box'>
-          <div>
-            <div>Kickbacker, <i className="far fa-copyright"></i> PBC 2021</div>
+          <div> 
+            {/* <img src="../../assets/images/favicon.ico"/> */}
+            <div>Kickbacker, PBC <i className="far fa-copyright"></i> 2021</div>
             <section className="social-links">
               <a href="https://github.com/taylormusolf" target="_blank"><i className="fab fa-github"></i></a>
               <a href="https://www.linkedin.com/in/taylor-musolf-4454a876/" target="_blank"><i className="fab fa-linkedin-in"></i></a>
