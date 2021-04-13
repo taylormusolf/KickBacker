@@ -101,6 +101,31 @@ class ProjectShow extends React.Component {
     const { project } = this.props;
     const pane = this.props.panes[this.state.selectedPane];
     if (!project) return null;
+    const funding = (project) =>{
+      let sum = fundingTotal(project);
+      let num = Math.ceil((sum)/(this.props.project.funding_goal))
+      if (num > 100){
+        num = 100
+      }
+      return num.toString() + '%'
+    }
+    const fundingTotal = (project) =>{
+      let sum = 0;
+      Object.values(project.backings).forEach((backing) =>{
+        sum += backing.amount_pledged
+      })
+      return sum;
+    }
+    const backers = (project)=>{
+      let num = Object.values(project.backings).length
+      return num
+    }
+    const deadline = () =>{
+      let date = new Date(project.end_date.slice(0,10))
+      let d = date.toString();
+      return d
+    }
+    
     return (
       <div className='show-page'>
         <div className='show-header'>
@@ -112,7 +137,7 @@ class ProjectShow extends React.Component {
             <div className='show-img-container'>
               <img src={project.photo_url}/>
               <ul className='under-photo-items'>
-                <li>Category</li>
+                <li><i className="far fa-compass"></i>  {project.category.name}</li>
                 <li><i className="fas fa-map-marker-alt"></i> {project.location}</li>
               </ul>
             </div>
@@ -120,12 +145,13 @@ class ProjectShow extends React.Component {
             <ul className='show-side-bar'>
               <ul className='show-side-subbar'>
                 <div className='show-subbar-sub'>
-                  <li className='show-pledged-total'>$$$ pledged total</li>
+                  <li className='show-list-funding' style={{width: funding(project)}}><h1></h1></li>
+                  <li className='show-pledged-total'>${fundingTotal(project)}</li>
                   <li className='show-goal-total'>pledged of ${project.funding_goal} goal</li>
                 </div>
                 <div className='show-subbar-sub'>
-                  <li className='show-backer-total'>#</li>
-                  <li className='show-text-total'>of backers</li>
+                  <li className='show-backer-total'>{backers(project)}</li>
+                  <li className='show-text-total'>backers</li>
                 </div>
                 <div className='show-subbar-sub'>
                   <li className='show-days-total'>{this.daysLeft(project.end_date)}</li>
@@ -135,7 +161,7 @@ class ProjectShow extends React.Component {
               </ul>
               
               <button className='show-back-button'>Back this project</button>
-              <li className='small-text'>All or nothing. This project will only be funded if it reaches its goal by {project.end_date.slice(0,10)}</li>
+              <li className='small-text under-back-button'>All or nothing. This project will only be funded if it reaches its goal by {deadline()} </li>
             </ul>
           </section>
         </div>

@@ -4,10 +4,26 @@ import { Link } from 'react-router-dom';
 
 const ProjectFeaturedItem = props => {
   if (!props.project) return null;
+  const funding = (project) =>{
+    let sum = 0;
+    Object.values(project.backings).forEach((backing) =>{
+      sum += backing.amount_pledged
+    })
+    return fundingPer(sum);
+  }
+  const fundingPer = (sum) =>{
+    let num = Math.ceil((sum)/(props.project.funding_goal))
+    if (num > 100){
+      num = 100
+    }
+    return num.toString() + '%'
+  }
+
   return (
-    <li className='featured-list-item'>
+    <ul className='featured-list-item'>
       <span>
       <Link to={`/projects/${props.project.id}`}><img src={props.project.photo_url}/></Link>
+      <li className='featured-list-funding' style={{width: funding(props.project)}}><h1></h1></li>
       </span>
       <ul>
         <li className='featured-list-link'>
@@ -17,7 +33,7 @@ const ProjectFeaturedItem = props => {
         <li className='featured-list-creator'>By {props.project.creator.username}</li>
       </ul>
       
-    </li>
+    </ul>
   )  
 };
 

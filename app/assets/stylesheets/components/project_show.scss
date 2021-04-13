@@ -72,6 +72,7 @@
 
 .show-side-subbar {
   margin-bottom: 30px;
+  width: 390px;
 }
 
 .show-subbar-sub{
@@ -110,10 +111,19 @@
 .show-back-button:hover{
   background-color:#015738
 }
+.under-back-button{
+  width: 390px;
+}
 
 .small-text{
   font-size: 12px;
-  color: #282828
+  color: #282828;
+}
+.flex{
+  display: flex;
+}
+.underline{
+  text-decoration: underline;
 }
 
 .show-main-container{
@@ -209,4 +219,10 @@
 
 .show-edit-links span{
   padding: 10px;
+}
+
+.show-list-funding{
+  background-color:#009E74;
+  height: 0.6rem;
+  width: attr(featured-list-funding);
 }

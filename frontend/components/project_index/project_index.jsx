@@ -47,6 +47,7 @@ class ProjectIndex extends React.Component {
         return array.slice(6)
       }
     }
+    
       
     if (!projects || !project) return null;
       return (

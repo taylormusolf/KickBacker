@@ -110,6 +110,7 @@
 .project-list-funding{
   color: #028858;
   font-size: 12px;
+  font-weight: bold;
 }
 
 .project-list-creator{
@@ -152,3 +153,9 @@
  cursor: pointer;
 }
 
+.featured-list-funding{
+  background-color:#037362;
+  height: 1.2rem;
+  width: attr(featured-list-funding);
+  cursor: pointer;
+}
