@@ -390,6 +390,8 @@ project18 = Project.create!(title: "Board Royale - New Expansions & Second Print
     creator_id: user22.id,
     category_id: category6.id
 )
+file18 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/board_royale.jpeg")
+project18.photo.attach(io: file18, filename: "#{project18.id}.jpeg")
 
 project19 = Project.create!(title: "Cardlax EarBuds Washer - Automatic Cleaning Tool for TWS",
     description: "A whole new cleaning solution for your wireless stereo. It turns them nice and clean in minutes.",

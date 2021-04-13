@@ -11,6 +11,7 @@ class Backing < ApplicationRecord
 
   belongs_to :reward,
   foreign_key: :reward_id,
-  class_name: :Reward
+  class_name: :Reward,
+  optional: true
 
 end
