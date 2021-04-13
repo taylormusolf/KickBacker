@@ -43,17 +43,15 @@
 
 
 .show-img-container {
-  min-width: 818.66px;
-  min-height: 460.48px;
   padding: 0px 18px 0px 18px;
 }
 
-.show-img-section > img {
-  // max-width: 95%;
-  // max-height: 88%;
+.show-img-container img {
+  // width: 95%;
+  // height: 88%;
+  max-width: 818.66px;
+  max-height: 460.48px;
   // object-fit: cover;
-  width: 818.66px;
-  height: 460.48px;
 }
 
 .under-photo-items{

@@ -33,14 +33,6 @@ export const updateProject = (FormData, projectId) => (
   })
 );
 
-export const updateProjectNoImg = (project, projectId) => {
-  return $.ajax({
-      url: `/api/projects/${projectId}`,
-      method: 'PATCH',
-      data: {project}
-  })
-} 
-
 export const deleteProject = projectId => (
   $.ajax({
     method: 'DELETE',

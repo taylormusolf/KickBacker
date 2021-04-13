@@ -17,7 +17,7 @@
       end
     end
     json.rewards do
-      project.rewards each do |reward|
+      project.rewards.each do |reward|
         json.set! reward.id do
           json.extract! reward, :id, :title, :description, :cost
         end

@@ -28,13 +28,14 @@ user5 = User.create!(username:'WorldsTiniest', email: 'WorldsTiniest@WorldsTinie
 user6 = User.create!(username:'Gamma Jacket', email: 'GammaJacket@GammaJacket.com', password: '123456', bio: 'GAMMA by Wear Graphene. Support us today!')
 user7 = User.create!(username:'Aswad Aarif', email: 'Aswad@Aarif.com', password: '123456', bio: 'My name is Aswad and I am an artist, maker, writer and restorative justice practitioner from Oakland Ca.')
 user8 = User.create!(username:'Kim', email: 'kimmy@kimmy.com', password: '123456', bio: 'Just a crazy pet lady with big dreams to help others')
-user9 = User.create!(username:'D-CELL GAMES', email: 'buddy@D-CELL GAMES.com', password: '123456', bio: '')
+user9 = User.create!(username:'D-CELL GAMES', email: 'buddy@D-CELL GAMES.com', password: '123456', bio: 'We make game (singular). Help support our upcoming rhythm-adventure game, UNBEATABLE! unbeatablegame.com/kickstarter')
 user10 = User.create!(username:'Project SOAPBOTTLE', email: 'soapy@ProjectSOAPBOTTLE.com', password: '123456', bio: 'Jonna Breitenhuber created and developed the concept SOAPBOTTLE during her master studies. Through her work as a packaging designer for cosmetic products, she was frustrated that there is hardly any sustainable packaging for liquid personal care products.')
 user11 = User.create!(username:'Chris Lin', email: 'chris@greensalt.com', password: '123456', bio: 'Co-founder of Green Salt, a healthy salt alternative made from Salicornia and Founder at AMOR Handmade, a collaboration that empowers women through artisan dog collars. Based in Los Angeles and Ensenada, Mexico.')
 user12 = User.create!(username:'Unbound', email: 'unbound@unbound.com', password: '123456', bio: 'Hi, were Unbound, the crowdfunding publisher. We bring writers and readers closer together. Authors pitch their ideas, we choose the best ones and if enough people pledge, we turn them into great books.')
 user13 = User.create!(username:'Third Editions', email: '3rd@thirdeditions.com', password: '123456', bio: 'Third Éditions is a French publisher dedicated to video games and popular culture, founded in 2015 by Nicolas Courcier and Mehdi El Kanafi, both lovers of quality books and video games.')
 user14 = User.create!(username:'Josh Yeo', email: 'josh@makeartnow.com', password: '123456', bio: 'Josh Yeo is the Artist behind Youtube Channel, MAKE ART NOW. He has a "hands on", DIY approach to most crafts, including cinematography, storytelling, and creative projects. He is an autodidact Polymath, and this is his first time making a physical product.')
-
+user15 = User.create!(username:'Nimble', email: 'nim@nimble.com', password: '123456', bio: 'Nimble utilizes pioneering technology to perfectly paint and dry your nails from the comfort of home.')
+user16 = User.create!(username:'Elaine Tai', email: 'el@tai.com', password: '123456', bio: 'Librarian, book-lover, and wannabe patron-of-the-arts. Proponent of empathy and believer that all is better when we care about each other.')
 
 category1 = Category.create!(name: "Art");
 category2 = Category.create!(name: "Comics & Illustration");
@@ -56,7 +57,8 @@ project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     start_date: Date.new(2021,3,15),
     end_date: Date.new(2021,4,15), 
     funding_goal: 7500,
-    creator_id: user1.id
+    creator_id: user1.id,
+    category_id: category3.id
 )
 file1 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/orbit.gif")
 project1.photo.attach(io: file1, filename: "#{project1.id}.gif")
@@ -76,7 +78,8 @@ project2 = Project.create!(title: "ForeverPen",
     start_date: Date.new(2021,3,30),
     end_date: Date.new(2021,4,30), 
     funding_goal: 3500,
-    creator_id: user5.id
+    creator_id: user5.id,
+    category_id: category3.id
 )
 file2 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/forever_pen.jpg")
 project2.photo.attach(io: file2, filename: "#{project2.id}.jpg")
@@ -97,7 +100,8 @@ project3 = Project.create!(title: "GAMMA: All-Season 100% Graphene Infused Heate
     start_date: Date.new(2021,4,21),
     end_date: Date.new(2021,5,21), 
     funding_goal: 5000,
-    creator_id: user6.id
+    creator_id: user6.id,
+    category_id: category3.id
 )
 
 file3 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/gamma.gif")
@@ -114,7 +118,8 @@ project4 = Project.create!(title: "100 Conversations about Antiracism",
     start_date: Date.new(2021,4,21),
     end_date: Date.new(2021,5,21), 
     funding_goal: 10000,
-    creator_id: user7.id
+    creator_id: user7.id,
+    category_id: category6.id
 )
 
 file4 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/conversations_about_antiracism.png")
@@ -131,7 +136,8 @@ project5 = Project.create!(title: "Ruffmuffs",
     start_date: Date.new(2021,3,22),
     end_date: Date.new(2021,4,22), 
     funding_goal: 500,
-    creator_id: user8.id
+    creator_id: user8.id,
+    category_id: category5.id
 )
 
 file5 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/ruffmuffs.jpg")
@@ -146,7 +152,8 @@ project6 = Project.create!(title: "UNBEATABLE - A game where music is illegal an
     start_date: Date.new(2021,6,22),
     end_date: Date.new(2021,8,22), 
     funding_goal: 55000,
-    creator_id: user9.id
+    creator_id: user9.id,
+    category_id: category6.id
 )
 
 file6 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/unbeatable.png")
@@ -164,7 +171,8 @@ project7 = Project.create!(title: "S O A P B O T T L E",
     start_date: Date.new(2021,3,22),
     end_date: Date.new(2021,4,22), 
     funding_goal: 11900,
-    creator_id: user10.id
+    creator_id: user10.id,
+    category_id: category5.id
 )
 
 file7 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/soapbottle.jpg")
@@ -183,7 +191,8 @@ project8 = Project.create!(title: "Green Salt: the healthy salt alternative",
     start_date: Date.new(2021,2,22),
     end_date: Date.new(2021,4,22), 
     funding_goal: 5000,
-    creator_id: user11.id
+    creator_id: user11.id,
+    category_id: category5.id
 )
 
 file8 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/greensalt.jpeg")
@@ -202,7 +211,8 @@ project9 = Project.create!(title: "42: the wildly improbable ideas of Douglas Ad
     start_date: Date.new(2021,4,22),
     end_date: Date.new(2021,5,21), 
     funding_goal: 5000,
-    creator_id: user12.id
+    creator_id: user12.id,
+    category_id: category8.id
 )
 
 file9 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/42_douglas_adams.gif")
@@ -219,37 +229,272 @@ project10 = Project.create!(title: "Third Editions: the Anime Library - JoJo's B
     start_date: Date.new(2021,4,13),
     end_date: Date.new(2021,5,13), 
     funding_goal: 5000,
-    creator_id: user13.id
+    creator_id: user13.id,
+    category_id: category2.id
 )
 
 file10 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/jojo_bizarre.jpg")
 project10.photo.attach(io: file10, filename: "#{project10.id}.jpg")
 
+project11 = Project.create!(title: "NIMBLE | Salon Quality Nails From The Comfort of Your Home.",
+    description: "Nimble utilizes pioneering technology to perfectly paint and completely dry your nails in a fraction of the time.",
+    campaign: "We’ve been developing Nimble for over 4 years. Our device has successfully completed the prototypes, molding, pilot production process and over a year of beta testing with a diverse group of beta testers. We are completely confident that Nimble is now ready for mass production. With our current production capabilities, we should be able to produce the units sold on Kickstarter within 5 - 6 months after the campaign ends. However, we are well aware there’s always room for improvement, that is why we are still constantly receiving feedback from our testers, improving the product and adding more features to it as we go!",
+    updates: "",
+    faq: "", 
+    location: "New York, NY", 
+    start_date: Date.new(2021,4,13),
+    end_date: Date.new(2021,5,28), 
+    funding_goal: 25000,
+    creator_id: user15.id,
+    category_id: category3.id
+)
+
+file11 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/nimble.gif")
+project11.photo.attach(io: file11, filename: "#{project11.id}.gif")
+
+project12 = Project.create!(title: "Yes Means Yes! A picture book about consent",
+    description: "Teaching kids (and maybe adults) about understanding and respecting bodily autonomy",
+    campaign: "A few years ago as the #MeToo movement reached its peak, a few different things came up. As a Librarian I’ve watched strangers touch childrens’ faces while their parents watched, since it was innocent enough from a grandmother-figure. As a woman I listened to friends talk about times they experienced scenarios that have not been identified as assault but were clearly not consent, and recognized them in my own experiences. As a bookseller, I helped a mother who came in to look for picture books on consent, when title searches kept bringing up titles that were literally the opposite. As I watched and listened in anger about the many stories of assault coming from people all over, and watched and listened in anger as people debated whether or something was actually considered consensual, I thought about how poorly we’ve been taught to understand control over our own bodies and others’.",
+    updates: "We're overwhelmed and thrilled with the support for this book so far! Thank you so much to everyone who has backed the project and/or shared it out in their communities.
+
+    We already have a couple small updates: 
+    
+    With request, we've now added an e-book edition, which can be backed alone or as an add-on with any other reward! 
+    We updated a couple images, and will continue to work toward making sure this book is the best it can be. 
+    Thanks so much again to all of you,
+    
+    Elaine and Kai",
+    faq: "", 
+    location: "San Jose, CA", 
+    start_date: Date.new(2021,3,3),
+    end_date: Date.new(2021,4,3), 
+    funding_goal: 25000,
+    creator_id: user16.id,
+    category_id: category8.id
+)
+
+file12 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/yes_means_yes.jpg")
+project12.photo.attach(io: file12, filename: "#{project12.id}.jpg")
+
 
 reward1 = Reward.create!(
-    title: "You are the BEST", 
-    description: "You will have a branded t-shirt with school logo",
+    title: "Digital High Five", 
+    description: "You don't need one, but you want us to succeed anyway. Score yourself my respect and a digital high five from MAKE ART NOW for helping us reach the goal.",
     project_id: project1.id, 
-    cost: 50)
+    cost: 10)
 
+reward2 = Reward.create!(
+    title: "SUPER EARLY BIRD - ORBIT - BASE STATION", 
+    description: "Orbit Mk1 - Base Station
+    + FREE SHIPPING IN USA
+    (1) High Precision Wireless Stealth Motor + Remote control
+    (1) Ceiling Mount Plate
+    (1) Adjustable Vertical Ceiling Bar. (40"- 62" vertical travel)
+    (2) Standard length foldable arms (15"/19"). Aircraft grade aluminum, slotted teeth for excellent hold.
+    (4) Ceiling hooks + ratchet straps. Necessary for uneven ceilings, or higher speeds.
+    (1) Slidable Counter Weight. 3lbs
+    (1) Sliding Camera Mount with Adjustable Ball head assembly. Fits 1/4 20 mounts, or Hot Shoe Mounts.
+    (1) Iphone Mount.
+    (4) Velcro Straps. (used for long lenses, or for attaching accessories)",
+    project_id: project1.id, 
+    cost: 799)
 
+reward3 = Reward.create!(
+    title: "ONE PACK", 
+    description: "Choose your material from Titanium, Copper or Brass.
 
+    Choices taken in the pledge manager after the campaign ends.
+    
+    INCLUDES:
+    ForeverPen™
+    Free Shipping",
+    project_id: project2.id, 
+    cost: 28)
 
+reward4 = Reward.create!(
+    title: "1 x Early Bird Gamma Jacket", 
+    description: "1 x Gamma Graphene Heated Jacket
+
+    41% OFF retail prices in any size of your choice only for Early Bird Kickstarter supporters.
+    
+    Future Retail Price: $500
+    Pre-order Now and Save $205 on MSRP
+    
+    Sizes, shipping address, and other details will be finalized after the campaign ends through post-crowdfunding surveys at which point shipping costs will be calculated.",
+    project_id: project3.id, 
+    cost: 295)
+
+reward4 = Reward.create!(
+    title: "1 x Gamma Jacket ", 
+    description: "1 x Gamma Graphene Heated Jacket 
+
+    Missed our Early Bird pledges? Don't worry about it - our Kickstarter supporters still get 35% OFF retail prices in any size of your choice!
+    
+    Future Retail Price: $500
+    Pre-order Now and Save $175 on MSRP
+    
+    Sizes, shipping address, and other details will be finalized after the campaign ends through post-crowdfunding surveys at which point shipping costs will be calculated.",
+    project_id: project3.id, 
+    cost: 325)
+
+reward5 = Reward.create!(
+    title: "Join the Conversation Early", 
+    description: "Get your own deck of 100 Conversations about Antiracism before anyone else.",
+    project_id: project4.id, 
+    cost: 25)
+
+reward6 = Reward.create!(
+    title: "Gift Pack", 
+    description: "2 decks of 100 Conversations about Anti-Racism. Receive a deck for yourself and one for a friend.",
+    project_id: project4.id, 
+    cost: 25)
+
+reward7 = Reward.create!(
+    title: "Supporter", 
+    description: "Just chipping in to help us out! Have a sweet wallpaper pack + a special role on discord-cell games as thanks!
+
+    INCLUDES:
+    UNBEATABLE Wallpaper Pack
+    Discord Role",
+    project_id: project6.id, 
+    cost: 2)
+
+reward8 = Reward.create!(
+    title: "Supporter", 
+    description: "Get a PC copy of UNBEATABLE when it releases. That's pretty much it! And you'll get the wallpaper pack too don't worry
+
+    INCLUDES:
+    A digital PC copy of UNBEATABLE
+    Discord Role",
+    project_id: project6.id, 
+    cost: 27)
+
+reward9 = Reward.create!(
+    title: "Just for believing in Ruffmuffs", 
+    description: "Thank you for believing in us in hopes to help many dogs one day.",
+    project_id: project5.id, 
+    cost: 5)
+
+reward10 = Reward.create!(
+    title: "Early bird of manufactured RuffMuffs", 
+    description: "Get one early that is perfect sewn to fit your dogs needs!",
+    project_id: project5.id, 
+    cost: 30)
+
+reward11 = Reward.create!(
+    title: "The SOAPBOTTLE Set | Early-Bird", 
+    description: "Surprise your loved one with a gift and nice discount for you: the whole SOAPBOTTLE Original family in one set.
+
+    You will receive all 3 SOAPBOTTLE Original colors, which contains 100ml of soft body wash made from natural ingredients.
+    
+    Shipping fee will be collected post campaign.
+    
+    INCLUDES:
+    3× SOAPBOTTLE Original 100ml
+    3× Metal closure
+    3× Sustainable ribbon",
+    project_id: project7.id, 
+    cost: 47)
+
+reward12 = Reward.create!(
+    title: "The SOAPBOTTLE Set", 
+    description: "Surprise your loved one with a gift or enjoy them all by yourself: the whole SOAPBOTTLE Original family in one set.
+
+    You will receive all 3 SOAPBOTTLE Original colors, which contains 100ml of soft body wash made from natural ingredients.
+    
+    By choosing this package, you are not only making pre-orders, but most importantly, you are helping us to realize our project!
+    
+    Shipping fee will be collected post campaign.",
+    project_id: project7.id, 
+    cost: 53)
+
+reward13 = Reward.create!(
+    title: "Green Salt Sample Bag (2oz-50g)", 
+    description: "Try a sample bag of Green Salt! Equivalent to 140 pinches of salt.",
+    project_id: project8.id, 
+    cost: 7)
+reward14 = Reward.create!(
+    title: "1 bag of Green Salt (9oz-250g)", 
+    description: "Get a bag of Green Salt! Equivalent to 700 pinches of salt.",
+    project_id: project8.id, 
+    cost: 20)
+reward15 = Reward.create!(
+    title: "Ebook", 
+    description: "The ebook edition of the book. Plus:• Your name printed in the book as a supporter",
+    project_id: project9.id, 
+    cost: 21)
+reward16 = Reward.create!(
+    title: "Hardback", 
+    description: "The hardback edition of the book. Plus:
+    • Your name printed in the book as a supporter
+    • The ebook",
+    project_id: project9.id, 
+    cost: 42)  
+reward17 = Reward.create!(
+    title: "One book - Standard Edition", 
+    description: "The book JoJo in Standard Edition.",
+    project_id: project10.id, 
+    cost: 40)
+reward18 = Reward.create!(
+    title: "One book - First Print Collector Edition", 
+    description: "The book JoJo in Collector Edition.
+
+    INCLUDES:
+    Limited Edition
+    Variant Cover",
+    project_id: project10.id, 
+    cost: 46)
+reward19 = Reward.create!(
+    title: "Partners in Consent", 
+    description: "Helping us get to our goal! You'll get stickers and huge amounts of gratitude from us.
+
+    INCLUDES:
+    Consent Badge Sticker Sheet
+    Bookmark",
+    project_id: project12.id, 
+    cost: 15)
+
+reward20 = Reward.create!(
+    title: "Yes Means Yes!", 
+    description: "Hot off the presses!
+
+    INCLUDES:
+    Unsigned Copy of Yes Means Yes!
+    Bookmark",
+    project_id: project12.id, 
+    cost: 27)
+
+reward21 = Reward.create!(
+    title: "Nimble | Super Early Bird", 
+    description: "SAVE $170 on Nimble ($399 retail)
+    Plus 3 FREE Capsule Sets ($30 value)
+    -
+    Select your colors after the campaign ends.
+    
+    INCLUDES:
+    Nimble Device
+    3× Capsule Sets
+    Companion App
+    Charging Cable",
+    project_id: project11.id, 
+    cost: 248)
+
+    #randomize and generate backings
     projects = Project.all.to_a
     backers = User.all.to_a
-    backings_hash = Hash.new {|h,k| h[k] = []}
-    
+    backings = Hash.new {|h,k| h[k] = []}
     projects.each do |project|
-        until backings_hash[project.id].length == 2
+        random_backings = rand(1..10)
+        until backings[project.id].length == random_backings
             backer = backers.sample
-            if !backings_hash[project.id].include?(backer.id) && project.creator_id != backer.id
-                 backings_hash[project.id] << backer.id
+            if !backings[project.id].include?(backer.id) && project.creator_id != backer.id
+                 backings[project.id] << backer.id
             end
         end
-        backings_hash[project.id].each do |backer|
+        backings[project.id].each do |backer|
             Backing.create!(amount_pledged: project.rewards[0].cost, backer_id: backer, reward_id: project.rewards[0].id, project_id: project.id)
         end
         backer = backers.sample
-        amount = rand(1..1000)
+        amount = rand(1..500)
         Backing.create!(amount_pledged: amount, backer_id: backer.id, project_id: project.id)
     end
