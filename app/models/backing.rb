@@ -1,5 +1,5 @@
 class Backing < ApplicationRecord
-  validates :amount_pledged, :backer_id, :project_id, :reward_id, presence: true
+  validates :amount_pledged, :backer_id, :project_id, presence: true
 
   belongs_to :backer,
   foreign_key: :backer_id,

@@ -1,10 +1,14 @@
 class Project < ApplicationRecord
   validates :title, presence: true, uniqueness: true
-  validates :description, :location, :start_date, :end_date, :funding_goal, :creator_id, presence: true
+  validates :description, :location, :start_date, :end_date, :funding_goal, :creator_id, :category_id, presence: true
 
   belongs_to :creator,
     foreign_key: :creator_id,
     class_name: :User
+  
+  belongs_to :category,
+    foreign_key: :category_id,
+    class_name: :Category
 
   has_many :rewards,
     foreign_key: :project_id,

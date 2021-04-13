@@ -315,8 +315,8 @@ project14 = Project.create!(title: "Nikki Darling Confections - New Kitchen",
     category_id: category5.id
 )
 
-file14 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/nikki_darling.png")
-project14.photo.attach(io: file14, filename: "#{project14.id}.png")
+file14 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/nikki_darling.PNG")
+project14.photo.attach(io: file14, filename: "#{project14.id}.PNG")
 
 project15 = Project.create!(title: "FAKING FILMATION",
     description: "The evolution of cartoons, rise & fall of Filmation & one man's quest to release his unofficial cartoon despite looming legal threats.",
@@ -331,8 +331,8 @@ project15 = Project.create!(title: "FAKING FILMATION",
     category_id: category4.id
 )
 
-file15 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/faking_filmation.png")
-project15.photo.attach(io: file15, filename: "#{project15.id}.png")
+file15 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/faking_filmation.PNG")
+project15.photo.attach(io: file15, filename: "#{project15.id}.PNG")
 
 project16 = Project.create!(title: "Billy the Rescue Dog",
     description: "A picture book about Billy, a Treeing Walker Coonhound, and his adventures and challenges as he embarks on his new life.",
@@ -416,7 +416,7 @@ project20 = Project.create!(title: "GripBeats: Turn Your Hands Into A Musical In
     start_date: Date.new(2021,4,3),
     end_date: Date.new(2021,6,6), 
     funding_goal: 10000,
-    creator_id: user24.id,
+    creator_id: user2.id,
     category_id: category3.id
 )
 
@@ -436,8 +436,8 @@ reward2 = Reward.create!(
     + FREE SHIPPING IN USA
     (1) High Precision Wireless Stealth Motor + Remote control
     (1) Ceiling Mount Plate
-    (1) Adjustable Vertical Ceiling Bar. (40"- 62" vertical travel)
-    (2) Standard length foldable arms (15"/19"). Aircraft grade aluminum, slotted teeth for excellent hold.
+    (1) Adjustable Vertical Ceiling Bar. (40\"- 62\" vertical travel)
+    (2) Standard length foldable arms (15\"/19\"). Aircraft grade aluminum, slotted teeth for excellent hold.
     (4) Ceiling hooks + ratchet straps. Necessary for uneven ceilings, or higher speeds.
     (1) Slidable Counter Weight. 3lbs
     (1) Sliding Camera Mount with Adjustable Ball head assembly. Fits 1/4 20 mounts, or Hot Shoe Mounts.
