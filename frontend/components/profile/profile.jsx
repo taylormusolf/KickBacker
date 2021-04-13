@@ -2,15 +2,34 @@ import React from "react";
 import {Link} from 'react-router-dom';
 
 const Profile = (props) =>{
-
+  
 
     const userProjects = () =>{
+      
       if (props.currentUser.projects){
+        const array = (Object.values(props.currentUser.projects)).reverse().slice(0,3);
         return(
-          Object.values(props.currentUser.projects).map((project => (
-          <li key={project.id} className='profile-created-project'>
-            <Link to={`/projects/${project.id}`} onClick={()=>props.closeModal()}><img className='small-img' src={project.photo_url}/></Link>
-            <span><Link to={`/projects/${project.id}`} onClick={()=>props.closeModal()}>{project.title}</Link></span>
+          array.map((project => (
+              <li key={project.id} className='profile-created-project'>
+                <span><Link to={`/projects/${project.id}`} onClick={()=>props.closeModal()}><img className='small-img' src={project.photo_url}/></Link></span>
+                <span><Link to={`/projects/${project.id}`} onClick={()=>props.closeModal()}>{project.title}</Link></span>
+              </li>
+            )))
+        )
+      } else {
+        return(null)
+      }
+    }
+
+    const userBackings = () =>{
+      
+      if (props.currentUser.backings){
+        const array = (Object.values(props.currentUser.backings)).reverse().slice(0,3);
+        return(
+          array.map((backing => (
+          <li key={backing.project.id} className='profile-backed-project'>
+            <span><Link to={`/projects/${backing.project.id}`} onClick={()=>props.closeModal()}><img className='small-img' src={backing.project.photo_url}/></Link></span>
+            <span><Link to={`/projects/${backing.project.id}`} onClick={()=>props.closeModal()}>{backing.project.title}</Link></span>
           </li>
           )))
         )
@@ -19,25 +38,29 @@ const Profile = (props) =>{
       }
     }
 
+
     return(
       <div>
         
         <div className="profile-box">
           <ul className="profile-content">
-            <li className="profile-section">
+            <li className="account-section">
               <span className="dropdown-subtitle">YOUR ACCOUNT</span>
               <ul className="profile-subsection">
                 <li>{props.currentUser.username}</li>
-                <li><a href="#">Saved projects</a></li>
-                <li><a href="#">Recommended for you</a></li>
               </ul>
             </li>
             <li className="profile-section">
               <span className="dropdown-subtitle">BACKED PROJECTS</span>
               <ul className="profile-subsection">
-                <li className="profile-backed-container">
-                  <span><a href="#">Followed Project</a></span>
-                </li>
+                <ul className="profile-backed-container">
+                  {userBackings()}
+                </ul>
+                {/* <ul className='profile-backed-project-container'>
+                  <Link to="" onClick={()=>props.closeModal()}>
+                    <div><p>View More</p></div>
+                  </Link>
+                </ul> */}
               </ul>
             </li>
             <li className="profile-section">
