@@ -76,7 +76,7 @@
 }
 
 .show-subbar-sub{
-  padding: 20px 0px;
+  padding: 0px 0px 40px;
 }
 .show-pledged-total{
   color: #009E74;
@@ -105,7 +105,7 @@
   text-align: center;
   padding: 12px 24px;
   width: 340px;
-  margin: 0px 0px 18px;
+  margin: 0px 0px 40px;
   border: 1px solid #028858;
 }
 .show-back-button:hover{
@@ -225,4 +225,5 @@
   background-color:#009E74;
   height: 0.6rem;
   width: attr(featured-list-funding);
+  margin-bottom: 10px;
 }

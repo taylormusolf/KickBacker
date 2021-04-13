@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Headers from './project_headers'
+import ProjectReward from './project_reward'
 
 class ProjectShow extends React.Component {
   constructor(props){
@@ -89,11 +90,12 @@ class ProjectShow extends React.Component {
   daysLeft(endDate){
     const today = new Date();
     const endingDate = new Date(endDate);
+     if(today > endingDate){
+      return 0;
+    }
     const diffTime = Math.abs(endingDate - today);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    if(diffDays <= 0){
-      diffDays = 0;
-    }
+   
     return diffDays;
   }
   
@@ -121,11 +123,11 @@ class ProjectShow extends React.Component {
       return num
     }
     const deadline = () =>{
-      let date = new Date(project.end_date.slice(0,10))
-      let d = date.toString();
-      return d
+      let d = new Date(project.end_date.slice(0,10));
+      let date = d.toString();
+      return date;
     }
-    
+    console.log(project.creator)
     return (
       <div className='show-page'>
         <div className='show-header'>
@@ -182,8 +184,24 @@ class ProjectShow extends React.Component {
               <ul className='show-rewards-side-bar'>
                 <ul className='show-rewards-creator'>
                   <li className='show-rewards-creator-name'>{project.creator.username}</li>
+                  <li>{Object.values(project.creator.projects).length} Created / {Object.values(project.creator.backings).length} Backed</li>
                   <li className='show-rewards-creator-bio'>{project.creator.bio}</li>
-                </ul>       
+                </ul>
+                <ul>
+                  <h1>Support</h1>
+                  <h2>Pledge without a reward</h2>
+                  $<input type="text"/>
+                  <p>Back it Because you belive in it.</p>
+                  <p>Support the project for no reward, just because it speaks to you</p>
+                </ul>
+                <ul>
+                  {Object.values(project.rewards).map((reward, i)=> (
+                    <ProjectReward
+                      reward={reward}
+                      key={i}
+                    />
+                    ))}
+                </ul>
               </ul>
             </section>
           </div>

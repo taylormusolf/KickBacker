@@ -3,6 +3,11 @@
     json.partial! 'project', project: project
     json.creator do
       json.extract! project.creator, :id, :username, :bio
+      project.creator.projects do |project|
+        json.set! project.id do
+          json.extract! project, :id, :title
+        end
+      end
     end
     if project.photo.attached?
       json.photo_url url_for(project.photo)
