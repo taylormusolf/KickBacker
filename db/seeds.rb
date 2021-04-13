@@ -36,6 +36,12 @@ user13 = User.create!(username:'Third Editions', email: '3rd@thirdeditions.com',
 user14 = User.create!(username:'Josh Yeo', email: 'josh@makeartnow.com', password: '123456', bio: 'Josh Yeo is the Artist behind Youtube Channel, MAKE ART NOW. He has a "hands on", DIY approach to most crafts, including cinematography, storytelling, and creative projects. He is an autodidact Polymath, and this is his first time making a physical product.')
 user15 = User.create!(username:'Nimble', email: 'nim@nimble.com', password: '123456', bio: 'Nimble utilizes pioneering technology to perfectly paint and dry your nails from the comfort of home.')
 user16 = User.create!(username:'Elaine Tai', email: 'el@tai.com', password: '123456', bio: 'Librarian, book-lover, and wannabe patron-of-the-arts. Proponent of empathy and believer that all is better when we care about each other.')
+user17 = User.create!(username:'C is for Cthulhu', email: 'c@cthulhu.com', password: '123456', bio: 'We create Cthulhu and H.P. Lovecraft themed books and toys for young and old ones alike! We think kids should be exposed to the fantastic and weird at a young age. They love monsters and mythology -- why shouldnt their alphabet books and toy shelves also be filled with these things? Thats why weve been creating fun, quality Lovecraft and horror themed products that the whole family will enjoy since 2014!')
+user18 = User.create!(username:'Nikki Darling', email: 'n@nikkidarling.com', password: '123456', bio: 'Evan Coben is the owner and founder if Nikki Darling Confections, a handmade candy company in Chicago IL.')
+user19 = User.create!(username:'Zero Cool Films', email: 'r@ZeroCoolFilms.com', password: '123456', bio: 'Zero Cool Films is a boutique film outfit that specializes in content about the stuff that we love. Whether it is technology, pop culture or family, Zero Cool Films centers in on our passions and shares them with the world usually though unique, human-centered journey.')
+user20 = User.create!(username:'Susan Joyce', email: 'susan@joyce.com', password: '123456', bio: 'I have combined a career in magazine publishing with a love of writing about life on Maggies Farm with dogs, cats, goats and chickens. Billys story was the first to unfold as a childrens book, however there has been some grumbling among the other animals, so they might have their own books someday.')
+user21 = User.create!(username:'Vacas Creamery', email: 'susan@vacas.com', password: '123456', bio: 'We are Chicago\'s first all-vegan ice cream shop!')
+user22 = User.create!(username:'Arvis Games Inc.', email: 'meric@arvis.com', password: '123456', bio: 'Arvis Games Inc. A passionate gaming company to bring innovative magical experiences.')
 
 category1 = Category.create!(name: "Art");
 category2 = Category.create!(name: "Comics & Illustration");
@@ -276,6 +282,147 @@ project12 = Project.create!(title: "Yes Means Yes! A picture book about consent"
 file12 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/yes_means_yes.jpg")
 project12.photo.attach(io: file12, filename: "#{project12.id}.jpg")
 
+project13 = Project.create!(title: "Counting, Colors & Cthulhu Hardcover Board Book",
+    description: "Rhyming Lovecraftian board book teaching numbers, colors and the mythos, from makers of C is for Cthulhu & Sweet Dreams Cthulhu!",
+    campaign: "This is the 9th Kickstarter campaign by the C is for Cthulhu team and the 21th campaign run by ComixTribe publisher Tyler James. While every campaign has its own unique challenges, we've taken several steps to mitigate the risks for this project.",
+    updates: "Okay, we're doing it!
+
+    One of the most popular products we've ever produced has been sold out for a while... but we're bringing back a small production run for those of you who missed it!
+    
+    The C is for Cthulhu Blanket Stuffed-Pillow is now available as a PLEDGE or an ADD-ON to any pledge!",
+    faq: "", 
+    location: "Newburyport, MA", 
+    start_date: Date.new(2021,3,3),
+    end_date: Date.new(2021,3,31), 
+    funding_goal: 15000,
+    creator_id: user1.id,
+    category_id: category8.id
+)
+
+file13 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/cthulhu.png")
+project13.photo.attach(io: file13, filename: "#{project13.id}.png")
+
+project14 = Project.create!(title: "Nikki Darling Confections - New Kitchen",
+    description: "The New Nostalgia in Candy. Handcrafted in Chicago. It's how you remember candy tasting. It's how you imagine candy should taste.",
+    campaign: "Nikki Darling Confections is the new nostalgia in candy. We make handcrafted candies using traditional American techniques. I, Evan Coben, am the owner and founder, and am proud to lead this woman-owned, people-first business.",
+    updates: "",
+    faq: "", 
+    location: "Chicago, IL", 
+    start_date: Date.new(2021,3,3),
+    end_date: Date.new(2021,3,31), 
+    funding_goal: 15000,
+    creator_id: user18.id,
+    category_id: category5.id
+)
+
+file14 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/nikki_darling.png")
+project14.photo.attach(io: file14, filename: "#{project14.id}.png")
+
+project15 = Project.create!(title: "FAKING FILMATION",
+    description: "The evolution of cartoons, rise & fall of Filmation & one man's quest to release his unofficial cartoon despite looming legal threats.",
+    campaign: "Faking Filmation is a documentary that explores the depths of fandom, intellectual property and the dangerous intersection between them while tracing the origin and evolution of cartoons, the history of Filmation and one man's mission to create the ultimate love letter to the creators of his favorite cartoon show.",
+    updates: "Hey folks! Just wanted to take a minute and say “thank you” to everyone for your unending support and faith in us and this documentary project. I never thought we would be at this point in the campaign or if we would ever raise this amount to begin with given all the things happening in the world. It’s humbling, incredible, overwhelming and so much more. James and I have been talking a lot each night with complete awe about the sheer number of backers and rewards you’ve all selected and it means the world to both of us. While James isn’t officially part of the production, of course, one can see how supporting this documentary endeavor in turn helps supports his efforts now and going forward.",
+    faq: "", 
+    location: "Chicago, IL", 
+    start_date: Date.new(2021,3,3),
+    end_date: Date.new(2021,3,31), 
+    funding_goal: 30000,
+    creator_id: user1.id,
+    category_id: category4.id
+)
+
+file15 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/faking_filmation.png")
+project15.photo.attach(io: file15, filename: "#{project15.id}.png")
+
+project16 = Project.create!(title: "Billy the Rescue Dog",
+    description: "A picture book about Billy, a Treeing Walker Coonhound, and his adventures and challenges as he embarks on his new life.",
+    campaign: "Billy the Rescue Dog is the true story of Billy, a Treeing Walker Coonhound. It tells of the adventures he experiences and the challenges he faces as he embarks on life with his new family: a black Lab named Oliver; two cats, Luke and Hazel; three goats, Aria, Gus and Gwendolyn; and 18 unnamed but well-loved chickens.",
+    updates: "In just over 48 hours we are halfway to our goal. Thank you so much for your support of Billy the Rescue Dog. We will share updates on our progress, but I wanted to take this opportunity to let you know how much we appreciate all of you. :)",
+    faq: "", 
+    location: "Chicago, IL", 
+    start_date: Date.new(2021,3,3),
+    end_date: Date.new(2021,5,31), 
+    funding_goal: 6000,
+    creator_id: user20.id,
+    category_id: category2.id
+)
+
+file16 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/billy_the_rescue_dog.jpg")
+project16.photo.attach(io: file16, filename: "#{project16.id}.jpg")
+
+project17 = Project.create!(title: "Vaca's Vegan Creamery x All Tomorrow's Pastries Cakebook",
+    description: "A picture book about Billy, a Treeing Walker Coonhound, and his adventures and challenges as he embarks on his new life.",
+    campaign: "Vaca's Creamery is Chicago's first 100% vegan ice cream shop, opening May 2021! We are also publishing a vegan Cakebook!",
+    updates: "1) if you get a physical copy of the Cakebook, we will also send you a PDF as soon as it's ready!
+
+    2) we thought you could pledge multiple times if you wanted, but it turns out you can't. We are including add-ons, so if you have already pledged, you can go back to your pledge and add something else. The only thing you can't do is add on a physical book to a digital reward. If you want a physical book after it's made, we will have copies for sale, though!",
+    faq: "", 
+    location: "Chicago, IL", 
+    start_date: Date.new(2021,3,3),
+    end_date: Date.new(2021,5,1), 
+    funding_goal: 15000,
+    creator_id: user21.id,
+    category_id: category5.id
+)
+
+file17 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/vacas.jpg")
+project17.photo.attach(io: file17, filename: "#{project17.id}.jpg")
+
+project18 = Project.create!(title: "Board Royale - New Expansions & Second Printing",
+    description: "The next chapter of Board Royale offers competitive, collaborative & a peaceful competition to all players and all playstyles.",
+    campaign: "Board Royale has been a super cutthroat survival card game where you fight against your friends until there is one survivor remains. Not anymore! We are presenting new collaborative and peaceful competitive expansions that will add a new meaning to survival.",
+    updates: "First Stretch Goal Unlocked!  
+
+
+    We are truly astonished by the rate of this campaign evolving. 
+    
+    Thank you so much to all that have joined this journey!
+    
+    
+    We are happy to announce that we have unlocked our first stretch goal and added 5 new cards to the Wild Hunt Pack.  The Wild Hunt expansion pack card count increased from 60 to 65.
+    
+    Also, we have revealed the next stretch goal.",
+    faq: "", 
+    location: "Montreal, Canada", 
+    start_date: Date.new(2021,3,3),
+    end_date: Date.new(2021,5,6), 
+    funding_goal: 24000,
+    creator_id: user22.id,
+    category_id: category6.id
+)
+
+project19 = Project.create!(title: "Cardlax EarBuds Washer - Automatic Cleaning Tool for TWS",
+    description: "A whole new cleaning solution for your wireless stereo. It turns them nice and clean in minutes.",
+    campaign: "At this stage, we’re ready to go into production as our materials are sourced and we have confirmed the schedule with our reliable manufacturer. However, our solid plan might still meet with some unexpected problems that can possibly cause a delay, and the unpredictable coronavirus situation can also put a risk in our production timeline. If anything comes up, we will make sure of transparent communication with our backers to keep all of you informed and find out viable solutions as soon as we can. Feel free to talk to us about your concerns any time you want.",
+    updates: "We are excited to annoy, we reached our target goal in just XX minutes. Thank you all so much for an amazing support! We are all very happy to see so many backers and your enthusiasm to our campaign, and to Kickstarter.",
+    faq: "", 
+    location: "Dover, DE", 
+    start_date: Date.new(2021,4,3),
+    end_date: Date.new(2021,6,6), 
+    funding_goal: 5000,
+    creator_id: user1.id,
+    category_id: category3.id
+)
+
+file19 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/cardlax.gif")
+project19.photo.attach(io: file19, filename: "#{project19.id}.gif")
+
+project20 = Project.create!(title: "GripBeats: Turn Your Hands Into A Musical Instrument!",
+    description: "Learn the art of making music through your hands' movements and touch by using our refined and versatile wearable music technology.",
+    campaign: "GripBeats® isn't just any ordinary musical instrument; it's wearable. And because it's wearable, it uses your hands' movements and touch to make music. Everything you thought you could do with an instrument before you can do now, but without it!",
+    updates: "We built GripBeats® to encourage music creativity and promote self-expression through music with the help of motion and touch technology. We're so pleased that we can now implement a feature that allows users to do this now with their very own controls. GripBeats® just became a whole lot more immersive and personalized!",
+    faq: "Q: Different hand sizes? A: For kids' size GripBeats® is adjustable enough to fit hands of width size as small as 6cm / 2.3\" and with the same device, a hand as large as width 11cm / 4.3\". This measurement is the width of the hand. The single strap and slidable loop mechanism allows GripBeats® to be adjusted to practically any sized hand and still allows full access to all the sensors. The length of the wrist strap section (where it connects at the wrist like a watch) is 26cm / 10\"). If these dimensions aren't on your range, please contact us and we should be able to make a slight adjustment. These are the latest measurements.  :)", 
+    location: "Dover, DE", 
+    start_date: Date.new(2021,4,3),
+    end_date: Date.new(2021,6,6), 
+    funding_goal: 10000,
+    creator_id: user24.id,
+    category_id: category3.id
+)
+
+file20 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/gripbeats.png")
+project20.photo.attach(io: file20, filename: "#{project20.id}.png")
+
 
 reward1 = Reward.create!(
     title: "Digital High Five", 
@@ -478,6 +625,93 @@ reward21 = Reward.create!(
     Charging Cable",
     project_id: project11.id, 
     cost: 248)
+
+reward22 = Reward.create!(
+    title: "Counting, Colors & Cthulhu Board Book", 
+    description: "Get your hands on a PHYSICAL COPY of the first edition of COUNTING, COLORS & CTHULHU, a premium hardcover board book that will make the perfect addition your Lovecraftian library. This is a must have book for Lovecraft or Cthulhu fans of all ages, and especially for the little monsters out there who are learning their numbers, colors...and mythos! Also includes the the Digital Deluxe eBook packed with digital-only extras, including concept sketches and other making-of bonus material. FREE US SHIPPING!",
+    project_id: project13.id, 
+    cost: 20)
+reward23 = Reward.create!(
+    title: "Sticker + 3pc Marshmallow or 4pc Candy", 
+    description: "A beautiful sticker and either 3 pieces of our classic Vanilla Bean Marshmallows or 4 pieces of Dulce De Leche Caramels! (can accommodate vegan dietary needs too)",
+    project_id: project14.id, 
+    cost: 15)
+reward24 = Reward.create!(
+    title: "All Flavors - Marshmallows or Caramels!", 
+    description: "Enjoy either all 3 core flavors of marshmallows (Vanilla Bean, Chocolate, and Butterscotch) in 6 piece bags or both flavors of caramels (Vanilla Bean Sea Salt and Dulce De Leche) in 20 piece bags. And, of course, a sticker!
+
+    INCLUDES:
+    6pc Marshmallow - All 3 Flavors!
+    20pc Caramels - Both Flavors!
+    Sticker!",
+    project_id: project14.id, 
+    cost: 15)
+
+reward24 = Reward.create!(
+    title: "Billy the Rescue Dog hardcover book", 
+    description: "Own a first edition, hot off the presses! One copy; shipping included.",
+    project_id: project16.id, 
+    cost: 25)
+reward25 = Reward.create!(
+    title: "DVD STANDARD EDITION!", 
+    description: "Enjoy a copy of documentary on DVD with exciting, long gestating bonus features on a collectible physical package. PLUS, get access to our digital material as well!",
+    project_id: project15.id, 
+    cost: 35)
+reward26 = Reward.create!(
+    title: "VHS Copy of the Film!", 
+    description: "Enjoy a limited edition signed copy of our film on VHS! You'll also get access to our Digital film and bonus content too!",
+    project_id: project15.id, 
+    cost: 57)    
+
+reward26 = Reward.create!(
+    title: "Vaca's Soft Opening Ticket + Treat", 
+    description: "You will know first about our exclusive soft opening weekend + any 1 menu item of your choice for free! If you can't make it that weekend, you can still get a free item later.",
+    project_id: project17.id, 
+    cost: 15)
+
+reward27 = Reward.create!(
+    title: "Survival 101", 
+    description: "Get an early copy of the Board Royale 2nd print base game and Kickbacker Exclusive Secret Weapons Expansion Pack”.
+
+    Total of 300 Cards (140 Resources, 160 Items) + Stretch goals.
+    
+    %30 off the retail worth!
+    
+    Shipping is not included, For shipping information please check the shipping section on the campaign page.",
+    project_id: project18.id, 
+    cost: 32)
+reward28 = Reward.create!(
+    title: "Cardlax Buds Washer X1 Super Early Bird", 
+    description: "Limited quantities.
+    Get your Automatic Buds Washer x 1 at the BEST price! Save 44%!
+    Global shipping is provided. The shipping fees range around $6-$15, depending on where you are.
+    We will send you a survey to collect your mailing address and shipping fees after the campaign ends.
+    Stay tuned! :)",
+    project_id: project19.id, 
+    cost: 33) 
+reward29 = Reward.create!(
+    title: "Cardlax Super Bundle", 
+    description: "Earbuds Washer x 1
+    Cardlax Card Massager V2 x 1
+    Save 63%!
+    
+    Cardlax Card Massager, valued at $99, now on sales as bundle with Earbuds Washer.
+    Global shipping is provided. The shipping fees range around $6-$15, depending on where you are.
+    We will send you a survey to collect your mailing address and shipping fees after the campaign ends.
+    Stay tuned! :)",
+    project_id: project19.id, 
+    cost: 59) 
+
+reward30 = Reward.create!(
+    title: "GripBeats® Solo | Early Bird", 
+    description: "Save $80 on an individual GripBeats®!",
+    project_id: project20.id, 
+    cost: 119) 
+reward31 = Reward.create!(
+    title: "GripBeats® Solo | Standard Retail Price", 
+    description: "This is the price GripBeats® will sell at after Kickbacker.",
+    project_id: project20.id, 
+    cost: 199)
 
     #randomize and generate backings
     projects = Project.all.to_a
