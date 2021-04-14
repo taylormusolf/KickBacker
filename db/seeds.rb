@@ -731,6 +731,8 @@ reward31 = Reward.create!(
             Backing.create!(amount_pledged: project.rewards[0].cost, backer_id: backer, reward_id: project.rewards[0].id, project_id: project.id)
         end
         backer = backers.sample
-        amount = rand(1..500)
-        Backing.create!(amount_pledged: amount, backer_id: backer.id, project_id: project.id)
+        amount = rand(100..5000)
+        if !backings[project.id].include?(backer.id) && project.creator_id != backer.id
+            Backing.create!(amount_pledged: amount, backer_id: backer.id, project_id: project.id)
+        end
     end

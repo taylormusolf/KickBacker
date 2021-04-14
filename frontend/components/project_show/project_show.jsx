@@ -7,8 +7,11 @@ class ProjectShow extends React.Component {
   constructor(props){
     super(props)
     this.state = {selectedPane: 0};
+    this.backing = this.props.backing
+    this.backing.project_id = this.props.match.params.projectId
     this.selectTab = this.selectTab.bind(this);
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleSupport = this.handleSupport.bind(this)
   }
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
@@ -23,6 +26,14 @@ class ProjectShow extends React.Component {
         .then(action => {
             return this.props.history.push(`/`)
         }) 
+  }
+
+  handleSupport(e){
+    e.preventDefault();
+    if (this.props.session !== this.props.project.creator.id){
+      this.props.createBacking(this.backing)
+        .then((action) => window.location.reload());
+    }
   }
   handleCreator(){
     
@@ -98,6 +109,10 @@ class ProjectShow extends React.Component {
    
     return diffDays;
   }
+
+  update(field) {
+    return e => this.backing[field] = e.target.value;
+  }
   
   render() {
     const { project } = this.props;
@@ -105,7 +120,7 @@ class ProjectShow extends React.Component {
     if (!project) return null;
     const funding = (project) =>{
       let sum = fundingTotal(project);
-      let num = Math.ceil((sum)/(this.props.project.funding_goal))
+      let num = Math.floor((sum)/(this.props.project.funding_goal)*100)
       if (num > 100){
         num = 100
       }
@@ -127,7 +142,6 @@ class ProjectShow extends React.Component {
       let date = d.toString();
       return date;
     }
-    console.log(project.creator)
     return (
       <div className='show-page'>
         <div className='show-header'>
@@ -189,10 +203,14 @@ class ProjectShow extends React.Component {
                 </ul>
                 <ul>
                   <h1>Support</h1>
-                  <h2>Pledge without a reward</h2>
-                  $<input type="text"/>
-                  <p>Back it Because you belive in it.</p>
-                  <p>Support the project for no reward, just because it speaks to you</p>
+                  <form onSubmit={this.handleSupport}>
+                    <h2>Pledge without a reward</h2>
+                    $<input type="text" placeholder='10' onChange={this.update('amount_pledged')}/>
+                    <p>Back it Because you belive in it.</p>
+                    <p>Support the project for no reward, just because it speaks to you</p>
+                    <input type="submit" value='Continue'/>
+                  </form>
+                  
                 </ul>
                 <ul>
                   {Object.values(project.rewards).map((reward, i)=> (

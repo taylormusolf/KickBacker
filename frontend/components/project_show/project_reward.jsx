@@ -7,10 +7,13 @@ const ProjectReward= props => {
       <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
       <li className='reward-title'>{reward.title}</li>
       <li className='reward-desc'>{reward.description}</li>
-      <label>Pledge amount
-        $ <input type="text"/>
-      </label>
-      <input className='hidden' type="submit" value='Continue'/>
+      <form action="">
+        <label>Pledge amount
+          $ <input type="text"/>
+        </label>
+        <input className='hidden' type="submit" value='Continue'/>
+      </form>
+      
     </ul>
    
   )  

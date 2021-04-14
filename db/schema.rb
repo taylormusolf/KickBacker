@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_043308) do
+ActiveRecord::Schema.define(version: 2021_04_14_032058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_043308) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "reward_id"
+    t.index ["backer_id", "project_id"], name: "index_backings_on_backer_id_and_project_id", unique: true
     t.index ["backer_id"], name: "index_backings_on_backer_id"
     t.index ["project_id"], name: "index_backings_on_project_id"
   end

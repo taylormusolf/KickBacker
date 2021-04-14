@@ -12,7 +12,7 @@ const ProjectFeaturedItem = props => {
     return fundingPer(sum);
   }
   const fundingPer = (sum) =>{
-    let num = Math.ceil((sum)/(props.project.funding_goal))
+    let num = Math.ceil(((sum)/(props.project.funding_goal))* 100)
     if (num > 100){
       num = 100
     }

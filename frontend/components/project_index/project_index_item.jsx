@@ -19,7 +19,7 @@ const ProjectIndexItem = props => {
         <li className='project-list-link'>
           <Link to={`/projects/${props.project.id}`}>{props.project.title}</Link>
         </li>
-        <li className='project-list-funding'>{Math.ceil((funding(props.project))/(props.project.funding_goal))}% funded</li>
+        <li className='project-list-funding'>{Math.ceil(((funding(props.project))/(props.project.funding_goal)) * 100)}% funded</li>
         <li className='project-list-creator'>By {props.project.creator.username}</li>
       </ul>
       

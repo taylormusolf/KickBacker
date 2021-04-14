@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   has_many :projects,
     foreign_key: :creator_id
+  
+  has_many :project_rewards,
+    through: :projects,
+    source: :rewards
 
   has_many :backings,
     foreign_key: :backer_id

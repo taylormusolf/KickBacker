@@ -7,7 +7,7 @@ const Profile = (props) =>{
     const userProjects = () =>{
       
       if (props.currentUser.projects){
-        const array = (Object.values(props.currentUser.projects)).reverse().slice(0,3);
+        const array = (Object.values(props.currentUser.projects)).reverse().slice(0,4);
         return(
           array.map((project => (
               <li key={project.id} className='profile-created-project'>
@@ -24,7 +24,7 @@ const Profile = (props) =>{
     const userBackings = () =>{
       
       if (props.currentUser.backings){
-        const array = (Object.values(props.currentUser.backings)).reverse().slice(0,3);
+        const array = (Object.values(props.currentUser.backings)).reverse().slice(0,5);
         return(
           array.map((backing => (
           <li key={backing.project.id} className='profile-backed-project'>
