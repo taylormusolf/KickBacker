@@ -155,7 +155,12 @@
 
 .featured-list-funding{
   background-color:#037362;
-  height: 1.2rem;
+  height: 0.8rem;
   width: attr(featured-list-funding);
   cursor: pointer;
+}
+
+.num-pages li{
+  color: #003BFF;
+  font-size: 16px;
 }

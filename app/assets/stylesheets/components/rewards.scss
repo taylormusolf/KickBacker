@@ -1,7 +1,8 @@
 .reward-container{
-margin: 0px 20px;
-padding: 20px 0px 16.8px;
-
+margin: 20px 0px;
+// padding: 20px 0px 16.8px;
+border: 0.1rem solid #E8E8E8;
+padding: 34px 18px 18px 18px;
 }
 
 .reward-cost{
@@ -13,9 +14,25 @@ padding: 20px 0px 16.8px;
   margin-bottom: 10px;
   font-size: 18px;
   color: #282828;
+  font-weight: bold;
 }
 .reward-desc{
   font-size: 14px;
   color: #656969;
   margin-bottom: 20px;
+}
+.reward-form label{
+  color: #656969;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.reward-support-submit{
+  padding: 10.5px 18px;
+  background-color: #028858;
+  color: white;
+  text-align: center;
+  width: 180px;
+  margin-top: 20px;
+  margin-right: 5px;
 }

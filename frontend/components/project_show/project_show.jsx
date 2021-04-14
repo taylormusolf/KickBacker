@@ -5,13 +5,13 @@ import ProjectReward from './project_reward'
 
 class ProjectShow extends React.Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state = {selectedPane: 0};
-    this.backing = this.props.backing
-    this.backing.project_id = this.props.match.params.projectId
+    this.backing = this.props.backing;
+    this.backing.project_id = this.props.match.params.projectId;
     this.selectTab = this.selectTab.bind(this);
-    this.handleDelete = this.handleDelete.bind(this)
-    this.handleSupport = this.handleSupport.bind(this)
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleSupport = this.handleSupport.bind(this);
   }
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
@@ -35,6 +35,14 @@ class ProjectShow extends React.Component {
         .then((action) => window.location.reload());
     }
   }
+
+  handleReward(e){
+    e.preventDefault();
+    if (this.props.session !== this.props.project.creator.id){
+      this.props.createBacking(this.backing)
+        .then((action) => window.location.reload());
+    }
+  }
   handleCreator(){
     
     if(this.props.session === this.props.project.creator.id){
@@ -52,6 +60,14 @@ class ProjectShow extends React.Component {
       )
     
     }
+  }
+
+  handleScrollRewards(e){
+    e.preventDefault();
+    const ele = document.getElementById('rewards')
+    ele.scrollIntoView({
+        behavior: "smooth"
+      })
   }
 
   selectedContent(){
@@ -176,7 +192,7 @@ class ProjectShow extends React.Component {
                 
               </ul>
               
-              <button className='show-back-button'>Back this project</button>
+              <button onClick={this.handleScrollRewards} className='show-back-button'>Back this project</button>
               <li className='small-text under-back-button'>All or nothing. This project will only be funded if it reaches its goal by {deadline()} </li>
             </ul>
           </section>
@@ -198,27 +214,33 @@ class ProjectShow extends React.Component {
               <ul className='show-rewards-side-bar'>
                 <ul className='show-rewards-creator'>
                   <li className='show-rewards-creator-name'>{project.creator.username}</li>
-                  <li>{Object.values(project.creator.projects).length} Created / {Object.values(project.creator.backings).length} Backed</li>
+                  <li className='show-rewards-creator-bio'>{Object.values(project.creator.projects).length} Created / {Object.values(project.creator.backings).length} Backed</li>
                   <li className='show-rewards-creator-bio'>{project.creator.bio}</li>
                 </ul>
                 <ul>
-                  <h1>Support</h1>
-                  <form onSubmit={this.handleSupport}>
-                    <h2>Pledge without a reward</h2>
-                    $<input type="text" placeholder='10' onChange={this.update('amount_pledged')}/>
-                    <p>Back it Because you belive in it.</p>
-                    <p>Support the project for no reward, just because it speaks to you</p>
-                    <input type="submit" value='Continue'/>
+                  <h1 id='rewards' className='show-support'>Support</h1>
+                  <form className='show-support-form' onSubmit={this.handleSupport}>
+                    <h2 className='show-support-1'>Pledge without a reward</h2>
+                    <div className='show-support-input-container'>
+                      <li className='show-support-dollar'> <p>$</p></li>
+                      <input className='show-support-input' type="text" placeholder='Pledge any amount' onChange={this.update('amount_pledged')}/>
+                    </div>
+                    <div className='show-line-container'>
+                      <p className='show-line-1'>Back it because you believe in it.</p>
+                      <p className='show-line-2'>Support the project for no reward, just because it speaks to you</p>
+                    </div>
+                    
+                    <input className='show-support-submit' type="submit" value='Continue'/>
                   </form>
                   
                 </ul>
                 <ul>
-                  {Object.values(project.rewards).map((reward, i)=> (
-                    <ProjectReward
-                      reward={reward}
-                      key={i}
-                    />
-                    ))}
+                   {Object.values(project.rewards).map((reward, i)=> (
+                        <ProjectReward
+                        reward={reward}
+                        key={i}
+                        />
+                    ))} 
                 </ul>
               </ul>
             </section>
