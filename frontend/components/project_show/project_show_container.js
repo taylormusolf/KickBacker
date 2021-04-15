@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
       backer_id: state.session.id,
       project_id: '',
       reward_id: ''
-    }
+    },
   }
   
 };

@@ -13,7 +13,6 @@ class ProjectShow extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSupport = this.handleSupport.bind(this);
     this.handleReward = this.handleReward.bind(this);
-    // this.handleRewardInput = this.handleRewardInput(this);
   }
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
@@ -121,28 +120,38 @@ class ProjectShow extends React.Component {
   }
 
   signedIn(){
-    this.props.session !== null;
+    return this.props.session !== null;
   }
 
   isCreator(){
-    this.props.session === this.props.project.creator.id
+    return this.props.session === this.props.project.creator.id
   }
 
   projectOver(){
-    this.daysLeft(this.props.project) === 0;
+    return this.daysLeft(this.props.project) === 0;
   }
 
   isBacker(){
     const backings = Object.values(this.props.project.backings);
     let backers = [];
+    
     backings.forEach((backing)=>{
       backers.push(backing.backer_id);
     })
-    backers.includes(this.props.session)
+    return backers.includes(this.props.session)
   }
 
-  backerEligible(){
-    this.signedIn() && !this.isCreator() && !this.projectOver();
+  backerSubmitEligible(){
+    if(this.signedIn() && !this.isCreator() && !this.projectOver() && !this.isBacker()){
+      return(
+        <input className='reward-support-submit' type="submit" value='Continue'/>
+      )
+    } else {
+      return(
+        <div className='reward-support-submit-disabled'>Continue</div>
+      )
+    }
+    
   }
 
   backerMessage(){
@@ -151,29 +160,29 @@ class ProjectShow extends React.Component {
     }
   }
 
-  rewardMessage(){
+  rewardErrorMessage(){
     if(this.isCreator()){
       return (
-        <p>You cannot back your own project</p>
+        <p className='reward-error'>You cannot back your own project</p>
       )
     } else if(this.isBacker()){
       return (
-        <p>You have already backed this project</p>
+        <p className='reward-error'>You have already backed this project</p>
       )
     } else if(!this.signedIn()){
       return (
-        <p>You must be signed in to back a project</p>
+        <p className='reward-error'>You must be signed in to back a project</p>
       )
     }  
   }
 
-  projectEndedMessage(){
-    if(this.projectOver()){
-      return (
-        <p>Project has ended.</p>
-      )
-    }
-  }
+  // projectEndedMessage(){
+  //   if(this.projectOver()){
+  //     return (
+  //       <p>Project has ended.</p>
+  //     )
+  //   }
+  // }
 
   checkNullBeforeLength(obj){
     if (!obj){
@@ -182,6 +191,8 @@ class ProjectShow extends React.Component {
       return Object.values(obj).length
     }
   }
+
+
   
 
   
@@ -217,7 +228,9 @@ class ProjectShow extends React.Component {
 
     return (
       <div className='show-page'>
+        <div className='show-backer-message'>{this.backerMessage()}</div>
         <div className='show-header'>
+          
           <div className='show-title'>
             <h1>{project.title}</h1>
             <h2>{project.description}</h2>
@@ -277,6 +290,7 @@ class ProjectShow extends React.Component {
                 <ul>
                   <h1 id='rewards' className='show-support'>Support</h1>
                   <form className='show-support-form' onSubmit={this.handleSupport}>
+                    
                     <h2 className='show-support-1'>Pledge without a reward</h2>
                     <div className='show-support-input-container'>
                       <li className='show-support-dollar'> <p>$</p></li>
@@ -286,14 +300,15 @@ class ProjectShow extends React.Component {
                       <p className='show-line-1'>Back it because you believe in it.</p>
                       <p className='show-line-2'>Support the project for no reward, just because it speaks to you</p>
                     </div>
-                    
-                    <input className='show-support-submit' type="submit" value='Continue'/>
+                    {this.rewardErrorMessage()}
+                    {this.backerSubmitEligible()}
                   </form>
                   
                 </ul>
                 <ul>
                    {Object.values(project.rewards).map((reward, i)=> (
                       <ul className='reward-container' key={i}>
+                        
                         <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
                         <li className='reward-title'>{reward.title}</li>
                         <li className='reward-desc'>{reward.description}</li>
@@ -305,7 +320,8 @@ class ProjectShow extends React.Component {
                           </div>
                             
                           </label>
-                          <input className='reward-support-submit' type="submit" value='Continue'/>
+                          {this.rewardErrorMessage()}
+                          {this.backerSubmitEligible()}
                         </form>
                         
                       </ul>

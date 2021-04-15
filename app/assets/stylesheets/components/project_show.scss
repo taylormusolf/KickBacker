@@ -13,6 +13,16 @@
   padding: 0px 60px 0 60px;
 }
 
+.show-backer-message div{
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-image: -webkit-linear-gradient(top, #DBE7FF, #FFF2EC);
+  color: black;
+}
+
 .show-title{
   padding-top: 42px;
   margin: 0px 18px 36px 18px;
@@ -213,77 +223,7 @@
   font-size: 14px;
   margin-bottom: 18px;
 }
-.show-support-form{
-  border: 0.1rem solid #E8E8E8;
-  padding: 0px 18px 18px 18px;
-}
-.show-support{
-  color: #282828;
-  font-size: 21px;
-  margin-bottom: 42px;
-}
 
-.show-support-1{
-  color: #282828;
-  font-size: 18px;
-  // margin: 0px 0px;
-  padding: 20px 0px 0px;
-}
-.show-support-input-container{
-  display: flex;
-  padding: 20px 0px;
-}
-.show-support-dollar{
-  border: 1px solid;
-  border-color: #DCDEDD;
-  position: relative;
-  height: 42px;
-  line-height: 20px;
-  box-sizing: border-box;
-  width: 25%;
-  font-size: 16px;
-  p{
-    top: 25%;
-    // bottom: -50%;
-    // right: 25%;
-    left: 25%;
-    position: relative;
-  }
-}
-
-.show-support-input{
-  
-  border: 1px solid;
-  border-color: #DCDEDD;
-  color: #282828;
-  position: relative;
-  height: 42px;
-  line-height: 20px;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 16px;
-  padding-left: 10px;
-}
-.show-support-input:focus, .show-support-input:hover{
-  border-color: #009E74;
-  cursor: text;
-  .show-support-dollar{
-    border-color: #009E74;
-  }
-}
-
-.show-support-submit{
-  padding: 10.5px 18px;
-  background-color: #028858;
-  color: white;
-  text-align: center;
-  width: 180px;
-  margin-top: 20px;
-  margin-right: 5px;
-}
-.show-support-submit:hover{
-  background-color:#015738
-}
 .show-line-container{
   color: #222222;
   font-size: 14px;
