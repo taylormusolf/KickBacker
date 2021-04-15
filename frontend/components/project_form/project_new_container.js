@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { createProject, resetProjectErrors } from '../../actions/project_actions';
+import { fetchCategories} from '../../actions/category_actions'
 import ProjectForm from './project_form';
 
 const mSTP = (state) => ({
@@ -8,6 +9,7 @@ const mSTP = (state) => ({
   formType: 'Create Project',
   project: {
     title: '',
+    category_id: '',
     description: '',
     campaign: '',
     updates: '',
@@ -24,6 +26,7 @@ const mSTP = (state) => ({
 const mDTP = dispatch => ({
   action: project => dispatch(createProject(project)),
   resetProjectErrors: () => dispatch(resetProjectErrors()),
+  fetchCategories: () => dispatch(fetchCategories())
 });
 
 

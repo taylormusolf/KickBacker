@@ -23,6 +23,25 @@
   color: black;
 }
 
+.show-edit-links{
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  // background-image: -webkit-linear-gradient(top, #DBE7FF, #FFF2EC);
+  
+}
+
+.show-edit-links span{
+  padding: 10px;
+  align-items: center;
+}
+.show-edit-links p{
+  font-size: 34px;
+  padding: 20px;
+  // margin-left: 700px;
+  align-items: center;
+}
+
 .show-title{
   padding-top: 42px;
   margin: 0px 18px 36px 18px;
@@ -239,14 +258,7 @@
   
 }
 
-.show-edit-links{
-  font-size: 15px;
-  display: flex;
-}
 
-.show-edit-links span{
-  padding: 10px;
-}
 
 .show-list-funding{
   background-color:#009E74;

@@ -141,6 +141,25 @@ class ProjectShow extends React.Component {
     return backers.includes(this.props.session)
   }
 
+  creatorControls(){
+    
+    if(this.isCreator()){
+      return (
+        <section className='show-edit-links'>
+          <p>Creator Controls:</p>
+          <span className='backed-reward-edit'><div><Link to={`/projects/${this.props.project.id}/edit`}>Edit </Link></div></span>
+          <span><button className='backed-reward-delete' onClick={this.handleDelete}>Delete</button></span>
+        </section>
+      )
+        
+    }else {
+      return (
+        null
+      )
+    
+    }
+  }
+
   backerSubmitEligible(){
     if(this.signedIn() && !this.isCreator() && !this.projectOver() && !this.isBacker()){
       return(
@@ -229,6 +248,7 @@ class ProjectShow extends React.Component {
     return (
       <div className='show-page'>
         <div className='show-backer-message'>{this.backerMessage()}</div>
+        <div className='show-backer-creator-controls'>{this.creatorControls()}</div>
         <div className='show-header'>
           
           <div className='show-title'>

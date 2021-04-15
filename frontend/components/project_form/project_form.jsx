@@ -18,15 +18,16 @@ class ProjectForm extends React.Component{
     // }
   }
   update(field) {
+    // console.log(this.state)
     return e => this.setState({[field]: e.target.value});
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    // if (this.state.formType === "Create Project" || this.state.photoFile){
       const formData = new FormData();
       formData.append('id', this.state.id);
       formData.append('project[title]', this.state.title);
+      formData.append('project[category_id]', this.state.category_id);
       formData.append('project[description]', this.state.description);
       formData.append('project[campaign]', this.state.campaign);
       formData.append('project[updates]', this.state.updates);
@@ -39,27 +40,11 @@ class ProjectForm extends React.Component{
       if (this.state.imageFile) {
         formData.append('project[photo]', this.state.imageFile);
       }
-    // } else {
-    //   const projectProps = 
-    //   {
-    //     title: this.props.project.title, 
-    //     imageFile: this.props.project.photoFile, 
-    //     description: this.props.project.description, 
-    //     funding_goal: this.props.project.fundingGoal,
-    //     campaign: this.props.project.campaign, 
-    //     faq: this.props.project.faq, 
-    //     updates: this.props.project.updates, 
-    //     location: this.props.project.location,
-    //     start_date: this.props.project.start_date,
-    //     end_date: this.props.project.end_date,
-    //     creator_id: this.props.creatorId
-    //   }
-    // }
+    
 
     
     this.props.action((this.state.formType === "Create Project" || this.state.imageFile) ? formData : formData, this.state.id)
     .then((action) => this.props.history.push(`/projects/${action.project.id}`));
-    // this.props.action(this.state).then(this.props.history.push(`/`))
 
     
   }
@@ -103,15 +88,28 @@ class ProjectForm extends React.Component{
   }
 
 
-
   render() {
     const { project } = this.props;
+    console.log
     if (!project) return null;
     const preview = this.state.existingPhoto ? <img src={this.state.existingPhoto}/> : this.state.imageUrl ? <img src={this.state.imageUrl}/> : null
     return (
       <div className="new-project-container">
         <h1 className="new-project-title">{this.props.formType}</h1>
         <form className="new-project-form" onSubmit={this.handleSubmit}>
+          <label>Project Category
+            <select defaultValue={this.state.category_id ? `${this.state.category_id}` : ''} className='new-project-categories' onChange={this.update('category_id')}>
+              <option value='' disabled={true}>Select your category</option>
+              <option value="1">Art</option>
+              <option value="2">Comics & Illustration</option>
+              <option value="3">Design & Tech</option>
+              <option value="4">Film</option>
+              <option value="5">Food & Craft</option>
+              <option value="6">Games</option>
+              <option value="7">Music</option>
+              <option value="8">Publishing</option>
+            </select>
+          </label>
           <label>Project Title
             <input
               type="text"
