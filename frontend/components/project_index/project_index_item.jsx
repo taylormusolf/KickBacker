@@ -10,6 +10,7 @@ const ProjectIndexItem = props => {
     })
     return sum;
   }
+  if(!props.project) return null;
   return(
     <li className='project-list-item'>
       <span>

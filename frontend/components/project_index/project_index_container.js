@@ -15,15 +15,27 @@ const mapStateToProps = state => {
   
   
   //random featured project
-  let index = Math.floor(Math.random()*(projects.length))
+  // let index = Math.floor(Math.random()*(projects.length))
+
+  //not random
+  let index = 0;
   
   //random 9 projects
+  // if(projects.length){
+  //   while(array.length < 9){
+  //     let rand = Math.floor(Math.random()*(projects.length))
+  //     if (rand !== index && !array.includes(rand)){
+  //       array.push(rand);
+  //     }
+  //   };
+  // }
+
+  //not random
   if(projects.length){
+    let i = 1;
     while(array.length < 9){
-      let rand = Math.floor(Math.random()*(projects.length))
-      if (rand !== index && !array.includes(rand)){
-        array.push(rand);
-      }
+      array.push(i);
+      i += 1;
     };
   }
 

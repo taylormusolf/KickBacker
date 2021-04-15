@@ -54,8 +54,8 @@ const App = () => (
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <ProtectedRoute exact path="/projects/new" component={ProjectFormContainer} />
           <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
-          <ProtectedRoute path="/projects/:projectId/edit" component={EditProjectFormContainer} />
-          <ProtectedRoute path="/users/:userId" component={UserBackedShowContainer} />
+          <ProtectedRoute exact path="/projects/:projectId/edit" component={EditProjectFormContainer} />
+          <ProtectedRoute exact path="/users/:userId" component={UserBackedShowContainer} />
           <Route exact path="/"component={ProjectIndexContainer}/>
           <Redirect to="/"/>
         </Switch>
@@ -64,7 +64,6 @@ const App = () => (
       <footer>
        <nav className='footer-box'>
           <div> 
-            {/* <img src="../../assets/images/favicon.ico"/> */}
             <div>Kickbacker, PBC <i className="far fa-copyright"></i> 2021</div>
             <section className="social-links">
               <a href="https://github.com/taylormusolf" target="_blank"><i className="fab fa-github"></i></a>

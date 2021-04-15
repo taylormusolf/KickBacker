@@ -12,7 +12,7 @@ class ProjectShow extends React.Component {
     this.selectTab = this.selectTab.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSupport = this.handleSupport.bind(this);
-    this.handleReward = this.handleReward(this);
+    this.handleReward = this.handleReward.bind(this);
     // this.handleRewardInput = this.handleRewardInput(this);
   }
   componentDidMount() {
@@ -40,36 +40,18 @@ class ProjectShow extends React.Component {
 
   handleRewardInput(rewardId=null){
     return e=> {
-      this.backing.reward_id = e.currentTarget.value
+      this.backing.reward_id = rewardId
     }
   }
 
   handleReward(e){
-    // e.preventDefault();
+    e.preventDefault();
     if (!this.props.project || !this.props.session) return null;
     if (this.props.session !== this.props.project.creator.id){
       this.props.createBacking(this.backing)
         .then((action) => window.location.reload());
     }
   }
-  // handleCreator(){
-    
-  //   if(this.props.session === this.props.project.creator.id){
-  //     return (
-  //       <section className='show-edit-links'>
-  //         <span><Link to={`/projects/${this.props.project.id}/edit`}>Edit</Link></span>
-  //         <br/>
-  //         <span><button onClick={this.handleDelete}>Delete</button></span>
-  //       </section>
-  //     )
-        
-  //   }else {
-  //     return (
-  //       null
-  //     )
-    
-  //   }
-  // }
 
   handleScrollRewards(e){
     e.preventDefault();
@@ -77,6 +59,10 @@ class ProjectShow extends React.Component {
     ele.scrollIntoView({
         behavior: "smooth"
       })
+  }
+
+  update(field) {
+    return e => this.backing[field] = e.target.value;
   }
 
   selectedContent(){
@@ -122,7 +108,6 @@ class ProjectShow extends React.Component {
     }
   }
 
-
   daysLeft(endDate){
     const today = new Date();
     const endingDate = new Date(endDate);
@@ -135,14 +120,76 @@ class ProjectShow extends React.Component {
     return diffDays;
   }
 
-  update(field) {
-    return e => this.backing[field] = e.target.value;
+  signedIn(){
+    this.props.session !== null;
+  }
+
+  isCreator(){
+    this.props.session === this.props.project.creator.id
+  }
+
+  projectOver(){
+    this.daysLeft(this.props.project) === 0;
+  }
+
+  isBacker(){
+    const backings = Object.values(this.props.project.backings);
+    let backers = [];
+    backings.forEach((backing)=>{
+      backers.push(backing.backer_id);
+    })
+    backers.includes(this.props.session)
+  }
+
+  backerEligible(){
+    this.signedIn() && !this.isCreator() && !this.projectOver();
+  }
+
+  backerMessage(){
+    if(this.isBacker()){
+      return (<div>You backed this project!</div>)
+    }
+  }
+
+  rewardMessage(){
+    if(this.isCreator()){
+      return (
+        <p>You cannot back your own project</p>
+      )
+    } else if(this.isBacker()){
+      return (
+        <p>You have already backed this project</p>
+      )
+    } else if(!this.signedIn()){
+      return (
+        <p>You must be signed in to back a project</p>
+      )
+    }  
+  }
+
+  projectEndedMessage(){
+    if(this.projectOver()){
+      return (
+        <p>Project has ended.</p>
+      )
+    }
+  }
+
+  checkNullBeforeLength(obj){
+    if (!obj){
+      return null
+    } else {
+      return Object.values(obj).length
+    }
   }
   
+
+  
+  
   render() {
-    const { project, session } = this.props;
+    const {project} = this.props;
     const pane = this.props.panes[this.state.selectedPane];
-    if (!project || !session) return null;
+    if (!project) return null;
     const funding = (project) =>{
       let sum = fundingTotal(project);
       let num = Math.floor((sum)/(this.props.project.funding_goal)*100)
@@ -167,6 +214,7 @@ class ProjectShow extends React.Component {
       let date = d.toString();
       return date;
     }
+
     return (
       <div className='show-page'>
         <div className='show-header'>
@@ -223,7 +271,7 @@ class ProjectShow extends React.Component {
               <ul className='show-rewards-side-bar'>
                 <ul className='show-rewards-creator'>
                   <li className='show-rewards-creator-name'>{project.creator.username}</li>
-                  <li className='show-rewards-creator-bio'>{Object.values(project.creator.projects).length} Created / {Object.values(project.creator.backings).length} Backed</li>
+                  <li className='show-rewards-creator-bio'>{this.checkNullBeforeLength(project.creator.projects)} Created / {this.checkNullBeforeLength(project.creator.backings)} Backed</li>
                   <li className='show-rewards-creator-bio'>{project.creator.bio}</li>
                 </ul>
                 <ul>
@@ -253,7 +301,7 @@ class ProjectShow extends React.Component {
                           <label>Pledge amount
                           <div className='show-support-input-container'>
                             <li className='show-support-dollar'> <p>$</p></li>
-                            <input className='show-support-input' type="number" min={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
+                            <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
                           </div>
                             
                           </label>
@@ -269,7 +317,6 @@ class ProjectShow extends React.Component {
           
           
         </div>
-        {/* {this.handleCreator()} */}
         </div>
         
       </div>

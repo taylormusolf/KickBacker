@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchProject: () => dispatch(fetchProject(ownProps.match.params.projectId)),
+  fetchProject: (projectId) => dispatch(fetchProject(projectId)),
   deleteProject: projectId => dispatch(deleteProject(projectId)),
   updateProject: project => dispatch(updateProject(project)),
   createBacking: backing => dispatch(createBacking(backing))
