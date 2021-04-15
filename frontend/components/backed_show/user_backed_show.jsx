@@ -7,6 +7,13 @@ class UserBackedShow extends React.Component {
     this.handleDeleteBacking = this.handleDeleteBacking.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
+
+  componentDidMount() {
+    console.log(this.state)
+    this.props.fetchProjects();
+    this.props.fetchBackings();
+    console.log(this.state)
+  }
   
   handleCreator(){
     
@@ -66,6 +73,13 @@ class UserBackedShow extends React.Component {
       
     if (this.props.currentUser.projects){
       const array = (Object.values(this.props.currentUser.projects)).reverse().slice(0,4);
+      const fundingTotal = (project) =>{
+        let sum = 0;
+        Object.values(project.backings).forEach((backing) =>{
+          sum += backing.amount_pledged
+        })
+        return sum;
+      }
       return(
         array.map((project => (
           <ul key={project.id} className='backed-project-item'>
@@ -73,7 +87,7 @@ class UserBackedShow extends React.Component {
               <li><Link to={`/projects/${project.id}`}><img className='smaller-img' src={project.photo_url}/></Link></li>
               <li className='backed-project-title'><Link to={`/projects/${project.id}`}>{project.title}</Link></li>
             </ul>
-          <li className='backed-amount'>${project.funding_goal}.00</li>
+          <li className='backed-amount'>${fundingTotal(project)}.00</li>
           <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/edit`}>Edit</Link></div></li>
           <li><button className='backed-reward-delete' onClick={()=>this.handleDelete(project.id)}>Delete</button></li>
           </ul>

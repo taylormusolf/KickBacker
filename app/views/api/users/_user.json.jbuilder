@@ -2,7 +2,15 @@ json.extract! user, :id, :username, :email, :bio
 json.projects do
   user.projects.each do |project|
     json.set! project.id do
-      json.extract! project, :id, :title
+      json.extract! project, :id, :title, :funding_goal
+      json.backings do
+        project.backings.each do |backing|
+          json.set! backing.id do
+            json.extract! backing, :id, :amount_pledged
+          end
+        end
+      end
+          
       if project.photo.attached?
         json.photo_url url_for(project.photo)
       else
