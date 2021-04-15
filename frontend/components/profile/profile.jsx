@@ -56,11 +56,7 @@ const Profile = (props) =>{
                 <ul className="profile-backed-container">
                   {userBackings()}
                 </ul>
-                {/* <ul className='profile-backed-project-container'>
-                  <Link to="" onClick={()=>props.closeModal()}>
-                    <div><p>View More</p></div>
-                  </Link>
-                </ul> */}
+                <span className='profile-view-more'><Link to={`/users/${props.currentUser.id}`} onClick={()=>props.closeModal()}>View More</Link></span>
               </ul>
             </li>
             <li className="profile-section">

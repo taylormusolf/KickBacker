@@ -1,0 +1,161 @@
+.backed-projects-page{
+  background-color: #F0F0F0;
+}
+
+.backed-projects-container{
+  padding: 0px 60px;
+  width: 1100px;
+  // min-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  color: #282828;
+}
+
+.backed-projects-section{
+  padding: 40px 0;
+  // margin-right: -1.8rem;
+  // margin-left: -1.8rem;
+  // margin: auto;
+}
+
+.backed-projects-section h1{
+  margin-bottom: 18px;
+  font-size: 48px;
+  // font-weight: bold;
+}
+.backed-projects-section h2{
+  margin-bottom: 60px;
+  font-size: 22px;
+}
+
+.backed-projects-section span{
+  padding: 0px 18px;
+  margin: 0px 0px 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.backed-projects-section h3{
+  padding-bottom: 18px;
+  font-size: 16px;
+  text-align: right;
+}
+
+.backed-projects-table{
+
+}
+
+.backed-projects-headings{
+  display: flex;
+  // justify-content: space-between;
+  border-bottom: 0.1rem solid #E8E8E8;
+}
+
+.backed-projects-headings h4{
+  padding: 15px 18px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.backed-projects-heading-1{
+  min-width: 285px;
+}
+
+.backed-projects-heading-2{
+  min-width: 250px;
+}
+.backed-projects-heading-3{
+  min-width: 250px;
+}
+.backed-projects-heading-4{
+  min-width: 128px;
+}
+
+.backed-projects-heading-5{
+  min-width: 85px;
+}
+.backed-project-line{
+  background-color: white;
+}
+.backed-project-item{
+  border-bottom: 0.1rem solid #E8E8E8;
+  display: flex;
+  // justify-content: space-between;
+  padding: 15px;
+}
+
+.backed-project-name-container{
+  display: flex;
+}
+.backed-project-name-container li{
+  padding: 5px;
+}
+
+.smaller-img{
+  width: 60px;
+  height: 33px;
+}
+.backed-project-title{
+  width: 200px;
+  font-size: 14px;
+  color: #2752FF;
+}
+.backed-project-title:hover{
+  color: #282828;
+}
+
+.backed-amount{
+  min-width: 250px;
+  color: #282828;
+  padding: 15px 20px;
+  font-size: 22px;
+  // margin-bottom: 20px;
+}
+
+.backed-reward-title{
+  font-size: 14px;
+  padding: 15px 20px;
+  min-width: 250px;
+  color: #282828;
+}
+
+.backed-reward-delete{
+  margin-left: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: red;
+  padding: 12px;
+  font-size: 14px;
+  border-style: none;
+  text-align: center;
+  border-radius: 5px;
+}
+.backed-reward-delete:hover{
+  background-color:rgb(104, 3, 3)
+}
+
+.backed-reward-edit div{
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+  color: white;
+  background-color: #028858;
+  padding: 12px;
+  font-size: 14px;
+  border-style: none;
+  text-align: center;
+  border-radius: 5px;
+}
+.backed-reward-edit div:hover{
+  background-color:#015738
+}
+
+
+
+
+
+
+

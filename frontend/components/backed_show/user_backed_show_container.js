@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { removeBacking, fetchBackings, fetchBacking} from '../../actions/backing_actions';
-
+import { fetchProject, deleteProject, updateProject } from '../../actions/project_actions';
+import UserBackedShow from './user_backed_show'
 
 const mapStateToProps = (state) => {
   return {
@@ -12,7 +13,9 @@ const mapDispatchToProps = dispatch => {
   return {
     removeBacking: (backingId) => dispatch(removeBacking(backingId)),
     fetchBackings: () => dispatch(fetchBackings()),
-    fetchBacking: (backingId) => dispatch(fetchBacking(backingId))
+    fetchBacking: (backingId) => dispatch(fetchBacking(backingId)),
+    deleteProject: projectId => dispatch(deleteProject(projectId)),
+    updateProject: project => dispatch(updateProject(project))
   };
 };
 

@@ -7,11 +7,11 @@ const ProjectReward= props => {
       <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
       <li className='reward-title'>{reward.title}</li>
       <li className='reward-desc'>{reward.description}</li>
-      <form className='reward-form'>
+      <form className='reward-form' onSubmit={props.handleReward}>
         <label>Pledge amount
         <div className='show-support-input-container'>
           <li className='show-support-dollar'> <p>$</p></li>
-          <input className='show-support-input' type="text"/>
+          <input className='show-support-input' type="text" onChange={props.update('amount_pledged')}/>
         </div>
           
         </label>
@@ -24,3 +24,11 @@ const ProjectReward= props => {
 };
 
 export default ProjectReward;
+
+
+// <ProjectReward
+// reward={reward}
+// handleReward={this.handleReward}
+// update={this.update}
+// key={i}
+// />

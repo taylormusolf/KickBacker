@@ -38,6 +38,7 @@ class ProjectShow extends React.Component {
 
   handleReward(e){
     e.preventDefault();
+    console.log(this)
     if (this.props.session !== this.props.project.creator.id){
       this.props.createBacking(this.backing)
         .then((action) => window.location.reload());
@@ -236,10 +237,22 @@ class ProjectShow extends React.Component {
                 </ul>
                 <ul>
                    {Object.values(project.rewards).map((reward, i)=> (
-                        <ProjectReward
-                        reward={reward}
-                        key={i}
-                        />
+                      <ul className='reward-container' key={i}>
+                        <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
+                        <li className='reward-title'>{reward.title}</li>
+                        <li className='reward-desc'>{reward.description}</li>
+                        <form className='reward-form' onSubmit={this.handleReward}>
+                          <label>Pledge amount
+                          <div className='show-support-input-container'>
+                            <li className='show-support-dollar'> <p>$</p></li>
+                            <input className='show-support-input' type="text" onChange={this.update('amount_pledged')}/>
+                          </div>
+                            
+                          </label>
+                          <input className='reward-support-submit' type="submit" value='Continue'/>
+                        </form>
+                        
+                      </ul>
                     ))} 
                 </ul>
               </ul>
@@ -248,7 +261,7 @@ class ProjectShow extends React.Component {
           
           
         </div>
-        {this.handleCreator()}
+        {/* {this.handleCreator()} */}
         </div>
         
       </div>

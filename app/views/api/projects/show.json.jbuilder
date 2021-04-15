@@ -12,6 +12,7 @@ json.creator do
     @project.creator.backings.each do |backing|
       json.set! backing.id do
         json.extract! backing, :id
+        
       end
     end
   end

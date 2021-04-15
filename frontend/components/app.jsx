@@ -10,7 +10,7 @@ import ProjectFormContainer from './project_form/project_new_container';
 import ProjectIndexContainer from './project_index/project_index_container';
 import ProjectShowContainer from "./project_show/project_show_container";
 import EditProjectFormContainer from "./project_form/project_edit_container";
-// import UserBackedShowContainer from "./backed_show/user_backed_show_container"
+import UserBackedShowContainer from "./backed_show/user_backed_show_container"
 
 const categories = () =>{
   return(
@@ -55,7 +55,7 @@ const App = () => (
           <ProtectedRoute exact path="/projects/new" component={ProjectFormContainer} />
           <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
           <ProtectedRoute path="/projects/:projectId/edit" component={EditProjectFormContainer} />
-          {/* <ProtectedRoute path="/users/:userId" component={UserBackedShowContainer} /> */}
+          <ProtectedRoute path="/users/:userId" component={UserBackedShowContainer} />
           <Route exact path="/"component={ProjectIndexContainer}/>
           <Redirect to="/"/>
         </Switch>

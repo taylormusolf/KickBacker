@@ -54,7 +54,7 @@
 .profile-subsection{
   position:relative;
   font-size: 14px;
-  padding: 20px 24px 36px 24px;
+  padding: 20px 24px 24px 24px;
 }
 .profile-subsection li{
   padding: 5px;
@@ -100,7 +100,7 @@
 }
 
 .profile-backed-container{
-
+  margin-bottom: 20px;
 }
 
 .small-img{
@@ -129,4 +129,12 @@
 .header-button:hover{
   color: #028858;
   text-decoration: underline;
+}
+
+.profile-view-more{
+}
+
+.profile-view-more:hover{
+  text-decoration: underline;
+  color: #028858;
 }
