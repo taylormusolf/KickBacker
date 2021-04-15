@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Headers from './project_headers'
-import ProjectReward from './project_reward'
+// import ProjectReward from './project_reward'
 
 class ProjectShow extends React.Component {
   constructor(props){
@@ -12,6 +12,8 @@ class ProjectShow extends React.Component {
     this.selectTab = this.selectTab.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSupport = this.handleSupport.bind(this);
+    this.handleReward = this.handleReward(this);
+    // this.handleRewardInput = this.handleRewardInput(this);
   }
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
@@ -36,32 +38,38 @@ class ProjectShow extends React.Component {
     }
   }
 
+  handleRewardInput(rewardId=null){
+    return e=> {
+      this.backing.reward_id = e.currentTarget.value
+    }
+  }
+
   handleReward(e){
-    e.preventDefault();
-    console.log(this)
+    // e.preventDefault();
+    if (!this.props.project || !this.props.session) return null;
     if (this.props.session !== this.props.project.creator.id){
       this.props.createBacking(this.backing)
         .then((action) => window.location.reload());
     }
   }
-  handleCreator(){
+  // handleCreator(){
     
-    if(this.props.session === this.props.project.creator.id){
-      return (
-        <section className='show-edit-links'>
-          <span><Link to={`/projects/${this.props.project.id}/edit`}>Edit</Link></span>
-          <br/>
-          <span><button onClick={this.handleDelete}>Delete</button></span>
-        </section>
-      )
+  //   if(this.props.session === this.props.project.creator.id){
+  //     return (
+  //       <section className='show-edit-links'>
+  //         <span><Link to={`/projects/${this.props.project.id}/edit`}>Edit</Link></span>
+  //         <br/>
+  //         <span><button onClick={this.handleDelete}>Delete</button></span>
+  //       </section>
+  //     )
         
-    }else {
-      return (
-        null
-      )
+  //   }else {
+  //     return (
+  //       null
+  //     )
     
-    }
-  }
+  //   }
+  // }
 
   handleScrollRewards(e){
     e.preventDefault();
@@ -132,9 +140,9 @@ class ProjectShow extends React.Component {
   }
   
   render() {
-    const { project } = this.props;
+    const { project, session } = this.props;
     const pane = this.props.panes[this.state.selectedPane];
-    if (!project) return null;
+    if (!project || !session) return null;
     const funding = (project) =>{
       let sum = fundingTotal(project);
       let num = Math.floor((sum)/(this.props.project.funding_goal)*100)
@@ -224,7 +232,7 @@ class ProjectShow extends React.Component {
                     <h2 className='show-support-1'>Pledge without a reward</h2>
                     <div className='show-support-input-container'>
                       <li className='show-support-dollar'> <p>$</p></li>
-                      <input className='show-support-input' type="text" placeholder='Pledge any amount' onChange={this.update('amount_pledged')}/>
+                      <input className='show-support-input' type="number" min='5' placeholder='Pledge any amount' onChange={this.update('amount_pledged')}/>
                     </div>
                     <div className='show-line-container'>
                       <p className='show-line-1'>Back it because you believe in it.</p>
@@ -245,7 +253,7 @@ class ProjectShow extends React.Component {
                           <label>Pledge amount
                           <div className='show-support-input-container'>
                             <li className='show-support-dollar'> <p>$</p></li>
-                            <input className='show-support-input' type="text" onChange={this.update('amount_pledged')}/>
+                            <input className='show-support-input' type="number" min={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
                           </div>
                             
                           </label>

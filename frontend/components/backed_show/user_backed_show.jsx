@@ -9,36 +9,38 @@ class UserBackedShow extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state)
-    this.props.fetchProjects();
-    this.props.fetchBackings();
-    console.log(this.state)
+    // console.log(this.state)
+    // this.props.fetchProjects();
+    // this.props.fetchBackings();
+    // console.log(this.state)
   }
   
-  handleCreator(){
+  // handleCreator(){
     
-    if(this.props.session === this.props.project.creator.id){
-      return (
-        <section className='show-edit-links'>
-          <span><Link to={`/projects/${this.props.project.id}/edit`}>Edit</Link></span>
-          <br/>
-          <span><button onClick={this.handleDelete}>Delete</button></span>
-        </section>
-      )
+  //   if(this.props.session === this.props.project.creator.id){
+  //     return (
+  //       <section className='show-edit-links'>
+  //         <span><Link to={`/projects/${this.props.project.id}/edit`}>Edit</Link></span>
+  //         <br/>
+  //         <span><button onClick={this.handleDelete}>Delete</button></span>
+  //       </section>
+  //     )
         
-    }else {
-      return (
-        null
-      )
+  //   }else {
+  //     return (
+  //       null
+  //     )
     
-    }
-  }
+  //   }
+  // }
 
   handleDeleteBacking(backingId) {
-    this.props.removeBacking(backingId)
+    this.props.deleteBacking(backingId)
+    .then((action) => window.location.reload())
   }
   handleDelete(projectId) {
     this.props.deleteProject(projectId)
+    .then((action) => window.location.reload())
   }
   
   backingReward(reward){
@@ -88,7 +90,7 @@ class UserBackedShow extends React.Component {
               <li className='backed-project-title'><Link to={`/projects/${project.id}`}>{project.title}</Link></li>
             </ul>
           <li className='backed-amount'>${fundingTotal(project)}.00</li>
-          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/edit`}>Edit</Link></div></li>
+          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/edit`}>Edit </Link></div></li>
           <li><button className='backed-reward-delete' onClick={()=>this.handleDelete(project.id)}>Delete</button></li>
           </ul>
             
@@ -96,6 +98,21 @@ class UserBackedShow extends React.Component {
       )
     } else {
       return(null)
+    }
+  }
+  backingCheck(){
+    if (this.props.currentUser.backings){
+      return Object.values(this.props.currentUser.backings).length
+    } else {
+      return 0
+    }
+  }
+
+  projectCheck(){
+    if (this.props.currentUser.projects){
+      return Object.values(this.props.currentUser.projects).length
+    } else {
+      return 0
     }
   }
   render(){
@@ -106,13 +123,13 @@ class UserBackedShow extends React.Component {
         <h1>Backed projects</h1>
         <h2>A place to keep track of all your backed projects</h2>
         <span>Your pledges</span>
-        <h3>{Object.values(this.props.currentUser.backings).length} projects</h3>
+        <h3>{this.backingCheck()} projects</h3>
         <ul className='backed-projects-table'>
           <ul className='backed-projects-headings'>
             <h4 className='backed-projects-heading-1'>Projects I backed</h4>
             <h4 className='backed-projects-heading-2'>Pledged</h4>
             <h4 className='backed-projects-heading-3'>Reward</h4>
-            <h4 className='backed-projects-heading-4'>Delete</h4>
+            <h4 className='backed-projects-heading-4'>Delete Pledge</h4>
           </ul>
           <ul className='backed-project-line'>
             {this.userBackings()}
@@ -126,13 +143,13 @@ class UserBackedShow extends React.Component {
         <h1>Created projects</h1>
         <h2>A place to keep track of all your created projects</h2>
         <span>Your projects</span>
-        <h3>{Object.values(this.props.currentUser.projects).length} projects</h3>
+        <h3>{this.projectCheck()} projects</h3>
         <ul className='backed-projects-table'>
           <ul className='backed-projects-headings'>
             <h4 className='backed-projects-heading-1'>Projects I created</h4>
             <h4 className='backed-projects-heading-2'>Total funded</h4>
-            <h4 className='backed-projects-heading-5'>Edit</h4>
-            <h4 className='backed-projects-heading-4'>Delete</h4>
+            <h4 className='backed-projects-heading-5'>Edit Project</h4>
+            <h4 className='backed-projects-heading-4'>Delete Project</h4>
           </ul>
           <ul className='backed-project-line'>
             {this.userProjects()}
