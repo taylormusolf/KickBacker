@@ -215,31 +215,32 @@ class ProjectShow extends React.Component {
     }
   }
 
-  // rewards(){
-  //   if(this.project && this.project.rewards){
-  //    Object.values(this.project.rewards).map((reward, i)=> (
-  //     <ul className='reward-container' key={i}>
+  rewards(){
+    console.log(this.props.project)
+    if(this.props.project && this.props.project.rewards){
+     return (Object.values(this.props.project.rewards).map((reward, i)=> (
+      <ul className='reward-container' key={i}>
         
-  //       <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
-  //       <li className='reward-title'>{reward.title}</li>
-  //       <li className='reward-desc'>{reward.description}</li>
-  //       <form className='reward-form' onSubmit={this.handleReward}>
-  //         <label>Pledge amount
-  //         <div className='show-support-input-container'>
-  //           <li className='show-support-dollar'> <p>$</p></li>
-  //           <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
-  //         </div>
+        <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
+        <li className='reward-title'>{reward.title}</li>
+        <li className='reward-desc'>{reward.description}</li>
+        <form className='reward-form' onSubmit={this.handleReward}>
+          <label>Pledge amount
+          <div className='show-support-input-container'>
+            <li className='show-support-dollar'> <p>$</p></li>
+            <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
+          </div>
             
-  //         </label>
-  //         {this.rewardErrorMessage()}
-  //         {this.backerSubmitEligible()}
-  //       </form>
+          </label>
+          {this.rewardErrorMessage()}
+          {this.backerSubmitEligible()}
+        </form>
         
-  //     </ul>
-  //     )) 
-  //   }
+      </ul>)
+      )) 
+    }
     
-  // }
+  }
 
   
 
@@ -363,26 +364,7 @@ class ProjectShow extends React.Component {
                   
                 </ul>
                 <ul>
-                  {Object.values(project.rewards).map((reward, i)=> (
-                   <ul className='reward-container' key={i}>
-                      <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
-                      <li className='reward-title'>{reward.title}</li>
-                      <li className='reward-desc'>{reward.description}</li>
-                      <form className='reward-form' onSubmit={this.handleReward}>
-                        <label>Pledge amount
-                        <div className='show-support-input-container'>
-                          <li className='show-support-dollar'> <p>$</p></li>
-                          <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
-                        </div>
-                          
-                        </label>
-                        {this.rewardErrorMessage()}
-                        {this.backerSubmitEligible()}
-                      </form>
-        
-                    </ul>
-                    ))
-                    }
+                  {this.rewards()}
                     
                 </ul>
               </ul>
@@ -401,3 +383,23 @@ class ProjectShow extends React.Component {
 
 export default ProjectShow;
 
+// {Object.values(project.rewards).map((reward, i)=> (
+//   <ul className='reward-container' key={i}>
+//      <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
+//      <li className='reward-title'>{reward.title}</li>
+//      <li className='reward-desc'>{reward.description}</li>
+//      <form className='reward-form' onSubmit={this.handleReward}>
+//        <label>Pledge amount
+//        <div className='show-support-input-container'>
+//          <li className='show-support-dollar'> <p>$</p></li>
+//          <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
+//        </div>
+         
+//        </label>
+//        {this.rewardErrorMessage()}
+//        {this.backerSubmitEligible()}
+//      </form>
+
+//    </ul>
+//    ))
+//    }
