@@ -215,6 +215,31 @@ class ProjectShow extends React.Component {
     }
   }
 
+  // rewards(){
+  //   if(this.project && this.project.rewards){
+  //    Object.values(this.project.rewards).map((reward, i)=> (
+  //     <ul className='reward-container' key={i}>
+        
+  //       <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
+  //       <li className='reward-title'>{reward.title}</li>
+  //       <li className='reward-desc'>{reward.description}</li>
+  //       <form className='reward-form' onSubmit={this.handleReward}>
+  //         <label>Pledge amount
+  //         <div className='show-support-input-container'>
+  //           <li className='show-support-dollar'> <p>$</p></li>
+  //           <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
+  //         </div>
+            
+  //         </label>
+  //         {this.rewardErrorMessage()}
+  //         {this.backerSubmitEligible()}
+  //       </form>
+        
+  //     </ul>
+  //     )) 
+  //   }
+    
+  // }
 
   
 
@@ -255,29 +280,7 @@ class ProjectShow extends React.Component {
       return date;
     }
 
-    const rewards = () => {
-      if(!project.rewards) return null;
-      Object.values(project.rewards).map((reward, i)=> (
-        <ul className='reward-container' key={i}>
-          
-          <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
-          <li className='reward-title'>{reward.title}</li>
-          <li className='reward-desc'>{reward.description}</li>
-          <form className='reward-form' onSubmit={this.handleReward}>
-            <label>Pledge amount
-            <div className='show-support-input-container'>
-              <li className='show-support-dollar'> <p>$</p></li>
-              <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
-            </div>
-              
-            </label>
-            {this.rewardErrorMessage()}
-            {this.backerSubmitEligible()}
-          </form>
-          
-        </ul>
-      ))
-    }
+    
 
     return (
       <div className='show-page'>
@@ -360,7 +363,27 @@ class ProjectShow extends React.Component {
                   
                 </ul>
                 <ul>
-                  {rewards()}
+                  {Object.values(project.rewards).map((reward, i)=> (
+                   <ul className='reward-container' key={i}>
+                      <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
+                      <li className='reward-title'>{reward.title}</li>
+                      <li className='reward-desc'>{reward.description}</li>
+                      <form className='reward-form' onSubmit={this.handleReward}>
+                        <label>Pledge amount
+                        <div className='show-support-input-container'>
+                          <li className='show-support-dollar'> <p>$</p></li>
+                          <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
+                        </div>
+                          
+                        </label>
+                        {this.rewardErrorMessage()}
+                        {this.backerSubmitEligible()}
+                      </form>
+        
+                    </ul>
+                    ))
+                    }
+                    
                 </ul>
               </ul>
             </section>
