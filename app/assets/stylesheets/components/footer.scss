@@ -1,11 +1,39 @@
-
+.footer-page{
+  background-color: white;
+  height: 100%;
+}
 .footer-box{
-  display: flex;
-  justify-content: space-between;
+  
+  padding: 48px 0px;
+  max-width: 1366px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-links{
+ margin-bottom: 1000px;
+ display: flex;
+  // justify-content: space-between; 
+  margin: auto;
+  padding: 0px 18px;
+}
+
+.social-name{
+  font-size: 14px;
+  margin-left: 25px;
+  margin-top: 5px;
 }
 
 .social-links{
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 24px;
+  // margin-right: 450px;
+  margin-left: 5px;
+  margin-bottom: 300px;
 }
+
+
+.social-links a{
+  margin: 0px 10px;
+  font-size: 20px;
+  
+}
+

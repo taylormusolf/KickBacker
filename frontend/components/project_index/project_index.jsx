@@ -71,7 +71,7 @@ class ProjectIndex extends React.Component {
                   />
                   ))}
                </div>
-               <div>
+               <div className='page-num-container'>
                  <ProjectPages
                     selectedPage={this.state.currentPage}
                     onPageChosen={this.selectPage}

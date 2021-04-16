@@ -145,12 +145,20 @@
 
 .num-pages{
   display: flex;
+  // justify-content: right;
+  // text-align: right;
   margin: 6px 0px;
+  margin-left: 400px;
+  margin-top: 40px;
 }
 
 .num-pages li{
  padding: 0px 10px; 
  cursor: pointer;
+}
+
+.page-num-container{
+
 }
 
 .featured-list-funding{

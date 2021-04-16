@@ -6,10 +6,13 @@ const ProjectFeaturedItem = props => {
   if (!props.project) return null;
   const funding = (project) =>{
     let sum = 0;
-    Object.values(project.backings).forEach((backing) =>{
+    if(project.backings){
+     Object.values(project.backings).forEach((backing) =>{
       sum += backing.amount_pledged
     })
-    return fundingPer(sum);
+    return fundingPer(sum); 
+    }
+    return '0%'
   }
   const fundingPer = (sum) =>{
     let num = Math.ceil(((sum)/(props.project.funding_goal))* 100)

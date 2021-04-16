@@ -32,7 +32,7 @@ const categories = () =>{
 
 
 const App = () => (
-  <div>
+  <div className='big-div'>
     <Modal />
     <header>
       <nav className='nav-bar'>
@@ -62,12 +62,15 @@ const App = () => (
       </div>
       {categories()}
       <footer>
-       <nav className='footer-box'>
-          <div> 
-            <div>Kickbacker, PBC <i className="far fa-copyright"></i> 2021</div>
-            <section className="social-links">
-              <a href="https://github.com/taylormusolf" target="_blank"><i className="fab fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/taylor-musolf-4454a876/" target="_blank"><i className="fab fa-linkedin-in"></i></a>
+       <nav className='footer-page'>
+          <div className='footer-box'> 
+            <section className='footer-links'>
+              <div className="social-name">Kickbacker, PBC <i className="far fa-copyright"></i> 2021</div>
+              <div className="social-links">
+                <a  href="https://github.com/taylormusolf" target="_blank"><i className="fab fa-github"></i></a>
+                <a  href="https://www.linkedin.com/in/taylor-musolf-4454a876/" target="_blank"><i className="fab fa-linkedin-in"></i></a>
+              </div>
+              
             </section>
           </div>
        </nav>

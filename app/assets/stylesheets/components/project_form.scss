@@ -14,6 +14,7 @@
 
 .new-project-title{
   font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .new-project-form{
@@ -32,6 +33,17 @@
 
 .project-field:focus{
   border: 1px solid #028858
+}
+
+.new-project-categories{
+  margin: 10px;
+  
+}
+.picture-container{
+  margin-bottom: 5px;
+}
+.picture-input{
+  margin: 5px 5px 10px 5px;
 }
 
 .new-project-button{

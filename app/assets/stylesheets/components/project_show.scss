@@ -13,6 +13,37 @@
   padding: 0px 60px 0 60px;
 }
 
+.backed-project-delete{
+  margin-left: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: red;
+  padding: 12px 25px;
+  font-size: 14px;
+  border-style: none;
+  text-align: center;
+}
+.backed-project-delete:hover{
+  background-color:rgb(104, 3, 3)
+}
+
+.backed-project-edit div{
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-right: 0px;
+  cursor: pointer;
+  color: white;
+  background-color: #028858;
+  padding: 12px 35px; 
+  font-size: 14px;
+  border-style: none;
+  text-align: center;
+}
+.backed-project-edit div:hover{
+  background-color:#015738
+}
+
 .show-backer-message div{
   font-size: 34px;
   font-weight: bold;

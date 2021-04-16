@@ -2,20 +2,20 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import {Link, Redirect} from 'react-router-dom';
 
+//pass in project from edit screen or back_show
+//pass in reward create
 
-
-class ProjectForm extends React.Component{
+class RewardForm extends React.Component{
   constructor(props) {
     super(props);
-    this.state = this.props.project;
+    this.state = {
+      title: '',
+      description: '',
+      project_id: '',
+      cost: ''
+    },
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
-  }
-  componentDidMount(){
-    this.props.resetProjectErrors();
-    // if(this.props.formType === 'Update Project'){
-    //   this.props.fetchProject(this.props.match.params.projectId)
-    // }
   }
   update(field) {
     // console.log(this.state)
@@ -25,24 +25,9 @@ class ProjectForm extends React.Component{
   handleSubmit(e) {
     e.preventDefault();
       const formData = new FormData();
-      formData.append('id', this.state.id);
       formData.append('project[title]', this.state.title);
-      formData.append('project[category_id]', this.state.category_id);
-      formData.append('project[description]', this.state.description);
-      formData.append('project[campaign]', this.state.campaign);
-      formData.append('project[updates]', this.state.updates);
-      formData.append('project[faq]', this.state.faq);
-      formData.append('project[location]', this.state.location);
-      formData.append('project[start_date]', this.state.start_date);
-      formData.append('project[end_date]', this.state.end_date);
-      formData.append('project[funding_goal]', this.state.funding_goal);
       formData.append('project[creator_id]', this.props.creatorId);
-      if (this.state.imageFile) {
-        formData.append('project[photo]', this.state.imageFile);
-      }
-    
 
-    
     this.props.action((this.state.formType === "Create Project" || this.state.imageFile) ? formData : formData, this.state.id)
     .then((action) => this.props.history.push(`/projects/${action.project.id}`));
 
@@ -98,7 +83,6 @@ class ProjectForm extends React.Component{
         <h1 className="new-project-title">{this.props.formType}</h1>
         <form className="new-project-form" onSubmit={this.handleSubmit}>
           <label>Project Category
-            <br/>
             <select defaultValue={this.state.category_id ? `${this.state.category_id}` : ''} className='new-project-categories' onChange={this.update('category_id')}>
               <option value='' disabled={true}>Select your category</option>
               <option value="1">Art</option>
@@ -115,7 +99,7 @@ class ProjectForm extends React.Component{
             <input
               type="text"
               value={this.state.title}
-              placeholder="Your Memoirs" 
+              placeholder="Your title here" 
               onChange={this.update('title')}
               className="project-field"
             />
@@ -133,7 +117,7 @@ class ProjectForm extends React.Component{
             <textarea 
               type="text"
               value={this.state.campaign}
-              placeholder="What is the story and risks associated?" 
+              placeholder="Campaign" 
               onChange={this.update('campaign')}
               className="project-field"
             />
@@ -143,7 +127,7 @@ class ProjectForm extends React.Component{
             <textarea
               type="text"
               value={this.state.updates}
-              placeholder="Anything you would like to share?" 
+              placeholder="Updates" 
               onChange={this.update('updates')}
               className="project-field"
             />
@@ -153,7 +137,7 @@ class ProjectForm extends React.Component{
             <textarea
               type="text"
               value={this.state.faq}
-              placeholder="Frequently Asked Questions..." 
+              placeholder="FAQ" 
               onChange={this.update('faq')}
               className="project-field"
             />
@@ -188,16 +172,15 @@ class ProjectForm extends React.Component{
             <input required
               type="currency"
               value={this.state.funding_goal}
-              placeholder="Be realistc"
+              placeholder="$$$$"
               onChange={this.update('funding_goal')}
               className="project-field"
             />
           </label>
           {this.hasPhoto()}
           <label>Upload Project Image
-            <div className='picture-container'>
+            <div>
               <input
-              className='picture-input'
               type="file"
               onChange={this.handleFile}
               />

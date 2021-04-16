@@ -132,6 +132,7 @@ class ProjectShow extends React.Component {
   }
 
   isBacker(){
+    if(this.props.project.backings){
     const backings = Object.values(this.props.project.backings);
     let backers = [];
     
@@ -139,6 +140,9 @@ class ProjectShow extends React.Component {
       backers.push(backing.backer_id);
     })
     return backers.includes(this.props.session)
+    }else{
+      return false
+    }
   }
 
   creatorControls(){
@@ -147,8 +151,8 @@ class ProjectShow extends React.Component {
       return (
         <section className='show-edit-links'>
           <p>Creator Controls:</p>
-          <span className='backed-reward-edit'><div><Link to={`/projects/${this.props.project.id}/edit`}>Edit </Link></div></span>
-          <span><button className='backed-reward-delete' onClick={this.handleDelete}>Delete</button></span>
+          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/edit`}>Edit </Link></div></span>
+          <span><button className='backed-project-delete' onClick={this.handleDelete}>Delete</button></span>
         </section>
       )
         
@@ -230,19 +234,49 @@ class ProjectShow extends React.Component {
     }
     const fundingTotal = (project) =>{
       let sum = 0;
-      Object.values(project.backings).forEach((backing) =>{
-        sum += backing.amount_pledged
-      })
+      if(project.backings){
+        Object.values(project.backings).forEach((backing) =>{
+          sum += backing.amount_pledged
+        })
+      }
       return sum;
     }
     const backers = (project)=>{
-      let num = Object.values(project.backings).length
+      if(project.backings){
+        let num = Object.values(project.backings).length
       return num
+      } else{
+        return 0;
+      }
     }
     const deadline = () =>{
       let d = new Date(project.end_date.slice(0,10));
       let date = d.toString();
       return date;
+    }
+
+    const rewards = () => {
+      if(!project.rewards) return null;
+      Object.values(project.rewards).map((reward, i)=> (
+        <ul className='reward-container' key={i}>
+          
+          <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
+          <li className='reward-title'>{reward.title}</li>
+          <li className='reward-desc'>{reward.description}</li>
+          <form className='reward-form' onSubmit={this.handleReward}>
+            <label>Pledge amount
+            <div className='show-support-input-container'>
+              <li className='show-support-dollar'> <p>$</p></li>
+              <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
+            </div>
+              
+            </label>
+            {this.rewardErrorMessage()}
+            {this.backerSubmitEligible()}
+          </form>
+          
+        </ul>
+      ))
     }
 
     return (
@@ -326,26 +360,7 @@ class ProjectShow extends React.Component {
                   
                 </ul>
                 <ul>
-                   {Object.values(project.rewards).map((reward, i)=> (
-                      <ul className='reward-container' key={i}>
-                        
-                        <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
-                        <li className='reward-title'>{reward.title}</li>
-                        <li className='reward-desc'>{reward.description}</li>
-                        <form className='reward-form' onSubmit={this.handleReward}>
-                          <label>Pledge amount
-                          <div className='show-support-input-container'>
-                            <li className='show-support-dollar'> <p>$</p></li>
-                            <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
-                          </div>
-                            
-                          </label>
-                          {this.rewardErrorMessage()}
-                          {this.backerSubmitEligible()}
-                        </form>
-                        
-                      </ul>
-                    ))} 
+                  {rewards()}
                 </ul>
               </ul>
             </section>
