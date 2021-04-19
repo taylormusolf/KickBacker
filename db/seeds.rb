@@ -13,6 +13,8 @@ Project.destroy_all
 Backing.destroy_all
 Reward.destroy_all
 Category.destroy_all
+
+#reset the primary key sequence
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('projects')
 ActiveRecord::Base.connection.reset_pk_sequence!('backings')

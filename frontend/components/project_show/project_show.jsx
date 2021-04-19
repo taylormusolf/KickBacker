@@ -54,8 +54,7 @@ class ProjectShow extends React.Component {
 
   handleScrollRewards(e){
     e.preventDefault();
-    const ele = document.getElementById('rewards')
-    ele.scrollIntoView({
+    document.getElementById('rewards').scrollIntoView({
         behavior: "smooth"
       })
   }
@@ -383,23 +382,3 @@ class ProjectShow extends React.Component {
 
 export default ProjectShow;
 
-// {Object.values(project.rewards).map((reward, i)=> (
-//   <ul className='reward-container' key={i}>
-//      <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
-//      <li className='reward-title'>{reward.title}</li>
-//      <li className='reward-desc'>{reward.description}</li>
-//      <form className='reward-form' onSubmit={this.handleReward}>
-//        <label>Pledge amount
-//        <div className='show-support-input-container'>
-//          <li className='show-support-dollar'> <p>$</p></li>
-//          <input className='show-support-input' type="number" min={reward.cost} placeholder={reward.cost} onChange={this.update('amount_pledged')} onInput={this.handleRewardInput(reward.id)}/>
-//        </div>
-         
-//        </label>
-//        {this.rewardErrorMessage()}
-//        {this.backerSubmitEligible()}
-//      </form>
-
-//    </ul>
-//    ))
-//    }

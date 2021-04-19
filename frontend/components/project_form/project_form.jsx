@@ -18,7 +18,6 @@ class ProjectForm extends React.Component{
     // }
   }
   update(field) {
-    // console.log(this.state)
     return e => this.setState({[field]: e.target.value});
   }
 
@@ -50,7 +49,6 @@ class ProjectForm extends React.Component{
   }
 
   handleFile(e){
-    // this.setState({existingPhoto: null})
     const file = e.currentTarget.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
