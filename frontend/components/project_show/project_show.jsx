@@ -215,7 +215,6 @@ class ProjectShow extends React.Component {
   }
 
   rewards(){
-    console.log(this.props.project)
     if(this.props.project && this.props.project.rewards){
      return (Object.values(this.props.project.rewards).map((reward, i)=> (
       <ul className='reward-container' key={i}>

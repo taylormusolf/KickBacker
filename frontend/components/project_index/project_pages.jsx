@@ -1,7 +1,16 @@
 import React from 'react';
 
 class ProjectPages extends React.Component {
-  
+  leftChevron(){
+    if(this.props.selectedPage !== 1){
+      this.props.onPageChosen(this.props.selectedPage - 1)
+    }
+  }
+  rightChevron(){
+    if(this.props.selectedPage !== 3){
+      this.props.onPageChosen(this.props.selectedPage + 1)
+    }
+  }
   render() {
     const selected = this.props.selectedPage;
     const pages = [1, 2, 3];
@@ -19,9 +28,9 @@ class ProjectPages extends React.Component {
     });
     return (
       <ul className='num-pages'>
-        <li><i className="fas fa-chevron-left"></i></li>
+        <li><i className="fas fa-chevron-left" onClick={()=> this.leftChevron()}></i></li>
         {headers}
-        <li><i className="fas fa-chevron-right"></i></li>
+        <li><i className="fas fa-chevron-right" onClick={()=> this.rightChevron()}></i></li>
       </ul>
       
     );
