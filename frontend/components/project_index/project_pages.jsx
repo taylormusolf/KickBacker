@@ -13,6 +13,8 @@ class ProjectPages extends React.Component {
   }
   render() {
     const selected = this.props.selectedPage;
+    const grayLeft = selected === 1 ? 'gray' : '';
+    const grayRight = selected === 3 ? 'gray' : '';
     const pages = [1, 2, 3];
     const headers = pages.map((page) => {
       const klass = page === selected ? 'active' : '';
@@ -28,9 +30,9 @@ class ProjectPages extends React.Component {
     });
     return (
       <ul className='num-pages'>
-        <li><i className="fas fa-chevron-left" onClick={()=> this.leftChevron()}></i></li>
+        <li id={grayLeft} onClick={()=> this.leftChevron()}><i className="fas fa-chevron-left" ></i></li>
         {headers}
-        <li><i className="fas fa-chevron-right" onClick={()=> this.rightChevron()}></i></li>
+        <li id={grayRight} onClick={()=> this.rightChevron()}><i className="fas fa-chevron-right"></i></li>
       </ul>
       
     );
