@@ -19,13 +19,25 @@ function Modal({modal, closeModal}) {
     default:
       return null;
   }
-  return (
-    <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+  if(modal === 'profile'){
+    return (
+      <div className="modal-background" onClick={closeModal}>
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
+          { component }
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else if (modal === 'search'){
+    return (
+      <div className="modal-background-search" onClick={closeModal}>
+        <div className="modal-child-search" onClick={e => e.stopPropagation()}>
+          { component }
+        </div>
+      </div>
+    );
+
+  }
+  
 }
 
 const mapStateToProps = state => {

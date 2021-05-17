@@ -5,7 +5,7 @@ import Search from './search'
 
 const mapStateToProps = (state) => {
   return {
-
+    
   };
 };
 
