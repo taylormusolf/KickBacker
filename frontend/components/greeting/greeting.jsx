@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 
 
-const Greeting = ({ currentUser, logout, openModal }) => {
+const Greeting = ({ currentUser, openModal }) => {
+  
   const loginLink = () => (
     <nav>
       <Link to="/login">Log In</Link>

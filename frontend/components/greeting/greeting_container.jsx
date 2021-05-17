@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { logout } from '../../actions/session_actions';
-import { openModal, closeModal} from '../../actions/modal_actions'
+import { openModal} from '../../actions/modal_actions';
 import Greeting from './greeting';
 
 const mapStateToProps = ({ session, entities: { users } }) => {

@@ -1,11 +1,11 @@
 import React from 'react';
 import {Route, Redirect, Switch, Link, HashRouter} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-
 import Modal from './modal/modal';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import GreetingContainer from './greeting/greeting_container';
+import SearchNavContainer from './search/search_nav_container';
 import ProjectFormContainer from './project_form/project_new_container';
 import ProjectIndexContainer from './project_index/project_index_container';
 import ProjectShowContainer from "./project_show/project_show_container";
@@ -42,7 +42,7 @@ const App = () => (
         </div>
         <Link to="/" className="nav-header"><h1>KICKBACKER</h1></Link>
         <div className= 'nav-box'>
-          <h2 className="nav-item"><a href="">Search <i className="fa fa-search"></i></a></h2>
+          <h2 className="nav-item"><SearchNavContainer/></h2>
           <h2 className="nav-item"><GreetingContainer /></h2>
         </div>
         
