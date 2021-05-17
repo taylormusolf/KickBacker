@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ProfileContainer from '../profile/profile_container';
+import SearchContainer from '../search/search_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -12,6 +13,9 @@ function Modal({modal, closeModal}) {
     case 'profile':
       component = <ProfileContainer />;
       break;
+    case 'search':
+      component = <SearchContainer />;
+      break;  
     default:
       return null;
   }

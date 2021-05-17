@@ -68,7 +68,8 @@ const App = () => (
               <div className="social-name">Kickbacker, PBC <i className="far fa-copyright"></i> 2021</div>
               <div className="social-links">
                 <a  href="https://github.com/taylormusolf" target="_blank"><i className="fab fa-github"></i></a>
-                <a  href="https://www.linkedin.com/in/taylor-musolf-4454a876/" target="_blank"><i className="fab fa-linkedin-in"></i></a>
+                <a  href="https://www.linkedin.com/in/taylor-musolf" target="_blank"><i className="fab fa-linkedin-in"></i></a>
+                <a  href="https://angel.co/u/taylor-musolf" target="_blank"><i className="fab fa-angellist"></i></a>
               </div>
               
             </section>
