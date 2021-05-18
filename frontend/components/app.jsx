@@ -11,6 +11,7 @@ import ProjectIndexContainer from './project_index/project_index_container';
 import ProjectShowContainer from "./project_show/project_show_container";
 import EditProjectFormContainer from "./project_form/project_edit_container";
 import UserBackedShowContainer from "./backed_show/user_backed_show_container"
+import SearchPage from './search/search_page';
 
 const categories = () =>{
   return(
@@ -54,6 +55,7 @@ const App = () => (
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <ProtectedRoute exact path="/projects/new" component={ProjectFormContainer} />
           <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
+          <Route exact path="/projects/search/:query" component={SearchPage} />
           <ProtectedRoute exact path="/projects/:projectId/edit" component={EditProjectFormContainer} />
           <ProtectedRoute exact path="/users/:userId" component={UserBackedShowContainer} />
           <Route exact path="/"component={ProjectIndexContainer}/>

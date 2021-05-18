@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 import React from 'react';
 import {closeModal } from '../../actions/modal_actions';
 import Search from './search'
+import {withRouter} from 'react-router-dom';
 
 const mapStateToProps = (state) => {
   return {
-    
+
   };
 };
 
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));
