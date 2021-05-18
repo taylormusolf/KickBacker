@@ -37,5 +37,5 @@ json.rewards do
   end
 end
 json.category do
-  json.extract! @project.category, :id, :name
+  json.extract! @project.category, :id, :name, :description
 end

@@ -45,14 +45,14 @@ user20 = User.create!(username:'Susan Joyce', email: 'susan@joyce.com', password
 user21 = User.create!(username:'Vacas Creamery', email: 'susan@vacas.com', password: '123456', bio: 'We are Chicago\'s first all-vegan ice cream shop!')
 user22 = User.create!(username:'Arvis Games Inc.', email: 'meric@arvis.com', password: '123456', bio: 'Arvis Games Inc. A passionate gaming company to bring innovative magical experiences.')
 
-category1 = Category.create!(name: "Arts");
-category2 = Category.create!(name: "Comics & Illustration");
-category3 = Category.create!(name: "Design & Tech");
-category4 = Category.create!(name: "Film");
-category5 = Category.create!(name: "Food & Craft");
-category6 = Category.create!(name: "Games");
-category7 = Category.create!(name: "Music");
-category8 = Category.create!(name: "Publishing");
+category1 = Category.create!(name: "Arts", description: "Discover the artists and organizations using Kickstarter to realize ambitious projects in visual art and performance.");
+category2 = Category.create!(name: "Comics & Illustration", description:"Explore fantastical worlds and original characters from Kickstarter’s community of comics creators and illustrators.");
+category3 = Category.create!(name: "Design & Tech", description:"From fine design to innovative tech, discover projects from creators working to build a more beautiful future.");
+category4 = Category.create!(name: "Film", description:"Join forces with the intrepid filmmakers and festival creators changing the way stories get told on screen.");
+category5 = Category.create!(name: "Food & Craft", description:"See how artisans and entrepreneurs are using Kickstarter to break new ground in food, fashion, and crafts.");
+category6 = Category.create!(name: "Games", description:"From tabletop adventures to beloved revivals, discover the projects forging the future of gameplay.");
+category7 = Category.create!(name: "Music", description:"Discover new albums, performances, and independent venues from creators using Kickstarter to shape the future of sound.");
+category8 = Category.create!(name: "Publishing", description:"Explore how writers and publishers are using Kickstarter to bring new literature, periodicals, podcasts, and more to life.");
 
 
 
