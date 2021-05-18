@@ -50,4 +50,86 @@
   cursor: pointer;
 }
 
+.search-page-container{
+  background-color: white;
+}
+.search-query-container{
+
+}
+.search-query{
+  color: #282828;
+  font-size: 21px;
+  padding: 60px 0px;
+  text-align: center;
+  border-bottom: 0.1rem solid #E8E8E8;
+  justify-content: center;
+}
+.search-word{
+  color: #282828;
+  font-size: 18px;
+  padding: 12px;
+  margin: 0px 12px;
+  box-shadow: 2px 0 6px 0 #b4b4b4;
+}
+
+.search-results-container{
+  display: flex;
+  justify-content: center;
+}
+
+.search-results{
+  padding-top: 36px;
+  padding-bottom: 60px;
+  width: 1366px;
+  
+}
+.search-results h1{
+  padding-top: 12px;
+  margin-bottom: 30px;
+  font-size: 22px;
+  strong{
+    color: #009E74;
+    font-weight: bold;
+  }
+}
+.search-no-results{
+  
+  h1{
+    padding-top: 30px;
+    font-size: 18px;
+    color:#D8503D;
+  }
+  h2{
+    padding-bottom: 30px;
+    font-size: 14px;
+    color:#696969;
+  }
+}
+.search-projects-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 1366px;
+}
+
+.search-project-list-item{
+  margin: 0px 18px;
+  width: 389px;
+  border: 0.1rem solid #E8E8E8;
+}
+.search-project-list-img{
+  width: 389px;
+  height: 220px;
+}
+.search-project-list-details{
+  padding: 24px 18px 0px;
+}
+.search-project-list-link{
+
+}
+.search-project-list-description{
+
+}
+.search-project-list-creator{
+
+}
 

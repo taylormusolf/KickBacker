@@ -56,6 +56,7 @@ const App = () => (
           <ProtectedRoute exact path="/projects/new" component={ProjectFormContainer} />
           <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
           <Route exact path="/projects/search/:query" component={SearchPageContainer} />
+          {/* <Route exact path="/projects/category/:categoryName" component={CategoryContainer} /> */}
           <ProtectedRoute exact path="/projects/:projectId/edit" component={EditProjectFormContainer} />
           <ProtectedRoute exact path="/users/:userId" component={UserBackedShowContainer} />
           <Route exact path="/"component={ProjectIndexContainer}/>

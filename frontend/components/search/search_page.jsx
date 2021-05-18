@@ -1,4 +1,5 @@
 import React from "react";
+import ProjectSearchItem from './project_search_item'
 
 class SearchPage extends React.Component{
   constructor(props){
@@ -23,11 +24,37 @@ class SearchPage extends React.Component{
         return(
           <section className='search-results'>
             <h1>Explore <strong>{projectResults.length} projects</strong></h1>
+            <div className='search-projects-container'>
+              {projectResults.map(project => (
+                <ProjectSearchItem
+                  project={project}
+                  key={[project.id]}
+                />
+              ))}
+            </div>
           </section>
         )
       } else {
         return(
-          <div>No Results</div>
+          <div>
+            <div className='search-no-results'>
+              <h1><i className="fas fa-exclamation-circle"></i> We can't find projects that match your search</h1>
+              <h2>Check out a collection of popular and recommended options below</h2>
+            </div>
+            <section className='search-results'>
+              <h1>Explore <strong>{Object.values(projects).length} projects</strong></h1>
+              <div className='search-projects-container'>
+                {Object.values(projects).map(project => (
+                  <ProjectSearchItem
+                    project={project}
+                    key={[project.id]}
+                  />
+                ))}
+            </div>
+            </section>
+          </div>
+          
+          
         )
       }
       
@@ -38,9 +65,16 @@ class SearchPage extends React.Component{
     return(
       <div className='search-page-container'>
         <section className='search-query-container'>
-          <p className='search-query'>Show me <strong>{this.props.query}</strong> projects</p>
+          <p className='search-query'>
+            Show me 
+            <strong className='search-word'>{this.props.query}</strong> 
+            projects
+          </p>
         </section>
-        {this.results()}
+        <div className='search-results-container'>
+          {this.results()}
+        </div>
+        
       </div>
     
     )
