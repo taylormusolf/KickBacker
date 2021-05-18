@@ -45,7 +45,7 @@ user20 = User.create!(username:'Susan Joyce', email: 'susan@joyce.com', password
 user21 = User.create!(username:'Vacas Creamery', email: 'susan@vacas.com', password: '123456', bio: 'We are Chicago\'s first all-vegan ice cream shop!')
 user22 = User.create!(username:'Arvis Games Inc.', email: 'meric@arvis.com', password: '123456', bio: 'Arvis Games Inc. A passionate gaming company to bring innovative magical experiences.')
 
-category1 = Category.create!(name: "Art");
+category1 = Category.create!(name: "Arts");
 category2 = Category.create!(name: "Comics & Illustration");
 category3 = Category.create!(name: "Design & Tech");
 category4 = Category.create!(name: "Film");
