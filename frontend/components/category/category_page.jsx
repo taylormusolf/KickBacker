@@ -39,13 +39,23 @@ class CategoryPage extends React.Component {
   }
 
   render() {
-    const { projects} = this.props;
-    if (!projects) return null;
+    // if (!projects) return null;
+    const { projects, category} = this.props;
     const array = Object.values(projects);
+    
     const filtered = (array) =>{
-
+      let filteredArray = [];
+      array.forEach((project) =>{
+        if(project.category.name === category){
+          filteredArray.push(project);
+        }
+      });
+      return filteredArray;
     }
     
+    const categoryFeatured = filtered(array)[0];
+    const categoryProjects = filtered(array).slice(1);
+    const numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     const selected = (array) =>{
       if(this.state.currentPage === 1){
         return array.slice(0, 3)
@@ -57,22 +67,26 @@ class CategoryPage extends React.Component {
     }
     
       return (
-        <div >
+        <div className='category-page-container'>
           {this.categories()}
+          <div className='category-header'>
+            <h1>{category}</h1>
+            <h2>Category description</h2>
+          </div>
           <div className='projects-header-container'>
             <div className='projects-header'>
               <div id='featured-project'>
                 <h1>FEATURED PROJECT</h1>
                 <ProjectFeaturedItem
-                  project={project}
+                  project={categoryFeatured}
                 />
               </div>
               <ul className='projects-list-container'>
                <h1>RECOMMENDED FOR YOU</h1>
                <div>
-                {filtered(array).map(i => (
+                {selected(numArray).map(i => (
                   <ProjectIndexItem
-                    project={projects[i]}
+                    project={categoryProjects[i]}
                     key={[i + 1]}
                   />
                   ))}

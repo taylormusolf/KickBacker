@@ -1,0 +1,22 @@
+.category-page-container{
+  background-color: white;
+}
+.category-header{
+  padding: 60px 60px 36px;
+  
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 1300px;
+  font-family: Georgia, Times, 'Times New Roman', serif;
+  h1{
+    color: #282828;
+    font-size: 28px;
+  }
+  h2{
+    color: #656969;
+    font-size: 16px;
+    padding-bottom: 18px;
+    padding-top: 12px;
+  }
+}
