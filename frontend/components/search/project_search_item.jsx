@@ -18,9 +18,14 @@ const ProjectSearchItem = props => {
   }
     const funding = (project) =>{
       let sum = fundingTotal(project);
-      let num = Math.floor((sum)/(this.props.project.funding_goal)*100)
+      let num = Math.ceil((sum)/(project.funding_goal)*100)
+      return num.toString() + '%'
+    }
+    const fundingMax = (project) =>{
+      let sum = fundingTotal(project);
+      let num = Math.ceil((sum)/(project.funding_goal)*100)
       if (num > 100){
-        num = 100
+        num = 100;
       }
       return num.toString() + '%'
     }
@@ -41,11 +46,6 @@ const ProjectSearchItem = props => {
         return 0;
       }
     }
-    const deadline = () =>{
-      let d = new Date(project.end_date.slice(0,10));
-      let date = d.toString();
-      return date;
-    }
   if(!project) return null;
   return(
     <li className='search-project-list-item'>
@@ -60,17 +60,18 @@ const ProjectSearchItem = props => {
             <Link to={`/projects/${project.id}`}>{project.title}</Link>
           </li>
           <li className='search-project-list-description'>{project.description}</li>
-          <li className='search-project-list-creator'>By {project.creator.username}</li>
+          <li className='search-project-list-creator'>by {project.creator.username}</li>
         </ul>
         <ul className='search-project-list-details-2'>
+          <li className='search-project-list-funding-bar' style={{width: fundingMax(project)}}><h1></h1></li>
           <li className='search-project-list-funding'>
-            $
+            ${fundingTotal(project)} pledged
           </li>
-          <li className='search-project-list-percentage'>% funded</li>
-          <li className='search-project-list-days'> days to go</li>
-          <span>
+          <li className='search-project-list-percentage'> {funding(project)} funded</li>
+          <li className='search-project-list-days'> {daysLeft(project.end_date)} days to go</li>
+          <span className='search-project-list-footer'>
             <li>{project.category.name}</li>
-            <li>{project.location}</li>
+            <li><i className="fas fa-map-marker-alt"></i>  {project.location}</li>
           </span>
         </ul>
         

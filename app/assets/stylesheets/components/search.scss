@@ -78,14 +78,14 @@
 }
 
 .search-results{
-  padding-top: 36px;
-  padding-bottom: 60px;
   width: 1366px;
-  
+  padding: 36px 60px 60px;
 }
 .search-results h1{
   padding-top: 12px;
   margin-bottom: 30px;
+  margin-left: 60px;
+  
   font-size: 22px;
   strong{
     color: #009E74;
@@ -93,20 +93,24 @@
   }
 }
 .search-no-results{
-  
+  margin-left: 120px;
   h1{
     padding-top: 30px;
+    
     font-size: 18px;
     color:#D8503D;
   }
   h2{
-    padding-bottom: 30px;
+    padding-left: 22px;
+    padding-top: 5px;
+    padding-bottom: 20px;
     font-size: 14px;
     color:#696969;
   }
 }
 .search-projects-container{
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 1366px;
 }
@@ -115,6 +119,7 @@
   margin: 0px 18px;
   width: 389px;
   border: 0.1rem solid #E8E8E8;
+  margin: 0px 18px 28px;
 }
 .search-project-list-img{
   width: 389px;
@@ -122,14 +127,50 @@
 }
 .search-project-list-details{
   padding: 24px 18px 0px;
+  height: 180px;
 }
 .search-project-list-link{
+  font-size: 18px;
+  margin-bottom: 6px;
+}
 
+.search-project-list-link:hover{
+  text-decoration: underline;
 }
 .search-project-list-description{
-
+  color: #696969;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 .search-project-list-creator{
-
+  color: #282828;
+  font-size: 13px;
+}
+.search-project-list-details-2{
+  padding: 18px;
+}
+.search-project-list-funding-bar{
+  background-color:#037362;
+  height: 0.3rem;
+  width: attr(search-project-list-funding-bar);
+  margin-bottom: 10px;
+}
+.search-project-list-funding{
+  font-size: 13px;
+  color: #037362;
+}
+.search-project-list-percentage, .search-project-list-days{
+  font-size: 13px;
+  color: #656969;
+}
+.search-project-list-footer{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #656969;
+  li:first-child{
+    margin-right: 24px;
+  }
 }
 

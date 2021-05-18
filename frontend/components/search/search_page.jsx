@@ -13,9 +13,13 @@ class SearchPage extends React.Component{
     const{projects} = this.props;
     const projectResults = [];
     if(projects){
+      const lowerCasedQuery = this.props.query.toLowerCase();
       Object.values(projects).forEach((project) =>{
-        if(project.title.toLowerCase().includes(this.props.query.toLowerCase())
-        || project.category.name.toLowerCase().includes(this.props.query.toLowerCase())
+        if(project.title.toLowerCase().includes(lowerCasedQuery)
+        || project.category.name.toLowerCase().includes(lowerCasedQuery)
+        || project.description.toLowerCase().includes(lowerCasedQuery)
+        || project.creator.username.toLowerCase().includes(lowerCasedQuery)
+        || project.location.toLowerCase().includes(lowerCasedQuery)
         ){
           projectResults.push(project);
         }
@@ -38,7 +42,7 @@ class SearchPage extends React.Component{
         return(
           <div>
             <div className='search-no-results'>
-              <h1><i className="fas fa-exclamation-circle"></i> We can't find projects that match your search</h1>
+              <h1><i className="fas fa-exclamation-circle"></i>   We can't find projects that match your search</h1>
               <h2>Check out a collection of popular and recommended options below</h2>
             </div>
             <section className='search-results'>
