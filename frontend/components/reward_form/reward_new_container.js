@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-
-import { createReward } from '../../actions/reward_actions';
+import { createReward, resetRewardErrors } from '../../actions/reward_actions';
 import RewardForm from './reward_form';
 
 const mSTP = (state) => ({
@@ -9,15 +8,13 @@ const mSTP = (state) => ({
     description: '',
     project_id: '',
     cost: ''
-  },
-  project
+  }
 });
 
 const mDTP = dispatch => ({
-  action: project => dispatch(createProject(project)),
-  resetProjectErrors: () => dispatch(resetProjectErrors()),
-  fetchCategories: () => dispatch(fetchCategories())
+  action: reward => dispatch(createReward(reward)),
+  resetRewardErrors: () => dispatch(resetRewardErrors())
 });
 
 
-export default connect(mSTP, mDTP)(ProjectForm);
+export default connect(mSTP, mDTP)(RewardForm);

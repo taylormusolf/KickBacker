@@ -8,17 +8,10 @@ import {Link, Redirect} from 'react-router-dom';
 class RewardForm extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      description: '',
-      project_id: '',
-      cost: ''
-    },
+    this.state = this.props.reward;
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleFile = this.handleFile.bind(this);
   }
   update(field) {
-    // console.log(this.state)
     return e => this.setState({[field]: e.target.value});
   }
 
@@ -34,43 +27,17 @@ class RewardForm extends React.Component{
     
   }
 
-  handleFile(e){
-    // this.setState({existingPhoto: null})
-    const file = e.currentTarget.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      this.setState({imageFile: file, imageUrl: reader.result})
-    }
-    if (file) {
-      reader.readAsDataURL(file)
-    } else {
-      this.setState({imageUrl: '', imageFile: null})
-    }
-    this.setState({
-      imageFile: e.currentTarget.files[0],
-      imageUrl: e.currentTarget.files[0],
-    })
-  }
-
-  hasPhoto(){
-    if(this.props.formType === 'Update Project' && this.state.photo_url.length){
-      return(
-        <p>Project has existing photo attached</p>
-      )
-    }
-  }
-  
-  renderErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  // renderErrors() {
+  //   return(
+  //     <ul>
+  //       {this.props.errors.map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {error}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
 
   render() {
@@ -203,4 +170,4 @@ class RewardForm extends React.Component{
 
 
 
-export default withRouter(ProjectForm);
+export default withRouter(RewardForm);
