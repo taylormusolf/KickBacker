@@ -11,19 +11,21 @@
 .modal-child-discover {
   background-color: white;
   position: relative;
-  top: 670px;
+  top: 575px;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow-y: scroll;
 }
 
 .discover-container{
   width: 100%;
+  
   display: flex;
   justify-content: center;
   
 }
 .discover-box{
+  height: 1000px;
+  overflow-y: auto;
   margin: 10px 0px;
   width: 1246px;
   padding: 24px 0px 120px;
@@ -44,7 +46,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  padding: 12px 0px;
+  padding: 12px 10px 12px 0px;
   color: #037362;
   border-bottom: 0.1rem solid #E8E8E8;
   
@@ -52,4 +54,5 @@
 
 .discover-close:hover{
   cursor: pointer;
+  
 }

@@ -14,6 +14,21 @@ class SearchPage extends React.Component{
     const projectResults = [];
     if(projects){
       const lowerCasedQuery = this.props.query.toLowerCase();
+      if(lowerCasedQuery === 'everything'){
+        return(
+          <section className='search-results'>
+            <h1>Explore <strong>{Object.values(projects).length} projects</strong></h1>
+            <div className='search-projects-container'>
+              {Object.values(projects).map(project => (
+                <ProjectSearchItem
+                  project={project}
+                  key={[project.id]}
+                />
+              ))}
+            </div>
+          </section>
+        )
+      }
       Object.values(projects).forEach((project) =>{
         if(project.title.toLowerCase().includes(lowerCasedQuery)
         || project.category.name.toLowerCase().includes(lowerCasedQuery)
@@ -54,7 +69,7 @@ class SearchPage extends React.Component{
                     key={[project.id]}
                   />
                 ))}
-            </div>
+              </div>
             </section>
           </div>
           
