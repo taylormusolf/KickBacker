@@ -16,7 +16,6 @@
 
 
 
-
 .search-container{
   width: 100vw;
   background-color: white;
@@ -52,17 +51,19 @@
 
 .search-page-container{
   background-color: white;
+  
 }
 .search-query-container{
-
+  border-bottom: 0.1rem solid #E8E8E8;
 }
 .search-query{
   color: #282828;
   font-size: 21px;
   padding: 60px 0px;
   text-align: center;
-  border-bottom: 0.1rem solid #E8E8E8;
   justify-content: center;
+  margin: auto;
+  width: 1300px;
 }
 .search-word{
   color: #282828;
@@ -75,6 +76,8 @@
 .search-results-container{
   display: flex;
   justify-content: center;
+  margin: auto;
+  width: 1300px;
 }
 
 .search-results{

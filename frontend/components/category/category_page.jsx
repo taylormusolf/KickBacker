@@ -50,7 +50,9 @@ class CategoryPage extends React.Component {
     
       return (
         <div className='category-page-container'>
-          <CategoryNavContainer/>
+          <div className='category-links-container-top'>
+            <CategoryNavContainer/>
+          </div>
           <div className='category-header'>
             <h1>{category.name}</h1>
             <h2>{category.description}</h2>

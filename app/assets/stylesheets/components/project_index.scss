@@ -1,7 +1,14 @@
 .category-links-container{
   background-color: white;
   // border-top: 0.1rem solid #E8E8E8;
+  // border-bottom: 0.1rem solid #E8E8E8;
+  margin: auto;
+  width: 1360px;
+}
+
+.category-links-container-top, .category-links-container-bottom, .nav-bar-container{
   border-bottom: 0.1rem solid #E8E8E8;
+  width: auto;
 }
 
 .category-links-container-bottom{
@@ -59,15 +66,19 @@
 
 .projects-header-container{
   background-color: white;
+  margin: auto;
+
+  width: 1360px;
 }
 
 .projects-header{
   display: flex;
   padding-left: 60px;
-  padding-right: 60px;
+  // padding-right: 60px;
   margin: auto;
 
-  width: 1300px;
+  // width: 1360px;
+  
 }
 
 

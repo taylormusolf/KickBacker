@@ -19,7 +19,7 @@ import DiscoverNavContainer from './discover/discover_nav'
 const App = () => (
   <div className='big-div'>
     <Modal />
-    <header>
+    <header className='nav-bar-container'>
       <nav className='nav-bar'>
         <div className= 'nav-box'>
           <h2 className='nav-item'><DiscoverNavContainer/></h2>

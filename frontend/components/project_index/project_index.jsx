@@ -33,7 +33,9 @@ class ProjectIndex extends React.Component {
     if (!projects || !project) return null;
       return (
         <div >
-          <CategoryNavContainer/>
+          <div className='category-links-container-top'>
+            <CategoryNavContainer/>
+          </div>
           <div className='projects-header-container'>
             <div className='projects-header'>
               <div id='featured-project'>
