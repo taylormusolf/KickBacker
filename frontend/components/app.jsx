@@ -14,7 +14,7 @@ import UserBackedShowContainer from "./backed_show/user_backed_show_container"
 import SearchPageContainer from './search/search_page_container';
 import CategoryContainer from './category/category_container'
 import CategoryNavContainer from './category/category_nav_container'
-
+import DiscoverNavContainer from './discover/discover_nav'
 
 const App = () => (
   <div className='big-div'>
@@ -22,7 +22,7 @@ const App = () => (
     <header>
       <nav className='nav-bar'>
         <div className= 'nav-box'>
-          <h2 className='nav-item'><a href="">Discover</a></h2>
+          <h2 className='nav-item'><DiscoverNavContainer/></h2>
           <Link to="/projects/new" className="nav-item"><h2>Start a Project</h2></Link>
         </div>
         <Link to="/" className="nav-header"><h1>KICKBACKER</h1></Link>

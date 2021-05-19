@@ -1,0 +1,55 @@
+.modal-background-discover {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  
+}
+
+.modal-child-discover {
+  background-color: white;
+  position: relative;
+  top: 670px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: scroll;
+}
+
+.discover-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+.discover-box{
+  margin: 10px 0px;
+  width: 1246px;
+  padding: 24px 0px 120px;
+  ul{
+    padding: 18px 18px 0px 0px;
+    margin: 0px 0px 24px;
+  }
+  ul li{
+    font-size: 34px;
+    color: #282828;
+  }
+  ul li:hover{
+    color: #007460;
+  }
+}
+
+.discover-heading{
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 12px 0px;
+  color: #037362;
+  border-bottom: 0.1rem solid #E8E8E8;
+  
+}
+
+.discover-close:hover{
+  cursor: pointer;
+}
