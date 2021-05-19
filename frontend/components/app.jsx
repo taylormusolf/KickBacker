@@ -15,6 +15,7 @@ import SearchPageContainer from './search/search_page_container';
 import CategoryContainer from './category/category_container'
 import CategoryNavContainer from './category/category_nav_container'
 import DiscoverNavContainer from './discover/discover_nav'
+import RewardPageContainer from './reward/reward_page_container'
 
 const App = () => (
   <div className='big-div'>
@@ -41,6 +42,7 @@ const App = () => (
           <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
           <Route exact path="/projects/search/:query" component={SearchPageContainer} />
           <Route exact path="/projects/category/:categoryId" component={CategoryContainer} />
+          <ProtectedRoute exact path="/projects/:projectId/rewards" component={RewardPageContainer} />
           <ProtectedRoute exact path="/projects/:projectId/edit" component={EditProjectFormContainer} />
           <ProtectedRoute exact path="/users/:userId" component={UserBackedShowContainer} />
           <Route exact path="/"component={ProjectIndexContainer}/>

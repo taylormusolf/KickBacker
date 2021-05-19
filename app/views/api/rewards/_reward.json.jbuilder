@@ -1,1 +1,1 @@
-json.extract! reward, :id, :name, :description, :cost
+json.extract! reward, :id, :title, :description, :cost, :project_id

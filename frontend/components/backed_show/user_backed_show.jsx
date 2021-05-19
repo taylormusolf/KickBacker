@@ -8,32 +8,6 @@ class UserBackedShow extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  componentDidMount() {
-    // console.log(this.state)
-    // this.props.fetchProjects();
-    // this.props.fetchBackings();
-    // console.log(this.state)
-  }
-  
-  // handleCreator(){
-    
-  //   if(this.props.session === this.props.project.creator.id){
-  //     return (
-  //       <section className='show-edit-links'>
-  //         <span><Link to={`/projects/${this.props.project.id}/edit`}>Edit</Link></span>
-  //         <br/>
-  //         <span><button onClick={this.handleDelete}>Delete</button></span>
-  //       </section>
-  //     )
-        
-  //   }else {
-  //     return (
-  //       null
-  //     )
-    
-  //   }
-  // }
-
   handleDeleteBacking(backingId) {
     this.props.deleteBacking(backingId)
     .then((action) => window.location.reload())
@@ -93,6 +67,7 @@ class UserBackedShow extends React.Component {
             </ul>
           <li className='backed-amount'>${fundingTotal(project)}.00</li>
           <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/edit`}>Edit </Link></div></li>
+          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/rewards`}>Edit </Link></div></li>
           <li><button className='backed-reward-delete' onClick={()=>this.handleDelete(project.id)}>Delete</button></li>
           </ul>
             
@@ -151,6 +126,7 @@ class UserBackedShow extends React.Component {
             <h4 className='backed-projects-heading-1'>Projects I created</h4>
             <h4 className='backed-projects-heading-2'>Total funded</h4>
             <h4 className='backed-projects-heading-5'>Edit Project</h4>
+            <h4 className='backed-projects-heading-5'>Edit Rewards</h4>
             <h4 className='backed-projects-heading-4'>Delete Project</h4>
           </ul>
           <ul className='backed-project-line'>

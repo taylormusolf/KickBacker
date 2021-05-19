@@ -8,7 +8,8 @@ const mSTP = (state) => ({
     description: '',
     project_id: '',
     cost: ''
-  }
+  },
+  formType: 'Create Reward'
 });
 
 const mDTP = dispatch => ({

@@ -150,8 +150,9 @@ class ProjectShow extends React.Component {
       return (
         <section className='show-edit-links'>
           <p>Creator Controls:</p>
-          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/edit`}>Edit </Link></div></span>
-          <span><button className='backed-project-delete' onClick={this.handleDelete}>Delete</button></span>
+          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/edit`}>Edit Project </Link></div></span>
+          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/rewards`}>Add/Edit Rewards </Link></div></span>
+          <span><button className='backed-project-delete' onClick={this.handleDelete}>Delete Project</button></span>
         </section>
       )
         
