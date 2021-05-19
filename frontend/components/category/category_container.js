@@ -7,15 +7,13 @@ import {fetchCategories, fetchCategory} from '../../actions/category_actions'
 const mapStateToProps = (state, ownProps) => {
   return{
       projects: state.entities.projects,
-      categories: state.entities.categories,
-      category: ownProps.match.params.categoryName
+      category: state.entities.categories[ownProps.match.params.categoryId]
     }
   
 }
 
 const mapDispatchToProps = dispatch => ({
   fetchProjects: () => dispatch(fetchProjects()),
-  fetchCategories: () => dispatch(fetchCategories()),
   fetchCategory: (categoryId) => dispatch(fetchCategory(categoryId))
 });
 

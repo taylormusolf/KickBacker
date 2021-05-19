@@ -13,24 +13,7 @@ import EditProjectFormContainer from "./project_form/project_edit_container";
 import UserBackedShowContainer from "./backed_show/user_backed_show_container"
 import SearchPageContainer from './search/search_page_container';
 import CategoryContainer from './category/category_container'
-
-const categories = () =>{
-  return(
-    <div className='category-links-container-bottom'>
-        <ul className='category-links'>
-        <li><a href="">Arts</a></li>
-        <li><a href="">Comics & Illustration</a></li>
-        <li><a href="">Design & Tech</a></li>
-        <li><a href="">Film</a></li>
-        <li><a href="">Food & Craft</a></li>
-        <li><a href="">Games</a></li>
-        <li><a href="">Music</a></li>
-        <li><a href="">Publishing</a></li>
-      </ul>
-    </div>
-    
-  )
-}
+import CategoryNavContainer from './category/category_nav_container'
 
 
 const App = () => (
@@ -57,14 +40,14 @@ const App = () => (
           <ProtectedRoute exact path="/projects/new" component={ProjectFormContainer} />
           <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
           <Route exact path="/projects/search/:query" component={SearchPageContainer} />
-          <Route exact path="/projects/category/:categoryName" component={CategoryContainer} />
+          <Route exact path="/projects/category/:categoryId" component={CategoryContainer} />
           <ProtectedRoute exact path="/projects/:projectId/edit" component={EditProjectFormContainer} />
           <ProtectedRoute exact path="/users/:userId" component={UserBackedShowContainer} />
           <Route exact path="/"component={ProjectIndexContainer}/>
           <Redirect to="/"/>
         </Switch>
       </div>
-      {categories()}
+      <div className='category-links-container-bottom'><CategoryNavContainer/></div>
       <footer>
        <nav className='footer-page'>
           <div className='footer-box'> 

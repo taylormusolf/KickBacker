@@ -2,7 +2,7 @@ import React from 'react';
 import ProjectIndexItem from '../project_index/project_index_item';
 import ProjectFeaturedItem from '../project_index/project_featured_item'
 import ProjectPages from '../project_index/project_pages'
-import { Link } from 'react-router-dom';
+import CategoryNavContainer from './category_nav_container'
 
 class CategoryPage extends React.Component {
   constructor(props){
@@ -12,25 +12,7 @@ class CategoryPage extends React.Component {
   }
   componentDidMount() {
     this.props.fetchProjects();
-    this.props.fetchCategories();
-  }
-
-  categories(){
-    return(
-      <div className='category-links-container'>
-        <ul className='category-links'>
-          <li><Link to='/projects/category/Arts'>Arts</Link></li>
-          <li><a href="">Comics & Illustration</a></li>
-          <li><a href="">Design & Tech</a></li>
-          <li><a href="">Film</a></li>
-          <li><a href="">Food & Craft</a></li>
-          <li><a href="">Games</a></li>
-          <li><a href="">Music</a></li>
-          <li><Link to='/projects/category/Publishing'>Publishing</Link></li>
-        </ul>
-      </div>
-      
-    )
+    this.props.fetchCategory(this.props.match.params.categoryId);
   }
 
 
@@ -39,14 +21,14 @@ class CategoryPage extends React.Component {
   }
 
   render() {
-    // if (!projects) return null;
     const { projects, category} = this.props;
+    if (!category) return null;
     const array = Object.values(projects);
     
     const filtered = (array) =>{
       let filteredArray = [];
       array.forEach((project) =>{
-        if(project.category.name === category){
+        if(project.category.name === category.name){
           filteredArray.push(project);
         }
       });
@@ -68,10 +50,10 @@ class CategoryPage extends React.Component {
     
       return (
         <div className='category-page-container'>
-          {this.categories()}
+          <CategoryNavContainer/>
           <div className='category-header'>
-            <h1>{category}</h1>
-            <h2>Category description</h2>
+            <h1>{category.name}</h1>
+            <h2>{category.description}</h2>
           </div>
           <div className='projects-header-container'>
             <div className='projects-header'>

@@ -1,7 +1,8 @@
 import React from 'react';
 import ProjectIndexItem from './project_index_item';
-import ProjectFeaturedItem from './project_featured_item'
-import ProjectPages from './project_pages'
+import ProjectFeaturedItem from './project_featured_item';
+import ProjectPages from './project_pages';
+import CategoryNavContainer from '../category/category_nav_container';
 
 class ProjectIndex extends React.Component {
   constructor(props){
@@ -12,26 +13,6 @@ class ProjectIndex extends React.Component {
   componentDidMount() {
     this.props.fetchProjects();
   }
-
-  categories(){
-    return(
-      <div className='category-links-container'>
-          <ul className='category-links'>
-          <li><a href="">Arts</a></li>
-          <li><a href="">Comics & Illustration</a></li>
-          <li><a href="">Design & Tech</a></li>
-          <li><a href="">Film</a></li>
-          <li><a href="">Food & Craft</a></li>
-          <li><a href="">Games</a></li>
-          <li><a href="">Music</a></li>
-          <li><a href="">Publishing</a></li>
-        </ul>
-      </div>
-      
-    )
-  }
-
-
   selectPage(num) {
     this.setState({currentPage: num});
   }
@@ -52,7 +33,7 @@ class ProjectIndex extends React.Component {
     if (!projects || !project) return null;
       return (
         <div >
-          {this.categories()}
+          <CategoryNavContainer/>
           <div className='projects-header-container'>
             <div className='projects-header'>
               <div id='featured-project'>

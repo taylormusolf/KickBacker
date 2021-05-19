@@ -30,7 +30,7 @@ user5 = User.create!(username:'WorldsTiniest', email: 'WorldsTiniest@WorldsTinie
 user6 = User.create!(username:'Gamma Jacket', email: 'GammaJacket@GammaJacket.com', password: '123456', bio: 'GAMMA by Wear Graphene. Support us today!')
 user7 = User.create!(username:'Aswad Aarif', email: 'Aswad@Aarif.com', password: '123456', bio: 'My name is Aswad and I am an artist, maker, writer and restorative justice practitioner from Oakland Ca.')
 user8 = User.create!(username:'Kim', email: 'kimmy@kimmy.com', password: '123456', bio: 'Just a crazy pet lady with big dreams to help others')
-user9 = User.create!(username:'D-CELL GAMES', email: 'buddy@D-CELL GAMES.com', password: '123456', bio: 'We make game (singular). Help support our upcoming rhythm-adventure game, UNBEATABLE! unbeatablegame.com/kickstarter')
+user9 = User.create!(username:'D-CELL GAMES', email: 'buddy@D-CELL GAMES.com', password: '123456', bio: 'We make game (singular). Help support our upcoming rhythm-adventure game, UNBEATABLE! unbeatablegame.com/kickbacker')
 user10 = User.create!(username:'Project SOAPBOTTLE', email: 'soapy@ProjectSOAPBOTTLE.com', password: '123456', bio: 'Jonna Breitenhuber created and developed the concept SOAPBOTTLE during her master studies. Through her work as a packaging designer for cosmetic products, she was frustrated that there is hardly any sustainable packaging for liquid personal care products.')
 user11 = User.create!(username:'Chris Lin', email: 'chris@greensalt.com', password: '123456', bio: 'Co-founder of Green Salt, a healthy salt alternative made from Salicornia and Founder at AMOR Handmade, a collaboration that empowers women through artisan dog collars. Based in Los Angeles and Ensenada, Mexico.')
 user12 = User.create!(username:'Unbound', email: 'unbound@unbound.com', password: '123456', bio: 'Hi, were Unbound, the crowdfunding publisher. We bring writers and readers closer together. Authors pitch their ideas, we choose the best ones and if enough people pledge, we turn them into great books.')
@@ -45,14 +45,14 @@ user20 = User.create!(username:'Susan Joyce', email: 'susan@joyce.com', password
 user21 = User.create!(username:'Vacas Creamery', email: 'susan@vacas.com', password: '123456', bio: 'We are Chicago\'s first all-vegan ice cream shop!')
 user22 = User.create!(username:'Arvis Games Inc.', email: 'meric@arvis.com', password: '123456', bio: 'Arvis Games Inc. A passionate gaming company to bring innovative magical experiences.')
 
-category1 = Category.create!(name: "Arts", description: "Discover the artists and organizations using Kickstarter to realize ambitious projects in visual art and performance.");
-category2 = Category.create!(name: "Comics & Illustration", description:"Explore fantastical worlds and original characters from Kickstarter’s community of comics creators and illustrators.");
+category1 = Category.create!(name: "Arts", description: "Discover the artists and organizations using Kickbacker to realize ambitious projects in visual art and performance.");
+category2 = Category.create!(name: "Comics & Illustration", description:"Explore fantastical worlds and original characters from Kickbacker’s community of comics creators and illustrators.");
 category3 = Category.create!(name: "Design & Tech", description:"From fine design to innovative tech, discover projects from creators working to build a more beautiful future.");
 category4 = Category.create!(name: "Film", description:"Join forces with the intrepid filmmakers and festival creators changing the way stories get told on screen.");
-category5 = Category.create!(name: "Food & Craft", description:"See how artisans and entrepreneurs are using Kickstarter to break new ground in food, fashion, and crafts.");
+category5 = Category.create!(name: "Food & Craft", description:"See how artisans and entrepreneurs are using Kickbacker to break new ground in food, fashion, and crafts.");
 category6 = Category.create!(name: "Games", description:"From tabletop adventures to beloved revivals, discover the projects forging the future of gameplay.");
-category7 = Category.create!(name: "Music", description:"Discover new albums, performances, and independent venues from creators using Kickstarter to shape the future of sound.");
-category8 = Category.create!(name: "Publishing", description:"Explore how writers and publishers are using Kickstarter to bring new literature, periodicals, podcasts, and more to life.");
+category7 = Category.create!(name: "Music", description:"Discover new albums, performances, and independent venues from creators using Kickbacker to shape the future of sound.");
+category8 = Category.create!(name: "Publishing", description:"Explore how writers and publishers are using Kickbacker to bring new literature, periodicals, podcasts, and more to life.");
 
 
 
@@ -75,12 +75,12 @@ project2 = Project.create!(title: "ForeverPen",
     description: "Ever needed a pen and couldn’t find one? This one sits on your keys and never needs refilling - No ink, no waste!",
     campaign: "We’re extremely passionate about minimising our everyday carry and committed to doing everything we can to make the ForeverPen a reality.
 
-    Ensuring we complete production on time is one of the key goals to successfully running a Kickstarter, so we’ve ensured we have a number of large suppliers and manufacturers who are ready for any number of pens you pledge for.",
+    Ensuring we complete production on time is one of the key goals to successfully running a Kickbacker, so we’ve ensured we have a number of large suppliers and manufacturers who are ready for any number of pens you pledge for.",
     updates: "Thank you for backing our ForeverPen project!
 
     We want to give a huge shoutout to the first 100 of you that have supported us in hitting and surpassing our goal in just short of 60 minutes!
     
-    We LOVE the Kickstarter community and we can’t wait to bring you the most amazing pen that'll last a lifetime!",
+    We LOVE the Kickbacker community and we can’t wait to bring you the most amazing pen that'll last a lifetime!",
     faq: "", 
     location: "Manchester, UK", 
     start_date: Date.new(2021,3,30),
@@ -153,9 +153,9 @@ project5.photo.attach(io: file5, filename: "#{project5.id}.jpg")
 
 project6 = Project.create!(title: "UNBEATABLE - A game where music is illegal and you do crimes",
     description: "An anime-juiced rhythm adventure with a heavy focus on music and Emotions.",
-    campaign: "As a big thank you, all backers will get exclusive customizable profile elements (a flashy animated title, avatar, and background) for the leaderboards and community features! Honestly I think FOMO is kind of a toxic concept and I don't want people to feel bad for not being in on the ground floor, but you really only will get these extremely non-important but Very Cool things if you back on Kickstarter. Those are the rules, and I apologize for enforcing them.",
+    campaign: "As a big thank you, all backers will get exclusive customizable profile elements (a flashy animated title, avatar, and background) for the leaderboards and community features! Honestly I think FOMO is kind of a toxic concept and I don't want people to feel bad for not being in on the ground floor, but you really only will get these extremely non-important but Very Cool things if you back on Kickbacker. Those are the rules, and I apologize for enforcing them.",
     updates: "BEFORE WE GO FURTHER: Yes, White Label Episode 1 is late, and yes, it's coming very soon! BUT ALSO, from now till the release on Saturday (bug...fixes) we'll have this",
-    faq: "Q: What is Unbeatable[white lable] A: It's a standalone episodic side-story game set in the UNBEATABLE universe. We'll be regularly updating it throughout the Kickstarter (and afterwards!) and on its completion it will be a complete game roughly the length of a full episode of UNBEATABLE. Episode 1 drops on April 10th!", 
+    faq: "Q: What is Unbeatable[white lable] A: It's a standalone episodic side-story game set in the UNBEATABLE universe. We'll be regularly updating it throughout the Kickbacker (and afterwards!) and on its completion it will be a complete game roughly the length of a full episode of UNBEATABLE. Episode 1 drops on April 10th!", 
     location: "Centreville, VA", 
     start_date: Date.new(2021,6,22),
     end_date: Date.new(2021,8,22), 
@@ -228,7 +228,7 @@ project9.photo.attach(io: file9, filename: "#{project9.id}.gif")
 
 project10 = Project.create!(title: "Third Editions: the Anime Library - JoJo's Bizarre Adventure",
     description: "We are back with a new and exciting project, dedicated to the translation of our French essay about the JoJo's Bizarre Adventure manga.",
-    campaign: "This is our seventh Kickstarter campaign, and that in itself is a testament to our experience. We have delivered all the rewards from our first campaigns and we have learned a lot in the process.
+    campaign: "This is our seventh Kickbacker campaign, and that in itself is a testament to our experience. We have delivered all the rewards from our first campaigns and we have learned a lot in the process.
 
     Our book-publishing house is located in France, so we have a strong grasp of the production chain here. With new territories, come new risks, but we're more prepared than ever to face them.",
     updates: "",
@@ -246,7 +246,7 @@ project10.photo.attach(io: file10, filename: "#{project10.id}.jpg")
 
 project11 = Project.create!(title: "NIMBLE | Salon Quality Nails From The Comfort of Your Home.",
     description: "Nimble utilizes pioneering technology to perfectly paint and completely dry your nails in a fraction of the time.",
-    campaign: "We’ve been developing Nimble for over 4 years. Our device has successfully completed the prototypes, molding, pilot production process and over a year of beta testing with a diverse group of beta testers. We are completely confident that Nimble is now ready for mass production. With our current production capabilities, we should be able to produce the units sold on Kickstarter within 5 - 6 months after the campaign ends. However, we are well aware there’s always room for improvement, that is why we are still constantly receiving feedback from our testers, improving the product and adding more features to it as we go!",
+    campaign: "We’ve been developing Nimble for over 4 years. Our device has successfully completed the prototypes, molding, pilot production process and over a year of beta testing with a diverse group of beta testers. We are completely confident that Nimble is now ready for mass production. With our current production capabilities, we should be able to produce the units sold on Kickbacker within 5 - 6 months after the campaign ends. However, we are well aware there’s always room for improvement, that is why we are still constantly receiving feedback from our testers, improving the product and adding more features to it as we go!",
     updates: "",
     faq: "", 
     location: "New York, NY", 
@@ -286,7 +286,7 @@ project12.photo.attach(io: file12, filename: "#{project12.id}.jpg")
 
 project13 = Project.create!(title: "Counting, Colors & Cthulhu Hardcover Board Book",
     description: "Rhyming Lovecraftian board book teaching numbers, colors and the mythos, from makers of C is for Cthulhu & Sweet Dreams Cthulhu!",
-    campaign: "This is the 9th Kickstarter campaign by the C is for Cthulhu team and the 21th campaign run by ComixTribe publisher Tyler James. While every campaign has its own unique challenges, we've taken several steps to mitigate the risks for this project.",
+    campaign: "This is the 9th Kickbacker campaign by the C is for Cthulhu team and the 21th campaign run by ComixTribe publisher Tyler James. While every campaign has its own unique challenges, we've taken several steps to mitigate the risks for this project.",
     updates: "Okay, we're doing it!
 
     One of the most popular products we've ever produced has been sold out for a while... but we're bringing back a small production run for those of you who missed it!
@@ -398,7 +398,7 @@ project18.photo.attach(io: file18, filename: "#{project18.id}.jpeg")
 project19 = Project.create!(title: "Cardlax EarBuds Washer - Automatic Cleaning Tool for TWS",
     description: "A whole new cleaning solution for your wireless stereo. It turns them nice and clean in minutes.",
     campaign: "At this stage, we’re ready to go into production as our materials are sourced and we have confirmed the schedule with our reliable manufacturer. However, our solid plan might still meet with some unexpected problems that can possibly cause a delay, and the unpredictable coronavirus situation can also put a risk in our production timeline. If anything comes up, we will make sure of transparent communication with our backers to keep all of you informed and find out viable solutions as soon as we can. Feel free to talk to us about your concerns any time you want.",
-    updates: "We are excited to annoy, we reached our target goal in just XX minutes. Thank you all so much for an amazing support! We are all very happy to see so many backers and your enthusiasm to our campaign, and to Kickstarter.",
+    updates: "We are excited to annoy, we reached our target goal in just XX minutes. Thank you all so much for an amazing support! We are all very happy to see so many backers and your enthusiasm to our campaign, and to Kickbacker.",
     faq: "", 
     location: "Dover, DE", 
     start_date: Date.new(2021,4,3),
@@ -466,7 +466,7 @@ reward4 = Reward.create!(
     title: "1 x Early Bird Gamma Jacket", 
     description: "1 x Gamma Graphene Heated Jacket
 
-    41% OFF retail prices in any size of your choice only for Early Bird Kickstarter supporters.
+    41% OFF retail prices in any size of your choice only for Early Bird Kickbacker supporters.
     
     Future Retail Price: $500
     Pre-order Now and Save $205 on MSRP
@@ -479,7 +479,7 @@ reward4 = Reward.create!(
     title: "1 x Gamma Jacket ", 
     description: "1 x Gamma Graphene Heated Jacket 
 
-    Missed our Early Bird pledges? Don't worry about it - our Kickstarter supporters still get 35% OFF retail prices in any size of your choice!
+    Missed our Early Bird pledges? Don't worry about it - our Kickbacker supporters still get 35% OFF retail prices in any size of your choice!
     
     Future Retail Price: $500
     Pre-order Now and Save $175 on MSRP
