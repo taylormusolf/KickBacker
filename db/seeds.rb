@@ -491,7 +491,7 @@ project24 = Project.create!(title: "Play Everyday Magazine",
     start_date: Date.new(2021,6,6),
     end_date: Date.new(2021,7,6), 
     funding_goal: 111111,
-    creator_id: user21.id,
+    creator_id: user1.id,
     category_id: category8.id
 )
 
@@ -523,7 +523,7 @@ project26 = Project.create!(title: "String and Shadow Puppet Theater: Fauna Fant
     start_date: Date.new(2021,6,6),
     end_date: Date.new(2021,8,6), 
     funding_goal: 9000,
-    creator_id: user24.id,
+    creator_id: user3.id,
     category_id: category1.id
 )
 
@@ -557,7 +557,7 @@ project28 = Project.create!(title: "FOREST FOLK - All Ages Book of Quirky Animal
     start_date: Date.new(2021,6,6),
     end_date: Date.new(2021,10,6), 
     funding_goal: 17000,
-    creator_id: user15.id,
+    creator_id: user4.id,
     category_id: category2.id
 )
 
@@ -593,7 +593,7 @@ project30 = Project.create!(title: "NORTHERN SHADE",
     start_date: Date.new(2021,4,6),
     end_date: Date.new(2021,5,6), 
     funding_goal: 20000,
-    creator_id: user5.id,
+    creator_id: user7.id,
     category_id: category4.id
 )
 
@@ -609,7 +609,7 @@ project31 = Project.create!(title: "CIECO - An Animated horror film",
     start_date: Date.new(2021,4,6),
     end_date: Date.new(2021,7,6), 
     funding_goal: 42000,
-    creator_id: user10.id,
+    creator_id: user8.id,
     category_id: category4.id
 )
 
@@ -675,7 +675,7 @@ project34 = Project.create!(title: "Alex Soto, Nuevo Álbum",
     start_date: Date.new(2021,5,20),
     end_date: Date.new(2021,9,20), 
     funding_goal: 6000,
-    creator_id: user22.id,
+    creator_id: user11.id,
     category_id: category7.id
 )
 
@@ -709,7 +709,7 @@ project36 = Project.create!(title: "MC Lars - Blockchain Planet",
     start_date: Date.new(2021,1,20),
     end_date: Date.new(2021,5,20), 
     funding_goal: 5000,
-    creator_id: user9.id,
+    creator_id: user14.id,
     category_id: category7.id
 )
 
@@ -1055,7 +1055,7 @@ reward32 = Reward.create!(
             end
         end
         backer = backers.sample
-        amount = rand(100..5000)
+        amount = rand(100..100000)
         if !backings[project.id].include?(backer.id) && project.creator_id != backer.id
             Backing.create!(amount_pledged: amount, backer_id: backer.id, project_id: project.id)
         end

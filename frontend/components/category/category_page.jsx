@@ -75,12 +75,12 @@ class CategoryPage extends React.Component {
                   />
                   ))}
                </div>
-               <div className='page-num-container'>
+               {/* <div className='page-num-container'>
                  <ProjectPages
                     selectedPage={this.state.currentPage}
                     onPageChosen={this.selectPage}
                   />
-               </div>
+               </div> */}
 
               </ul>
             </div>

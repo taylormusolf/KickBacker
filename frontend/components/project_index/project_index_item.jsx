@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 
 const ProjectIndexItem = props => {
   const funding = (project) =>{
+    let sum = 0;
     if(project.backings){
-      let sum = 0;
       Object.values(project.backings).forEach((backing) =>{
       sum += backing.amount_pledged
       })
-      return sum;
     }
-    
+    return sum;
   }
   if(!props.project) return null;
   return(
