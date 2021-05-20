@@ -22,7 +22,7 @@ class CategoryPage extends React.Component {
 
   render() {
     const { projects, category} = this.props;
-    if (!category) return null;
+    if (!category || !projects) return null;
     const array = Object.values(projects);
     
     const filtered = (array) =>{

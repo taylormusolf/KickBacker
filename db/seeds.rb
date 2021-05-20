@@ -44,6 +44,9 @@ user19 = User.create!(username:'Zero Cool Films', email: 'r@ZeroCoolFilms.com', 
 user20 = User.create!(username:'Susan Joyce', email: 'susan@joyce.com', password: '123456', bio: 'I have combined a career in magazine publishing with a love of writing about life on Maggies Farm with dogs, cats, goats and chickens. Billys story was the first to unfold as a childrens book, however there has been some grumbling among the other animals, so they might have their own books someday.')
 user21 = User.create!(username:'Vacas Creamery', email: 'susan@vacas.com', password: '123456', bio: 'We are Chicago\'s first all-vegan ice cream shop!')
 user22 = User.create!(username:'Arvis Games Inc.', email: 'meric@arvis.com', password: '123456', bio: 'Arvis Games Inc. A passionate gaming company to bring innovative magical experiences.')
+user23 = User.create!(username:'Nasir Campbell', email: 'nasir@gmail.com', password: '123456', bio: 'Nasir Campbell is a native of Brooklyn, New York where he received his formal dance training under the mentorship of Joe Antony Cavise, and Jamel Gaines. He is the youngest of five children. Nasir began dancing at a tender age of 3 in his father’s church. He is a graduate from Dr. Susan S McKinney Secondary School of the Arts and is graduate of the University of the Arts in Philadelphia, under the direction of Donna Faye Burchfield where he worked with choreographers such as Thurman Katie Swords, Sidra Bell, Juel D. Lane, Paz, Maria Jimena, Douglas Becker, Sheridan Michael, and Gary W. Jeter II.')
+user24 = User.create!(username:'Gordon Griffin', email: 'gordygriff@gmail.com', password: '123456', bio: 'I come from a family of artists. Photography, Art and Design is in my blood. Originally from England, I have been lucky enough to travel the world and see things that I wouldn not remember if it had not been for a trusty camera by my side. Photography is not just about taking a photo. It goes beyond that! Many would say that the hard work begins in the editing room afterwards. Take a beef patty for instance! Its not a BURGER till you ad a bun, lettuce, tomato and cheese right? For me, photography is the same. By using the right ingredients at the right time the outcome will be amazing!')
+user25 = User.create!(username:'Kimberly Mesa', email: 'kimm@gmail.com', password: '123456', bio: "I'm a 24 year old entrepreneur.")
 
 category1 = Category.create!(name: "Arts", description: "Discover the artists and organizations using Kickbacker to realize ambitious projects in visual art and performance.");
 category2 = Category.create!(name: "Comics & Illustration", description:"Explore fantastical worlds and original characters from Kickbacker’s community of comics creators and illustrators.");
@@ -427,6 +430,310 @@ project20 = Project.create!(title: "GripBeats: Turn Your Hands Into A Musical In
 file20 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/gripbeats.png")
 project20.photo.attach(io: file20, filename: "#{project20.id}.png")
 
+project21 = Project.create!(title: "Maliek Dance Theater Building Funds",
+    description: "Help Secure Maliek Dance Theater Future",
+    campaign: "I am Nasir Campbell the owner & artistic director of the Maliek Dance Theater LLC, located in Brooklyn, New York. Our mission is to encourage all students that Fear Is False & you can do anything you set your mind to. Also, we are committed to encouraging all dancers to strive for excellence and enjoy the journey along the way. We want to give students an enriching and inspiring course that will educate and benefit the mind, body and soul.",
+    updates: "",
+    faq: "", 
+    location: "Brooklyn, NY", 
+    start_date: Date.new(2021,5,6),
+    end_date: Date.new(2021,6,6), 
+    funding_goal: 3600,
+    creator_id: user23.id,
+    category_id: category1.id
+)
+
+file21 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/maliek_dance.jpg")
+project21.photo.attach(io: file21, filename: "#{project21.id}.jpg")
+
+project22 = Project.create!(title: "Posture Tee | Perfect Your Posture Comfortably & Fashionably",
+    description: "A subtle fashionable wearable tee that can teach & remind the body to move and keep a proper position.",
+    campaign: "Posture Reminder Zipper T-Shirt is a project that Cristiano and Mohsen started developing more than 2 years ago.
+
+    The idea started with Mohsen's bad posture which was a direct result of gaming and working with computers for more than 8 hours a day for 20+ years, overusing some muscles and underusing some other muscles led to his bad posture. ",
+    updates: "",
+    faq: "", 
+    location: "Los Angeles, CA", 
+    start_date: Date.new(2021,6,6),
+    end_date: Date.new(2021,7,6), 
+    funding_goal: 5000,
+    creator_id: user23.id,
+    category_id: category3.id
+)
+
+file22 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/posture_tee.jpg")
+project22.photo.attach(io: file22, filename: "#{project22.id}.jpg")
+
+project23 = Project.create!(title: "Kimberly's Cupcakes (Sugar Bloom Cakery) Expansion Project",
+    description: "We need your help to design and build a larger, more equipped bakery space, to accommodate the growth we've received over the years.",
+    campaign: "I'm Kimberly, the owner and founder of Sugar Bloom Cakery & Coffee. I started baking at the age of 15 and really became passionate about it. My dedication for baking grew so much that after college it was a no brainer to continue practicing my craft. Being self taught and growing my business in the last 2 years makes this an even more exciting time for my business because I have worked so hard for this moment.",
+    updates: "",
+    faq: "", 
+    location: "Redlands, CA", 
+    start_date: Date.new(2021,6,6),
+    end_date: Date.new(2021,7,6), 
+    funding_goal: 20000,
+    creator_id: user25.id,
+    category_id: category5.id
+)
+
+file23 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/kimberly.jpg")
+project23.photo.attach(io: file23, filename: "#{project23.id}.jpg")
+
+project24 = Project.create!(title: "Play Everyday Magazine",
+    description: "Recreational Sports Medicine Journalism",
+    campaign: "Our Magazine, Events, Podcast and Future Netflix Series are All Invitations to Come Back to Your Own Body.
+    We took Our Experience in Sports Medicine, Yoga, Athletic Training, Bodywork and Group Fitness to Create Mixed Yoga Arts, PE's Own Movement, Mobility and Nutritional Methodology.
+    MYA is a Sacred, Athletic, Somatic, Personal and Communal Experience that Honors the True Roots of Yoga; Inner Freedom and Knowing.",
+    updates: "",
+    faq: "", 
+    location: "San Diego, CA", 
+    start_date: Date.new(2021,6,6),
+    end_date: Date.new(2021,7,6), 
+    funding_goal: 111111,
+    creator_id: user21.id,
+    category_id: category8.id
+)
+
+file24 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/play_everyday.png")
+project24.photo.attach(io: file24, filename: "#{project24.id}.png")
+
+project25 = Project.create!(title: "Gordon Griffin Photography",
+    description: "I would like to set up a photography business concentrating on weddings, head shots and corporate opportunities",
+    campaign: "I have been practicing photography since 2008 and am now ready to start the business of creating memories for life.  I believe that photography isn't just a 'picture' it's a feeling, it's a memory, it's an image that takes you back to a time. Can I go as far as to say its almost like time travel?",
+    updates: "",
+    faq: "", 
+    location: "Red Deer, Canada", 
+    start_date: Date.new(2021,6,6),
+    end_date: Date.new(2021,8,6), 
+    funding_goal: 5000,
+    creator_id: user24.id,
+    category_id: category1.id
+)
+
+file25 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/gordon_photography.jpg")
+project25.photo.attach(io: file25, filename: "#{project25.id}.jpg")
+
+project26 = Project.create!(title: "String and Shadow Puppet Theater: Fauna Fantastique",
+    description: "String and Shadow Puppet Theater is creating a giant puppet pageant with masks, larger-than-life-puppets and live music",
+    campaign: "We make giant puppet shows that combine visual art with live music, dance, and storytelling. This summer, we are working with a live band and a five-person cast to create a giant puppet pageant set to original live music that will be performed outdoors every weekend from July 9th-August 1st at Lions Park in Olympia, Washington.",
+    updates: "",
+    faq: "", 
+    location: "Olympia, WA", 
+    start_date: Date.new(2021,6,6),
+    end_date: Date.new(2021,8,6), 
+    funding_goal: 9000,
+    creator_id: user24.id,
+    category_id: category1.id
+)
+
+file26 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/string_puppet_theater.jpg")
+project26.photo.attach(io: file26, filename: "#{project26.id}.jpg")
+
+project27 = Project.create!(title: "The Walk: ‘The Most Ambitious Public Artwork of Our time’",
+    description: "Help a giant puppet walk 8,000km across 8 countries from the Turkey-Syria border to the UK in support of refugees.",
+    campaign: "The Walk is a once-in-a-generation international festival of art and hope that will bring together hundreds of celebrated artists, major cultural institutions and humanitarian organisations from around the world to create one of the most innovative, adventurous and ambitious public artworks ever attempted.",
+    updates: "",
+    faq: "", 
+    location: "Gaziantep, Turkey", 
+    start_date: Date.new(2021,6,6),
+    end_date: Date.new(2021,9,6), 
+    funding_goal: 42000,
+    creator_id: user19.id,
+    category_id: category1.id
+)
+
+file27 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/the_walk.jpg")
+project27.photo.attach(io: file27, filename: "#{project27.id}.jpg")
+
+project28 = Project.create!(title: "FOREST FOLK - All Ages Book of Quirky Animal Comic Strips",
+    description: "Sunday Funnies crash headlong into Looney Tunes. Whimsically madcap misadventures of a Fox and Elf.",
+    campaign: "Meet Filburt the Fox, a jokester and a know-it-all with a knack for finding trouble. Lucky for Filburt that his best friend is Thomas, a happy-go-lucky elf, who's magic drawing quill can conjure the solution to any of their woes. MOST of the time...
+
+    In this collection of 105 strips, follow the shenanigans of Filburt and Thomas, along with the rest of the peculiar cast, including no-nonsense Barry the Bearista, Grumpy Cat Gus, and nerdy Benni the Bunny. Watch as they deal with playful misunderstandings and wacky hijinks during spirited adventures in the forest they all call home.",
+    updates: "",
+    faq: "", 
+    location: "Toronto, Canada", 
+    start_date: Date.new(2021,6,6),
+    end_date: Date.new(2021,10,6), 
+    funding_goal: 17000,
+    creator_id: user15.id,
+    category_id: category2.id
+)
+
+file28 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/forest_folk.png")
+project28.photo.attach(io: file28, filename: "#{project28.id}.png")
+
+project29 = Project.create!(title: "The Lost Sunday - a fairy tale comic book about burnout",
+    description: "In an enchanted world, the best day of the week is missing. Legend says an evil witch stole it – but Nina is determined to find it!",
+    campaign: "In an enchanted world, the best day of the week is missing. Legend says an evil witch stole it – but Nina is determined to get it back! The Lost Sunday is a comic book about working too much, told through stories and inspiration from old folklore, myths and tales. The project is finished - we are here to ask for your support to print The Lost Sunday in English and Romanian.",
+    updates: "",
+    faq: "", 
+    location: "Cluj-Napoca, Romania", 
+    start_date: Date.new(2021,6,6),
+    end_date: Date.new(2021,10,6), 
+    funding_goal: 8000,
+    creator_id: user2.id,
+    category_id: category2.id
+)
+
+file29 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/lost_sunday.png")
+project29.photo.attach(io: file29, filename: "#{project29.id}.png")
+
+project30 = Project.create!(title: "NORTHERN SHADE",
+    description: "A disenchanted Army vet emerges from isolation when his younger brother is recruited by an extremist militia.",
+    campaign: "NORTHERN SHADE is a neo-noir feature film set in Connecticut during the pandemic. It takes place - and was filmed - during the Covid-19 pandemic.
+
+    Why the hell would you want to do that?!
+    
+    Like post-war noir films of the 1940s, we're highlighting this point in our lives when tensions run high, anxiety and uncertainty is the constant variable, and veterans assimilating to civilian life at home are met with a world they might not recognize.",
+    updates: "A very special thanks to Thimble Island Brewery in Branford, CT, who donated several cases of their finest brews for our movie. Our main character Justin is a bit of a drinker, and it was important to us to feature a local brewery. And since Thimble Island's American Ale is a quintessential Connecticut go-to, it was awesome to have their support. Thank you to Greg Page and the entire Thimble Island team!",
+    faq: "", 
+    location: "New Haven, CT", 
+    start_date: Date.new(2021,4,6),
+    end_date: Date.new(2021,5,6), 
+    funding_goal: 20000,
+    creator_id: user5.id,
+    category_id: category4.id
+)
+
+file30 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/northern_shade.jpg")
+project30.photo.attach(io: file30, filename: "#{project30.id}.jpg")
+
+project31 = Project.create!(title: "CIECO - An Animated horror film",
+    description: "A little fox girl gets lured into the deep nordic woods, Nothing is what it seems to be..",
+    campaign: "Cieco is a 30minute animated horror film in production by a small Animation Studio in Sweden. What happens to creatures that go into the deepest darkest part of the nordic woods and why are they never to be seen again? Why is there an ethereal being encased in stone and how did it come to be? Who can you trust at the end - or are everybody in it for their own gain? Nothing is what it seems to be...",
+    updates:"We have been live for a few hours now and we are already almost at 20%!! Let's keep this tempo going and make sure to share this project around between friends and family!",
+    faq: "Q: How long is it going to be? A: It is going to be 30min + creidt", 
+    location: "Stockholm, Sweden", 
+    start_date: Date.new(2021,4,6),
+    end_date: Date.new(2021,7,6), 
+    funding_goal: 42000,
+    creator_id: user10.id,
+    category_id: category4.id
+)
+
+file31 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/cieco.gif")
+project31.photo.attach(io: file31, filename: "#{project31.id}.gif")
+
+project32 = Project.create!(title: "VALENTINE | A short film",
+    description: "As Corey grows increasingly uncomfortable with his gender identity, he and his girlfriend Mia struggle to redefine their relationship.",
+    campaign: "VALENTINE is a short film about a couple that heads to the Catskills for a romantic getaway. However, over the course of the night, issues surrounding gender & identity threaten to unravel the seams of the relationship.",
+    updates:"WOW!!!! THANK YOU!!!! We can’t believe we’re writing this update right now, but thanks to your overwhelming generosity, love, and support during these first five days, we have successfully met our initial $17,000 Kickbacker goal for VALENTINE!!! Earlier in the year, if you had told us that any of this would be happening, we never would have believed you. Even just a couple of months ago, Beck and I simply couldn’t imagine a world without quarantine, never mind a world where we might be able to raise the budget necessary to make our film. But now, thanks to your help, we have the funds needed to move into production this June, and to do so safely. THANK YOU SO MUCH!!!!",
+    faq: "", 
+    location: "New York, NY", 
+    start_date: Date.new(2021,5,20),
+    end_date: Date.new(2021,8,20), 
+    funding_goal: 17000,
+    creator_id: user11.id,
+    category_id: category4.id
+)
+
+file32 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/valentine.jpg")
+project32.photo.attach(io: file32, filename: "#{project32.id}.jpg")
+
+project33 = Project.create!(title: "Um, Actually - The Game of Nerdy Corrections",
+    description: "Finally! A board game version of CollegeHumor's game show you can play at home!",
+    campaign: "From Gloomhaven to Blood Raven, nerds are passionate about a lot of things… but there's one thing they love above all else, and that is correcting people. 
+
+    CollegeHumor is joining forces with Wiggles 3D to bring you the long-awaited home version of their popular game show, Um, Actually! Featuring 100% new questions never seen on the show before!
+    
+    Um, Actually presents you with statements about the fictional worlds of popular movies, TV shows and books. They all sound right... but listen carefully, because each one has a mistake hidden in it somewhere! It's your job to figure out what's wrong and announce it before anyone else, starting, of course, with the magic phrase: Um, actually... 
+    
+    But even if you know nothing about Sailor Moon or Star Wars, you'll find yourself making wild guesses, stumbling into answers, and having laughs along the way!",
+    updates:"It's day two and we've already got something fun for you!
+
+
+    Every week on Wednesdays we'll be hosting challenges for you to participate in. See, here's the thing: we're making a Community Deck of 60 questions. (You can read all about it on the front page.) And we want you, dear backers, to be the ones who choose what topics go into it. You'll be building it, topic by topic, together.
+    
+    
+    With the weekly challenges, we'll give you two different topics. We're going to put six questions from one of those topics into the Community Deck. It's up to YOU to determine which topic is going to get in. 
+    
+    How? So glad you asked. Simply complete the challenge that corresponds to the topic you want to win. Make sure to use the hashtag when you post on social media (Twitter, Facebook, or Instagram). The topic that gets the most participants will be added to the Community Deck.",
+    faq: "Q: Are the questions reused from the show or are they new questions? A: All of the questions will be brand new. None of them will be repeats of questions used on the show… although they may touch on similar topics, naturally!", 
+    location: "London, Canada", 
+    start_date: Date.new(2021,5,20),
+    end_date: Date.new(2021,8,20), 
+    funding_goal: 25000,
+    creator_id: user20.id,
+    category_id: category6.id
+)
+
+file33 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/um_actually.png")
+project33.photo.attach(io: file33, filename: "#{project33.id}.png")
+
+project34 = Project.create!(title: "Alex Soto, Nuevo Álbum",
+    description: "Ayúdame a producir mi segundo disco. Hagamos música juntos!!",
+    campaign: "Hola a todos!
+
+    Antes que nada quisiera agradecer que estés por acá, gracias por querer apoyar mi carrera ó por interesarte en alguna de las recompensas, quisiera contarte la razón por la que estoy haciendo esta campaña de fondeo.",
+    updates:"A petición popular y porque sí tengo muchas ganas de compartirles trucos de magia para hacer canciones, el nuevo precio del Curso de Composición es de $1,999
+
+    Además esta recompensa incluye los 2 Álbumes (Duro y Dale, y el Nuevo por grabar) Nombre en los agradecimientos y el Kit digital de Wallpeppers",
+    faq: "", 
+    location: "Mexico City, Mexico", 
+    start_date: Date.new(2021,5,20),
+    end_date: Date.new(2021,9,20), 
+    funding_goal: 6000,
+    creator_id: user22.id,
+    category_id: category7.id
+)
+
+file34 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/alex_soto.jpg")
+project34.photo.attach(io: file34, filename: "#{project34.id}.jpg")
+
+project35 = Project.create!(title: "Five Iron Frenzy album Until This Shakes Apart",
+    description: "Help Five Iron Frenzy make a new album",
+    campaign: "If you don't know us, we hail from the land of ice and snow Denver, Colorado. If you do know us, thanks sticking with us for the past 7 years following the release of Engines of a Million Plots. With that project, we reunited after a 9 year hiatus. Having that support through Kickstarter and rocking out with us at our shows has been the highlight of our lives! 
+
+        We now have new dream! Releasing another full length album, Until This Shakes Apart and you can be a part of this effort!",
+    updates:"",
+    faq: "", 
+    location: "Denver, CO", 
+    start_date: Date.new(2021,1,20),
+    end_date: Date.new(2021,3,20), 
+    funding_goal: 60000,
+    creator_id: user3.id,
+    category_id: category7.id
+)
+
+file35 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/five_iron.jpg")
+project35.photo.attach(io: file35, filename: "#{project35.id}.jpg")
+
+project36 = Project.create!(title: "MC Lars - Blockchain Planet",
+    description: "Help MC Lars create an album about fatherhood, the pandemic and late-stage capitalism. His most personal album to date.",
+    campaign: "In 2020, I returned home from another tour with Schäffer the Darklord and the Doubleclicks to a world that had drastically changed.  To everyone's surprise, we were all suddenly locked down in an unprecedented quarantine, while my wife and I had our first son during the COVID19 pandemic.  We worked from home, watching as the country became more divided, hoping things would return to normal.  Meanwhile, I started writing new songs, wondering what kind of life our son would have and imagining what the world would be like after this was all over.  Suddenly, I had an album of personal songs ready that documented the whole experience.",
+    updates:"",
+    faq: "", 
+    location: "Oakland, CA", 
+    start_date: Date.new(2021,1,20),
+    end_date: Date.new(2021,5,20), 
+    funding_goal: 5000,
+    creator_id: user9.id,
+    category_id: category7.id
+)
+
+file36 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/mc_lars.jpg")
+project36.photo.attach(io: file36, filename: "#{project36.id}.jpg")
+
+project37 = Project.create!(title: "Soft Bits In: Tribute to The Flaming Lips",
+    description: "A recreation of 'The Soft Bulletin' by The Flaming Lips using a Nintendo and a Gameboy, pressed to vinyl.",
+    campaign: "'The Soft Bulletin' by The Flaming Lips was named by NME Magazine as 1999's 'Album of the Year' and is considered to this day to be the band's masterpiece record, as well as the release that would define their sound for decades to come.
+
+    This project and the resulting album, 'Soft Bits In', takes the capabilities of retro video game hardware to the limits in order to create a faithful instrumental chiptune arrangement of the entirety of that record. Every track was created using only the sound chips inside of a Nintendo Entertainment System (NES) and a Gameboy (DMG).",
+    updates:"",
+    faq: "", 
+    location: "Philadelphia, PA", 
+    start_date: Date.new(2021,1,20),
+    end_date: Date.new(2021,5,20), 
+    funding_goal: 8000,
+    creator_id: user16.id,
+    category_id: category7.id
+)
+
+file37 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/soft_bits.jpg")
+project37.photo.attach(io: file37, filename: "#{project37.id}.jpg")
+
 
 reward1 = Reward.create!(
     title: "Digital High Five", 
@@ -717,6 +1024,19 @@ reward31 = Reward.create!(
     project_id: project20.id, 
     cost: 199)
 
+reward32 = Reward.create!(
+    title: "The Chanterelle", 
+    description: "Receive a hand printed linocut card, signed by the cast and a screen-printed patch on durable canvas with this year's String and Shadow t-shirt design!",
+    project_id: project26.id, 
+    cost: 25)
+reward32 = Reward.create!(
+    title: "The Elvin Saddle", 
+    description: "Receive one ticket to our summer show in Olympia, Washington & a String and Shadow t-shirt in the size of your choosing! Our shirts were designed and screen-printed by us with a two-tone design of white and gold ink on rust colored 100% cotton Belle & Canvas shirts. Plus a signed card from the cast!
+
+    We will be in touch to figure out which performance date you would like to attend to make sure you are on the list!",
+    project_id: project26.id, 
+    cost: 50)
+
     #randomize and generate backings
     projects = Project.all.to_a
     backers = User.all.to_a
@@ -730,7 +1050,9 @@ reward31 = Reward.create!(
             end
         end
         backings[project.id].each do |backer|
-            Backing.create!(amount_pledged: project.rewards[0].cost, backer_id: backer, reward_id: project.rewards[0].id, project_id: project.id)
+            if project.rewards[0]
+                Backing.create!(amount_pledged: project.rewards[0].cost, backer_id: backer, reward_id: project.rewards[0].id, project_id: project.id)
+            end
         end
         backer = backers.sample
         amount = rand(100..5000)
