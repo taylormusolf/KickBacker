@@ -1,8 +1,12 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 const Profile = (props) =>{
-  
+    const handleClick = (projectId) =>{
+      props.closeModal();
+      props.fetchProject(projectId);
+    }
 
     const userProjects = () =>{
       
@@ -11,8 +15,8 @@ const Profile = (props) =>{
         return(
           array.map((project => (
               <li key={project.id} className='profile-created-project'>
-                <span><Link to={`/projects/${project.id}`} onClick={()=>props.closeModal()}><img className='small-img' src={project.photo_url}/></Link></span>
-                <span><Link to={`/projects/${project.id}`} onClick={()=>props.closeModal()}>{project.title}</Link></span>
+                <span><Link to={`/projects/${project.id}`} onClick={()=>handleClick(project.id)}><img className='small-img' src={project.photo_url}/></Link></span>
+                <span> <Link to={`/projects/${project.id}`} onClick={()=>handleClick(project.id)}>{project.title}</Link></span>
               </li>
             )))
         )
@@ -28,8 +32,8 @@ const Profile = (props) =>{
         return(
           array.map((backing => (
           <li key={backing.project.id} className='profile-backed-project'>
-            <span><Link to={`/projects/${backing.project.id}`} onClick={()=>props.closeModal()}><img className='small-img' src={backing.project.photo_url}/></Link></span>
-            <span><Link to={`/projects/${backing.project.id}`} onClick={()=>props.closeModal()}>{backing.project.title}</Link></span>
+            <span><Link to={`/projects/${backing.project.id}`} onClick={()=>handleClick(backing.project.id)}><img className='small-img' src={backing.project.photo_url}/></Link></span>
+            <span><Link to={`/projects/${backing.project.id}`} onClick={()=>handleClick(backing.project.id)}>{backing.project.title}</Link></span>
           </li>
           )))
         )
@@ -81,4 +85,4 @@ const Profile = (props) =>{
 }
 
 
-export default Profile;
+export default withRouter(Profile);

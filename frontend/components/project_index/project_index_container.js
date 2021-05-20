@@ -53,8 +53,7 @@ const mapStateToProps = state => {
   return{
       projects: projects,
       project: projects[index],
-      array: array,
-      type: 'main'
+      array: array
     }
   
 }
