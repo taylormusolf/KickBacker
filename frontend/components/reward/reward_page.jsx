@@ -1,4 +1,5 @@
 import { withRouter } from 'react-router';
+import {Link} from 'react-router-dom';
 import React from 'react';
 import RewardFormContainer from './reward_new_container'
 import RewardPageItem from './reward_page_item'
@@ -24,22 +25,35 @@ class RewardPage extends React.Component{
     return projectRewards;
   }
 
+  rewardItems(){
+    return this.rewardsFiltered().map((reward)=>(
+      <RewardPageItem 
+        key={reward.id} 
+        reward={reward} 
+        deleteReward={this.props.deleteReward}
+        updateReward={this.props.updateReward}
+      />
+    ))
+  }
+
 
 
   render(){
     if(!this.props.project) return null;
+    
     return(
       <div className='reward-page-container'>
-        <div>Rewards for {this.props.project.title}</div>
+        <div className='reward-page-project-title'>Rewards for 
+          <strong>
+            <Link to={`/projects/${this.props.project.id}`}>
+              {this.props.project.title}</Link>
+          </strong>
+        </div>
         <div className='rewards-page-list'>
-          {this.rewardsFiltered().map((reward)=>(
-            <RewardPageItem 
-              key={reward.id} 
-              reward={reward} 
-              deleteReward={this.props.deleteReward}
-              updateReward={this.props.updateReward}
-            />
-          ))}
+          {
+            this.rewardsFiltered().length > 0 ? this.rewardItems(): 
+            <div className='rewards-page-none'>There are no existing rewards.  Add one below.</div>
+          }
         </div>
 
         <RewardFormContainer 

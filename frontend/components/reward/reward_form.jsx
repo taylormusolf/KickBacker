@@ -1,9 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import {Link, Redirect} from 'react-router-dom';
 
-//pass in project from edit screen or back_show
-//pass in reward create
 
 class RewardForm extends React.Component{
   constructor(props) {
@@ -17,12 +14,14 @@ class RewardForm extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault();
-      const formData = new FormData();
-      formData.append('project[title]', this.state.title);
-      formData.append('project[creator_id]', this.props.creatorId);
-
-    this.props.action((this.props.formType === "Create Reward") ? formData : formData, this.state.id)
-    
+    this.state.project_id = this.props.projectId
+    this.props.action(this.state)
+    this.setState({
+      title: '',
+      description: '',
+      project_id: '',
+      cost: ''
+    })
   }
 
   // renderErrors() {
@@ -41,7 +40,7 @@ class RewardForm extends React.Component{
   render() {
     return (
       <div className="new-reward-container">
-        <h1 className="new-reward-title">{this.props.formType}</h1>
+        <h1 className="new-reward-title">Add New Reward</h1>
         <form className="new-reward-form" onSubmit={this.handleSubmit}>
           <label>Reward Title
             <input
@@ -50,6 +49,7 @@ class RewardForm extends React.Component{
               placeholder="Your title here" 
               onChange={this.update('title')}
               className="project-field"
+              required
             />
             </label>
           <label>Reward Description
@@ -58,22 +58,24 @@ class RewardForm extends React.Component{
               placeholder="What is your reward about?" 
               onChange={this.update('description')}
               className="project-field"
+              required
             />
           </label>
           
           <label>Cost
-            <textarea 
-              type="number"
+            <input
+              type="currency"
               value={this.state.cost}
-              placeholder="Cost" 
+              placeholder="$$ Cost" 
               onChange={this.update('cost')}
               className="project-field"
+              required
             />
           </label>
           <input
                 type="submit"
                 value={this.props.formType}
-                className="new-project-button"
+                className="new-reward-button"
               />
           {/* <div className='project-errors'>{this.renderErrors()}</div> */}
         </form>
