@@ -294,7 +294,10 @@ class ProjectShow extends React.Component {
           </div>
           <section className='show-top-main'>
             <div className='show-img-container'>
-              <img src={project.photo_url}/>
+              <div className='show-img-box'>
+                <img src={project.photo_url}/>
+              </div>
+              
               <ul className='under-photo-items'>
                 <li><i className="far fa-compass"></i>  {project.category.name}</li>
                 <li><i className="fas fa-map-marker-alt"></i> {project.location}</li>

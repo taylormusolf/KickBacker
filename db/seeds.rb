@@ -71,8 +71,8 @@ project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     creator_id: user1.id,
     category_id: category3.id
 )
-file1 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/orbit.gif")
-project1.photo.attach(io: file1, filename: "#{project1.id}.gif")
+file1 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/orbit.jpg")
+project1.photo.attach(io: file1, filename: "#{project1.id}.jpg")
 
 project2 = Project.create!(title: "ForeverPen",
     description: "Ever needed a pen and couldn’t find one? This one sits on your keys and never needs refilling - No ink, no waste!",
@@ -115,8 +115,8 @@ project3 = Project.create!(title: "GAMMA: All-Season 100% Graphene Infused Heate
     category_id: category3.id
 )
 
-file3 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/gamma.gif")
-project3.photo.attach(io: file3, filename: "#{project3.id}.gif")
+file3 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/gamma.jpg")
+project3.photo.attach(io: file3, filename: "#{project3.id}.jpg")
 
 project4 = Project.create!(title: "100 Conversations about Antiracism",
     description: "Conversations about race, equity and justice made easier.",
@@ -226,8 +226,8 @@ project9 = Project.create!(title: "42: the wildly improbable ideas of Douglas Ad
     category_id: category8.id
 )
 
-file9 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/42_douglas_adams.gif")
-project9.photo.attach(io: file9, filename: "#{project9.id}.gif")
+file9 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/42_douglas_adams.jpg")
+project9.photo.attach(io: file9, filename: "#{project9.id}.jpg")
 
 project10 = Project.create!(title: "Third Editions: the Anime Library - JoJo's Bizarre Adventure",
     description: "We are back with a new and exciting project, dedicated to the translation of our French essay about the JoJo's Bizarre Adventure manga.",
@@ -260,8 +260,8 @@ project11 = Project.create!(title: "NIMBLE | Salon Quality Nails From The Comfor
     category_id: category3.id
 )
 
-file11 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/nimble.gif")
-project11.photo.attach(io: file11, filename: "#{project11.id}.gif")
+file11 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/nimble.png")
+project11.photo.attach(io: file11, filename: "#{project11.id}.png")
 
 project12 = Project.create!(title: "Yes Means Yes! A picture book about consent",
     description: "Teaching kids (and maybe adults) about understanding and respecting bodily autonomy",
@@ -411,8 +411,8 @@ project19 = Project.create!(title: "Cardlax EarBuds Washer - Automatic Cleaning 
     category_id: category3.id
 )
 
-file19 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/cardlax.gif")
-project19.photo.attach(io: file19, filename: "#{project19.id}.gif")
+file19 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/cardlax.jpg")
+project19.photo.attach(io: file19, filename: "#{project19.id}.jpg")
 
 project20 = Project.create!(title: "GripBeats: Turn Your Hands Into A Musical Instrument!",
     description: "Learn the art of making music through your hands' movements and touch by using our refined and versatile wearable music technology.",
@@ -613,8 +613,8 @@ project31 = Project.create!(title: "CIECO - An Animated horror film",
     category_id: category4.id
 )
 
-file31 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/cieco.gif")
-project31.photo.attach(io: file31, filename: "#{project31.id}.gif")
+file31 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/cieco.PNG")
+project31.photo.attach(io: file31, filename: "#{project31.id}.PNG")
 
 project32 = Project.create!(title: "VALENTINE | A short film",
     description: "As Corey grows increasingly uncomfortable with his gender identity, he and his girlfriend Mia struggle to redefine their relationship.",
