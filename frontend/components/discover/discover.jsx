@@ -6,19 +6,20 @@ class Discover extends React.Component{
     
   }
 
+
   render(){
     return(
       <div className='discover-container'>
         <div className='discover-box'>
-          <div className='discover-heading'>
+          <div className='discover-heading discover-1'>
             <h1>Collections</h1>
-            <div className='discover-close' onClick={() => this.props.closeModal()}><i className="fas fa-times"></i></div>
+            <div className='discover-close' ><i className="fas fa-times" onClick={() => this.props.history.goBack()}></i></div>
           </div>
           <ul>
-            <li onClick={() => this.props.closeModal()}><Link to={`/projects/search/everything`}>Everything</Link></li>
+            <li><Link to={`/projects/search/everything`}>Everything</Link></li>
           </ul>
-          <div className='discover-heading'><h1>Sections</h1></div>
-          <ul onClick={() => this.props.closeModal()}>
+          <div className='discover-heading discover-2'><h1>Sections</h1></div>
+          <ul>
             <li><Link to={`/projects/category/1`}>Arts</Link></li>
             <li><Link to={`/projects/category/2`}>Comics & Illustration</Link></li>
             <li><Link to={`/projects/category/3`}>Design & Tech</Link></li>
@@ -28,8 +29,8 @@ class Discover extends React.Component{
             <li><Link to={`/projects/category/7`}>Music</Link></li>
             <li><Link to={`/projects/category/8`}>Publishing</Link></li>
           </ul>
-          <div className='discover-heading'><h1>Categories</h1></div>
-          <ul onClick={() => this.props.closeModal()}>
+          <div className='discover-heading discover-3'><h1>Categories</h1></div>
+          <ul>
             <li><Link to={`/projects/search/arts`}>Arts</Link></li>
             <li><Link to={`/projects/search/comics`}>Comics</Link></li>
             <li><Link to={`/projects/search/craft`}>Crafts</Link></li>

@@ -14,8 +14,9 @@ import UserBackedShowContainer from "./backed_show/user_backed_show_container"
 import SearchPageContainer from './search/search_page_container';
 import CategoryContainer from './category/category_container'
 import CategoryNavContainer from './category/category_nav_container'
-import DiscoverNavContainer from './discover/discover_nav'
+import DiscoverNav from './discover/discover_nav'
 import RewardPageContainer from './reward/reward_page_container'
+import DiscoverContainer from './discover/discover_container'
 
 const App = () => (
   <div className='big-div'>
@@ -23,7 +24,7 @@ const App = () => (
     <header className='nav-bar-container'>
       <nav className='nav-bar'>
         <div className= 'nav-box'>
-          <h2 className='nav-item'><DiscoverNavContainer/></h2>
+          <h2 className='nav-item'><DiscoverNav/></h2>
           <Link to="/projects/new" className="nav-item"><h2>Start a Project</h2></Link>
         </div>
         <Link to="/" className="nav-header"><h1>KICKBACKER</h1></Link>
@@ -40,6 +41,7 @@ const App = () => (
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
           <ProtectedRoute exact path="/projects/new" component={ProjectFormContainer} />
           <Route exact path="/projects/:projectId" component={ProjectShowContainer} />
+          <Route exact path="/discover" component={DiscoverContainer} />
           <Route exact path="/projects/search/:query" component={SearchPageContainer} />
           <Route exact path="/projects/category/:categoryId" component={CategoryContainer} />
           <ProtectedRoute exact path="/projects/:projectId/rewards" component={RewardPageContainer} />

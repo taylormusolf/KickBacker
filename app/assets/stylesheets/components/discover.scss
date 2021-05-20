@@ -1,32 +1,33 @@
-.modal-background-discover {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 10;
+// .modal-background-discover {
+//   position: fixed;
+//   top: 0;
+//   bottom: 0;
+//   right: 0;
+//   left: 0;
+//   z-index: 10;
   
-}
+// }
 
-.modal-child-discover {
-  background-color: white;
-  position: relative;
-  top: 575px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+// .modal-child-discover {
+//   background-color: white;
+//   position: relative;
+//   top: 575px;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// }
 
 .discover-container{
   width: 100%;
   
   display: flex;
   justify-content: center;
+  // height: 1000px;
+  // overflow-y: auto;
   
 }
 .discover-box{
-  height: 1000px;
-  overflow-y: auto;
-  margin: 10px 0px;
+  
+  margin: 10px 20px;
   width: 1246px;
   padding: 24px 0px 120px;
   ul{
@@ -46,10 +47,25 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  padding: 12px 10px 12px 0px;
+  padding: 30px 10px 12px 0px;
   color: #037362;
   border-bottom: 0.1rem solid #E8E8E8;
-  
+  position: sticky;
+  background-color: white;
+}
+
+.discover-1{
+  top: 0px;
+  z-index: 20;
+}
+.discover-2{
+  top: 50px;
+  z-index: 10;
+}
+
+.discover-3{
+  top: 100px;
+  z-index: 5;
 }
 
 .discover-close:hover{
