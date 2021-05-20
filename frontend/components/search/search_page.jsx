@@ -9,6 +9,8 @@ class SearchPage extends React.Component{
   componentDidMount(){
     this.props.fetchProjects();
   }
+
+
   results(){
     const{projects} = this.props;
     const projectResults = [];

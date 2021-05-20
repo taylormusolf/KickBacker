@@ -46,18 +46,23 @@ const ProjectSearchItem = props => {
         return 0;
       }
     }
+
+    const handleScroll = ()=>{
+      window.scrollTo(0, 0);
+    }
+
   if(!project) return null;
   return(
     <li className='search-project-list-item'>
       <span >
-        <Link to={`/projects/${project.id}`}>
+        <Link to={`/projects/${project.id}`} onClick={()=>handleScroll()}>
           <img className='search-project-list-img'src={project.photo_url}/>
         </Link>
       </span>
       <span>
         <ul className='search-project-list-details'>
           <li className='search-project-list-link'>
-            <Link to={`/projects/${project.id}`}>{project.title}</Link>
+            <Link to={`/projects/${project.id}`} onClick={()=>handleScroll()}>{project.title}</Link>
           </li>
           <li className='search-project-list-description'>{project.description}</li>
           <li className='search-project-list-creator'>by {project.creator.username}</li>

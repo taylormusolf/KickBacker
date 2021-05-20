@@ -43,10 +43,13 @@ class ProjectForm extends React.Component{
 
     
     this.props.action((this.state.formType === "Create Project" || this.state.imageFile) ? formData : formData, this.state.id)
-    .then((action) => this.props.history.push(`/projects/${action.project.id}`));
+    .then((action) => this.props.history.push(`/projects/${action.project.id}`)
+    .then(()=>window.scrollTo(0, 0)));
 
     
   }
+
+  
 
   handleFile(e){
     const file = e.currentTarget.files[0];

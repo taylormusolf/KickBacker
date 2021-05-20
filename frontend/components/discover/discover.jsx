@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 class Discover extends React.Component{
   constructor(props){
     super(props);
-    
+  }
+  handleScroll(){
+    window.scrollTo(0, 0);
   }
 
 
@@ -16,36 +18,36 @@ class Discover extends React.Component{
             <div className='discover-close' ><i className="fas fa-times" onClick={() => this.props.history.goBack()}></i></div>
           </div>
           <ul>
-            <li><Link to={`/projects/search/everything`}>Everything</Link></li>
+            <li><Link to={`/projects/search/everything`} onClick={()=>this.handleScroll()}>Everything</Link></li>
           </ul>
           <div className='discover-heading discover-2'><h1>Sections</h1></div>
           <ul>
-            <li><Link to={`/projects/category/1`}>Arts</Link></li>
-            <li><Link to={`/projects/category/2`}>Comics & Illustration</Link></li>
-            <li><Link to={`/projects/category/3`}>Design & Tech</Link></li>
-            <li><Link to={`/projects/category/4`}>Film</Link></li>
-            <li><Link to={`/projects/category/5`}>Food & Craft</Link></li>
-            <li><Link to={`/projects/category/6`}>Games</Link></li>
-            <li><Link to={`/projects/category/7`}>Music</Link></li>
-            <li><Link to={`/projects/category/8`}>Publishing</Link></li>
+            <li><Link to={`/projects/category/1`} onClick={()=>this.handleScroll()}>Arts</Link></li>
+            <li><Link to={`/projects/category/2`} onClick={()=>this.handleScroll()}>Comics & Illustration</Link></li>
+            <li><Link to={`/projects/category/3`} onClick={()=>this.handleScroll()}>Design & Tech</Link></li>
+            <li><Link to={`/projects/category/4`} onClick={()=>this.handleScroll()}>Film</Link></li>
+            <li><Link to={`/projects/category/5`} onClick={()=>this.handleScroll()}>Food & Craft</Link></li>
+            <li><Link to={`/projects/category/6`} onClick={()=>this.handleScroll()}>Games</Link></li>
+            <li><Link to={`/projects/category/7`} onClick={()=>this.handleScroll()}>Music</Link></li>
+            <li><Link to={`/projects/category/8`} onClick={()=>this.handleScroll()}>Publishing</Link></li>
           </ul>
           <div className='discover-heading discover-3'><h1>Categories</h1></div>
           <ul>
-            <li><Link to={`/projects/search/arts`}>Arts</Link></li>
-            <li><Link to={`/projects/search/comics`}>Comics</Link></li>
-            <li><Link to={`/projects/search/craft`}>Crafts</Link></li>
-            <li><Link to={`/projects/search/dance`}>Dance</Link></li>
-            <li><Link to={`/projects/search/design`}>Design</Link></li>
-            <li><Link to={`/projects/search/fashion`}>Fashion</Link></li>
-            <li><Link to={`/projects/search/film`}>Film</Link></li>
-            <li><Link to={`/projects/search/food`}>Food</Link></li>
-            <li><Link to={`/projects/search/games`}>Games</Link></li>
-            <li><Link to={`/projects/search/journalism`}>Journalism</Link></li>
-            <li><Link to={`/projects/search/music`}>Music</Link></li>
-            <li><Link to={`/projects/search/photography`}>Photography</Link></li>
-            <li><Link to={`/projects/search/publishing`}>Publishing</Link></li>
-            <li><Link to={`/projects/search/technology`}>Technology</Link></li>
-            <li><Link to={`/projects/search/theater`}>Theater</Link></li>
+            <li><Link to={`/projects/search/arts`} onClick={()=>this.handleScroll()}>Arts</Link></li>
+            <li><Link to={`/projects/search/comics`} onClick={()=>this.handleScroll()}>Comics</Link></li>
+            <li><Link to={`/projects/search/craft`} onClick={()=>this.handleScroll()}>Crafts</Link></li>
+            <li><Link to={`/projects/search/dance`} onClick={()=>this.handleScroll()}>Dance</Link></li>
+            <li><Link to={`/projects/search/design`} onClick={()=>this.handleScroll()}>Design</Link></li>
+            <li><Link to={`/projects/search/fashion`} onClick={()=>this.handleScroll()}>Fashion</Link></li>
+            <li><Link to={`/projects/search/film`} onClick={()=>this.handleScroll()}>Film</Link></li>
+            <li><Link to={`/projects/search/food`} onClick={()=>this.handleScroll()}>Food</Link></li>
+            <li><Link to={`/projects/search/games`} onClick={()=>this.handleScroll()}>Games</Link></li>
+            <li><Link to={`/projects/search/journalism`} onClick={()=>this.handleScroll()}>Journalism</Link></li>
+            <li><Link to={`/projects/search/music`} onClick={()=>this.handleScroll()}>Music</Link></li>
+            <li><Link to={`/projects/search/photography`} onClick={()=>this.handleScroll()}>Photography</Link></li>
+            <li><Link to={`/projects/search/publishing`} onClick={()=>this.handleScroll()}>Publishing</Link></li>
+            <li><Link to={`/projects/search/technology`} onClick={()=>this.handleScroll()}>Technology</Link></li>
+            <li><Link to={`/projects/search/theater`} onClick={()=>this.handleScroll()}>Theater</Link></li>
           </ul>
         </div>
         

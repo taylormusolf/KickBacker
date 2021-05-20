@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ProfileContainer from '../profile/profile_container';
 import SearchContainer from '../search/search_container';
-import DiscoverContainer from '../discover/discover_container';
+// import DiscoverContainer from '../discover/discover_container';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -17,9 +17,9 @@ function Modal({modal, closeModal}) {
     case 'search':
       component = <SearchContainer />;
       break;
-    case 'discover':
-      component = <DiscoverContainer />;
-      break;  
+    // case 'discover':
+    //   component = <DiscoverContainer />;
+    //   break;  
     default:
       return null;
   }
@@ -40,14 +40,14 @@ function Modal({modal, closeModal}) {
       </div>
     );
 
-  } else if (modal === 'discover'){
-    return (
-      <div className="modal-background-discover" onClick={closeModal}>
-        <div className="modal-child-discover" onClick={e => e.stopPropagation()}>
-          { component }
-        </div>
-      </div>
-    );
+  // } else if (modal === 'discover'){
+  //   return (
+  //     <div className="modal-background-discover" onClick={closeModal}>
+  //       <div className="modal-child-discover" onClick={e => e.stopPropagation()}>
+  //         { component }
+  //       </div>
+  //     </div>
+  //   );
 
   }
   

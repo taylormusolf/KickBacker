@@ -6,6 +6,7 @@ const Profile = (props) =>{
     const handleClick = (projectId) =>{
       props.closeModal();
       props.fetchProject(projectId);
+      window.scrollTo(0, 0);
     }
 
     const userProjects = () =>{

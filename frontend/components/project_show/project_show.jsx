@@ -16,6 +16,11 @@ class ProjectShow extends React.Component {
   }
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.projectId);
+    
+  }
+
+  handleScroll(){
+    window.scrollTo(0, 0);
   }
 
   selectTab(num) {
@@ -33,7 +38,8 @@ class ProjectShow extends React.Component {
     e.preventDefault();
     if (this.props.session !== this.props.project.creator.id){
       this.props.createBacking(this.backing)
-        .then((action) => window.location.reload());
+        .then((action) => window.location.reload())
+        .then(()=> window.scrollTo(0, 0));
     }
   }
 
@@ -48,7 +54,8 @@ class ProjectShow extends React.Component {
     if (!this.props.project || !this.props.session) return null;
     if (this.props.session !== this.props.project.creator.id){
       this.props.createBacking(this.backing)
-        .then((action) => window.location.reload());
+        .then((action) => window.location.reload())
+        .then(()=> window.scrollTo(0, 0));
     }
   }
 
@@ -150,8 +157,8 @@ class ProjectShow extends React.Component {
       return (
         <section className='show-edit-links'>
           <p>Creator Controls:</p>
-          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/edit`}>Edit Project </Link></div></span>
-          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/rewards`}>Add/Edit Rewards </Link></div></span>
+          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/edit`} onClick={()=>this.handleScroll()}>Edit Project </Link></div></span>
+          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/rewards`} onClick={()=>this.handleScroll()}>Add/Edit Rewards </Link></div></span>
           <span><button className='backed-project-delete' onClick={this.handleDelete}>Delete Project</button></span>
         </section>
       )

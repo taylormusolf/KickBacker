@@ -13,6 +13,7 @@ class Search extends React.Component{
       this.setState({query: ''});
       this.props.closeModal();
       this.props.history.push(`/projects/search/${this.state.query}`)
+      window.scrollTo(0, 0);
     }
   }
   handleUpdate(field){

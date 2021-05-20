@@ -25,6 +25,10 @@ class UserBackedShow extends React.Component {
     }
   }
 
+  handleScroll(){
+    window.scrollTo(0, 0);
+  }
+
   userBackings(){
     if (this.props.currentUser.backings){
       const array = (Object.values(this.props.currentUser.backings)).reverse();
@@ -32,8 +36,8 @@ class UserBackedShow extends React.Component {
         array.map((backing => ( 
         <ul key={backing.project.id} className='backed-project-item'>
           <ul className='backed-project-name-container'>
-            <li><Link to={`/projects/${backing.project.id}`}><img className='smaller-img' src={backing.project.photo_url}/></Link></li>
-            <li className='backed-project-title'><Link to={`/projects/${backing.project.id}`}>{backing.project.title}</Link></li>
+            <li><Link to={`/projects/${backing.project.id}`} onClick={()=>this.handleScroll()}><img className='smaller-img' src={backing.project.photo_url}/></Link></li>
+            <li className='backed-project-title'><Link to={`/projects/${backing.project.id}`} onClick={()=>this.handleScroll()}>{backing.project.title}</Link></li>
           </ul>
           <li className='backed-amount'>${backing.amount_pledged}.00</li>
           <li className='backed-reward-title'>{this.backingReward(backing.reward)}</li>
@@ -62,12 +66,12 @@ class UserBackedShow extends React.Component {
         array.map((project => (
           <ul key={project.id} className='backed-project-item'>
             <ul key={project.id} className='backed-project-name-container'>
-              <li><Link to={`/projects/${project.id}`}><img className='smaller-img' src={project.photo_url}/></Link></li>
-              <li className='backed-project-title'><Link to={`/projects/${project.id}`}>{project.title}</Link></li>
+              <li><Link to={`/projects/${project.id}`} onClick={()=>this.handleScroll()}><img className='smaller-img' src={project.photo_url}/></Link></li>
+              <li className='backed-project-title'><Link to={`/projects/${project.id}`} onClick={()=>this.handleScroll()}>{project.title}</Link></li>
             </ul>
           <li className='backed-amount'>${fundingTotal(project)}.00</li>
-          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/edit`}>Edit </Link></div></li>
-          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/rewards`}>Edit </Link></div></li>
+          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/edit`} onClick={()=>this.handleScroll()}>Edit </Link></div></li>
+          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/rewards`} onClick={()=>this.handleScroll()}>Edit </Link></div></li>
           <li><button className='backed-reward-delete' onClick={()=>this.handleDelete(project.id)}>Delete</button></li>
           </ul>
             
@@ -92,6 +96,8 @@ class UserBackedShow extends React.Component {
       return 0
     }
   }
+
+  
   render(){
    return(
     <div className='backed-projects-page'>
