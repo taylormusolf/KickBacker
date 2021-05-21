@@ -182,8 +182,8 @@ results(){
 
 
 ## User Dashboard and Project/Backing Editing:
-* User specific 
-* Also set up a search term of 'everything' that returns all projects
+* User specific project and backing information is passed into via user JSON from the backend jbuilder file allowing information to be available via Redux current state after login for user dashboard modal and user dashboard page components without an additional backend call.
+* The user state object has all of the information nested in it that we would need to render on these pages.
 
 ![user_dashboard](https://user-images.githubusercontent.com/71670060/119180309-fd86f000-ba24-11eb-941d-32ed54e9c1e9.gif)
 
