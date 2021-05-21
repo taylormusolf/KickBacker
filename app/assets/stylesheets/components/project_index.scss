@@ -60,16 +60,16 @@
 }
 
 #featured-project img{
-  // width: 625px;
-  max-width: 625px;
-  max-height: 350px;
+  width: 625px;
+  // max-width: 625px;
+  // max-height: 350px;
 }
 
 .projects-header-container{
   background-color: white;
   margin: auto;
 
-  max-width: 1360px;
+  width: 1360px;
 }
 
 .projects-header{
@@ -192,7 +192,7 @@
     flex-direction: column;
   }
   .projects-list-container{
-    padding: 0px;
+    padding: 0px 0px 20px;
   }
   #featured-project{
     border: none;
