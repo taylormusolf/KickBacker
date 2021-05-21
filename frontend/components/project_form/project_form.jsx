@@ -44,11 +44,13 @@ class ProjectForm extends React.Component{
     
     this.props.action((this.state.formType === "Create Project" || this.state.imageFile) ? formData : formData, this.state.id)
     .then((action) => this.props.history.push(`/projects/${action.project.id}`)
-    .then(()=>window.scrollTo(0, 0)));
+    );
 
     
   }
-
+  handScroll(){
+    window.scrollTo(0, 0)
+  }
   
 
   handleFile(e){
@@ -91,9 +93,9 @@ class ProjectForm extends React.Component{
 
   render() {
     const { project } = this.props;
-    console.log
     if (!project) return null;
     const preview = this.state.existingPhoto ? <img src={this.state.existingPhoto}/> : this.state.imageUrl ? <img src={this.state.imageUrl}/> : null
+    console.log(this.state.existingPhoto)
     return (
       <div className="new-project-container">
         <h1 className="new-project-title">{this.props.formType}</h1>
@@ -209,6 +211,7 @@ class ProjectForm extends React.Component{
           <input
                 type="submit"
                 value={this.props.formType}
+                onClick={this.handScroll()}
                 className="new-project-button"
               />
           <div className='project-errors'>{this.renderErrors()}</div>

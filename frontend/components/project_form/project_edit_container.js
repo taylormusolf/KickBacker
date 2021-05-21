@@ -10,13 +10,15 @@ class EditProjectForm extends React.Component {
   render() {
     const { action, formType, project, errors, resetProjectErrors,fetchProject, creatorId} = this.props;
     if (!project) return null;
+    let editProject = project;
+    editProject.category_id = project.category.id
     return (
       <ProjectForm
         errors={errors}
         action={action}
         formType={formType}
         resetProjectErrors={resetProjectErrors}
-        project={project}
+        project={editProject}
         creatorId={creatorId}
         fetchProject={fetchProject}
         />
