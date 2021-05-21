@@ -70,13 +70,13 @@ class ProjectForm extends React.Component{
     })
   }
 
-  hasPhoto(){
-    if(this.props.formType === 'Update Project' && this.state.photo_url.length){
-      return(
-        <p>Project has existing photo attached</p>
-      )
-    }
-  }
+  // hasPhoto(){
+  //   if(this.props.formType === 'Update Project' && this.state.photo_url.length){
+  //     return(
+  //       <p>Project has existing photo attached</p>
+  //     )
+  //   }
+  // }
   
   renderErrors() {
     return(
@@ -94,8 +94,7 @@ class ProjectForm extends React.Component{
   render() {
     const { project } = this.props;
     if (!project) return null;
-    const preview = this.state.existingPhoto ? <img src={this.state.existingPhoto}/> : this.state.imageUrl ? <img src={this.state.imageUrl}/> : null
-    console.log(this.state.existingPhoto)
+    const preview = this.state.imageUrl? <img src={this.state.imageUrl}/> : this.state.photo_url ? <img src={this.state.photo_url}/> : null
     return (
       <div className="new-project-container">
         <h1 className="new-project-title">{this.props.formType}</h1>
@@ -196,7 +195,7 @@ class ProjectForm extends React.Component{
               className="project-field"
             />
           </label>
-          {this.hasPhoto()}
+          {/* {this.hasPhoto()} */}
           <label>Upload Project Image
             <div className='picture-container'>
               <input
