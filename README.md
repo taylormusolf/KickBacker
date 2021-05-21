@@ -99,7 +99,8 @@ THe KickBacker build utilizes a React/Redux frontend framework integrated with a
 ```
 
 ## Search:
-
+* Query is passed in via :wildcard in URL '/projects/search/:query' and then checked against project's title, category name, description, creator and location for a match. 
+* Also set up a search term of 'everything' that returns all projects
 
 ![search](https://user-images.githubusercontent.com/71670060/119175892-420f8d00-ba1f-11eb-84eb-42ec4d5f0ebf.gif)
 
