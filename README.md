@@ -28,8 +28,75 @@ THe KickBacker build utilizes a React/Redux frontend framework integrated with a
 * Users can discover new projects through categories
 
 
-## Splash Page:
-<img width="1116" alt="splash page" src="https://user-images.githubusercontent.com/71670060/115057267-b1caaf00-9e98-11eb-8845-b0ef87341d5d.PNG">
+## Logging In to Back a Project:
+* Incorporated a series of checks on the user/project status to see if the user is eligible to back the project, checking if they were logged in, were the project creator, were already a backer of the project or if the project had ended.
+* In this example the user needs to log in before being able to back a project reward
+
+![backing](https://user-images.githubusercontent.com/71670060/119169565-04a70180-ba17-11eb-9524-716999ca6106.gif)
+
+
+```javascript
+//project_show.jsx
+
+  signedIn(){
+    return this.props.session !== null;
+  }
+
+  isCreator(){
+    return this.props.session === this.props.project.creator.id
+  }
+  projectOver(){
+    return this.daysLeft(this.props.project) === 0;
+  }
+
+  isBacker(){
+    if(this.props.project.backings){
+    const backings = Object.values(this.props.project.backings);
+    let backers = [];
+    
+    backings.forEach((backing)=>{
+      backers.push(backing.backer_id);
+    })
+    return backers.includes(this.props.session)
+    }else{
+      return false
+    }
+  }
+  backerSubmitEligible(){
+    if(this.signedIn() && !this.isCreator() && !this.projectOver() && !this.isBacker()){
+      return(
+        <input className='reward-support-submit' type="submit" value='Continue'/>
+      )
+    } else {
+      return(
+        <div className='reward-support-submit-disabled'>Continue</div>
+      )
+    }
+    
+  }
+
+  backerMessage(){
+    if(this.isBacker()){
+      return (<div>You backed this project!</div>)
+    }
+  }
+
+  rewardErrorMessage(){
+    if(this.isCreator()){
+      return (
+        <p className='reward-error'>You cannot back your own project</p>
+      )
+    } else if(this.isBacker()){
+      return (
+        <p className='reward-error'>You have already backed this project</p>
+      )
+    } else if(!this.signedIn()){
+      return (
+        <p className='reward-error'>You must be signed in to back a project</p>
+      )
+    }  
+  }
+```
 
 ## Profile Modal:
 <img width="1112" alt="profile modal" src="https://user-images.githubusercontent.com/71670060/115057559-11c15580-9e99-11eb-8e7b-be753182be30.PNG">
