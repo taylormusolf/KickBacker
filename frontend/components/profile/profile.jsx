@@ -9,6 +9,8 @@ const Profile = (props) =>{
       window.scrollTo(0, 0);
     }
 
+    React.useEffect(()=>[userBackings, userProjects])
+
     const userProjects = () =>{
       
       if (props.currentUser.projects){
