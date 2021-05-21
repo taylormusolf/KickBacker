@@ -182,9 +182,8 @@ results(){
 
 
 ## User Dashboard and Project/Backing Editing:
-* User specific project and backing information is passed into via user JSON from the backend jbuilder file allowing information to be available via Redux current state after login for user dashboard modal and user dashboard page components without an additional backend call.
-* The user state object has all of the information nested in it that we would need to render on these pages.
-
+* User specific project and backing information is passed into via user JSON from the backend jbuilder file allowing information to be available via Redux current state after login for user dashboard modal and user dashboard page components without an additional backend call. The user state object has all of the information nested in it that we would need to render on these pages.
+* All project needed info is avaiable allowing the user to make edit and delete API calls on all of their created projects from this page.
 ![user_dashboard](https://user-images.githubusercontent.com/71670060/119180309-fd86f000-ba24-11eb-941d-32ed54e9c1e9.gif)
 
 
