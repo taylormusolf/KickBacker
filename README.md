@@ -101,6 +101,7 @@ THe KickBacker build utilizes a React/Redux frontend framework integrated with a
 ## Search:
 * Query is passed in via :wildcard in URL '/projects/search/:query' and then checked against project's title, category name, description, creator and location for a match. 
 * Also set up a search term of 'everything' that returns all projects
+* If there are no results, user receives a message that no projects were found and all projects are returned.
 
 ![search](https://user-images.githubusercontent.com/71670060/119175892-420f8d00-ba1f-11eb-84eb-42ec4d5f0ebf.gif)
 
@@ -177,20 +178,69 @@ results(){
       
     }
 
-  
 ```
 
 
+## User Dashboard and Project/Backing Editing:
+* User specific 
+* Also set up a search term of 'everything' that returns all projects
+
+![user_dashboard](https://user-images.githubusercontent.com/71670060/119180309-fd86f000-ba24-11eb-941d-32ed54e9c1e9.gif)
 
 
-## User Dashboard:
-<img width="851" alt="User Dashboard" src="https://user-images.githubusercontent.com/71670060/115057851-6664d080-9e99-11eb-80ca-a16df36c7fa2.PNG">
+```ruby
+//_user.json.jbuilder
+  json.extract! user, :id, :username, :email, :bio
+  json.projects do
+    user.projects.each do |project|
+      json.set! project.id do
+        json.extract! project, :id, :title, :funding_goal
+        json.backings do
+          project.backings.each do |backing|
+            json.set! backing.id do
+              json.extract! backing, :id, :amount_pledged
+            end
+          end
+        end
+          
+        if project.photo.attached?
+          json.photo_url url_for(project.photo)
+        else
+          json.photo_url ""
+        end
+      end
+    end
+  end
+  json.backings do
+    user.backings.each do |backing|
+      json.set! backing.id do
+        json.extract! backing, :id, :amount_pledged
+          if backing.reward
+            json.reward do
+              json.extract! backing.reward, :id, :title, :description, :cost 
+            end
+          else
+            json.reward ""
+          end
+        json.project do
+          json.extract! backing.project, :id, :title
+          if backing.project.photo.attached?
+            json.photo_url url_for(backing.project.photo)
+          else
+            json.photo_url ""
+          end
+        end
+      end
+    end
+  end
+
+```
 
 
 ## Future Implementations
- - 
- - 
- - 
- - 
+ - Project funded and ended features
+ - Multi-page project creation interface
+ - Search dropdown and additional filtering
+ - Edit feature for Rewards
 
 
