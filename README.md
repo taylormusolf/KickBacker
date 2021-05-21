@@ -98,12 +98,98 @@ THe KickBacker build utilizes a React/Redux frontend framework integrated with a
   }
 ```
 
-## Profile Modal:
-<img width="1112" alt="profile modal" src="https://user-images.githubusercontent.com/71670060/115057559-11c15580-9e99-11eb-8e7b-be753182be30.PNG">
+## Search:
+
+
+![search](https://user-images.githubusercontent.com/71670060/119175892-420f8d00-ba1f-11eb-84eb-42ec4d5f0ebf.gif)
+
+```javascript
+//search_page.jsx
+
+results(){
+    const{projects} = this.props;
+    const projectResults = [];
+    if(projects){
+      const lowerCasedQuery = this.props.query.toLowerCase();
+      if(lowerCasedQuery === 'everything'){
+        return(
+          <section className='search-results'>
+            <h1>Explore <strong>{Object.values(projects).length} projects</strong></h1>
+            <div className='search-projects-container'>
+              {Object.values(projects).map(project => (
+                <ProjectSearchItem
+                  project={project}
+                  key={[project.id]}
+                />
+              ))}
+            </div>
+          </section>
+        )
+      }
+      Object.values(projects).forEach((project) =>{
+        if(project.title.toLowerCase().includes(lowerCasedQuery)
+        || project.category.name.toLowerCase().includes(lowerCasedQuery)
+        || project.description.toLowerCase().includes(lowerCasedQuery)
+        || project.creator.username.toLowerCase().includes(lowerCasedQuery)
+        || project.location.toLowerCase().includes(lowerCasedQuery)
+        ){
+          projectResults.push(project);
+        }
+      });
+      if(projectResults.length > 0){
+        return(
+          <section className='search-results'>
+            <h1>Explore <strong>{projectResults.length} projects</strong></h1>
+            <div className='search-projects-container'>
+              {projectResults.map(project => (
+                <ProjectSearchItem
+                  project={project}
+                  key={[project.id]}
+                />
+              ))}
+            </div>
+          </section>
+        )
+      } else {
+        return(
+          <div>
+            <div className='search-no-results'>
+              <h1><i className="fas fa-exclamation-circle"></i>   We can't find projects that match your search</h1>
+              <h2>Check out a collection of popular and recommended options below</h2>
+            </div>
+            <section className='search-results'>
+              <h1>Explore <strong>{Object.values(projects).length} projects</strong></h1>
+              <div className='search-projects-container'>
+                {Object.values(projects).map(project => (
+                  <ProjectSearchItem
+                    project={project}
+                    key={[project.id]}
+                  />
+                ))}
+              </div>
+            </section>
+          </div>
+          
+          
+        )
+      }
+      
+    }
+
+  
+```
+
+
+
 
 ## User Dashboard:
 <img width="851" alt="User Dashboard" src="https://user-images.githubusercontent.com/71670060/115057851-6664d080-9e99-11eb-80ca-a16df36c7fa2.PNG">
 
-## Project Show Page:
-<img width="1066" alt="Project Show" src="https://user-images.githubusercontent.com/71670060/115058032-a330c780-9e99-11eb-8561-e9a61815941a.PNG">
+
+## Future Implementations
+ - 
+ - 
+ - 
+ - 
+
 
