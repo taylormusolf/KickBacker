@@ -1,10 +1,22 @@
-# KickBacker
+## <div align="center"><img width="500" alt="kickbacker_logo" src="https://user-images.githubusercontent.com/71670060/119078326-d25fba80-b9aa-11eb-8578-35f03d680a2b.PNG"></div>
 
-KickBacker, a Kickstarter clone, is a crowdfunding platform that allows content creators to post their dream projects that they would like others to help bring to life by meeting their funding goal. Users can search for and view other users' projects by category as well as back them for a reward.
 
-Link to app hosted on Heroku: https://kickbacker.herokuapp.com
+KickBacker, a Kickstarter clone, is a crowdfunding platform that allows content creators to post their dream projects that they would like others to help bring to life by meeting their funding goal. Users can create their own projects or search for and view other users' projects by category as well as back them for a reward.
+
+Try out the app here on [Heroku!](https://kickbacker.herokuapp.com)
 
 THe KickBacker build utilizes a React/Redux frontend framework integrated with a Rails/PostgreSQL backend.
+
+### Frontend
+* `React` - Open source, component-based JavaScript/UI library
+* `Redux` - Commonly used with React, Redux is also a JavaScript library with a primary function of handling application state
+* `Jquery/Ajax` - JavaScript library used to send promise-based, asynchronous HTTP requests to REST endpoints and perform CRUD operations
+
+### Backend
+* `Ruby on Rails` - Server-side web application framework written in Ruby
+* `PostgreSQL` - Open-source relational database management system emphasizing extensibility and SQL compliance
+* `BCrypt` - Password hashing/salting for user authentication
+* `AWS S3` - Cloud service platform that assists in hosting image assests
 
 ## Features:
 * Navbar modal that previews user backed and created projects and leads to their dashboard
@@ -13,6 +25,8 @@ THe KickBacker build utilizes a React/Redux frontend framework integrated with a
 * User Sign Up/Log In utilizing Bcrypt and salting
 * Users can view existing projects while not logged in
 * Users can create, edit, delete and back projects if logged in
+* Users can search for existing projects
+* Users can discover new projects through categories
 
 
 ## Splash Page:
