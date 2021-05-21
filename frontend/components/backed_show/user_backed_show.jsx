@@ -70,8 +70,8 @@ class UserBackedShow extends React.Component {
               <li className='backed-project-title'><Link to={`/projects/${project.id}`} onClick={()=>this.handleScroll()}>{project.title}</Link></li>
             </ul>
           <li className='backed-amount'>${fundingTotal(project)}.00</li>
-          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/edit`} onClick={()=>this.handleScroll()}>Edit </Link></div></li>
-          <li className='backed-reward-edit'><div><Link to={`/projects/${project.id}/rewards`} onClick={()=>this.handleScroll()}>Edit </Link></div></li>
+          <li className='backed-reward-edit'><Link to={`/projects/${project.id}/edit`} onClick={()=>this.handleScroll()}><div>Edit </div></Link></li>
+          <li className='backed-reward-edit'><Link to={`/projects/${project.id}/rewards`} onClick={()=>this.handleScroll()}><div>Edit </div></Link></li>
           <li><button className='backed-reward-delete' onClick={()=>this.handleDelete(project.id)}>Delete</button></li>
           </ul>
             

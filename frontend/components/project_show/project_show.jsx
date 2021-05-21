@@ -157,8 +157,8 @@ class ProjectShow extends React.Component {
       return (
         <section className='show-edit-links'>
           <p>Creator Controls:</p>
-          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/edit`} onClick={()=>this.handleScroll()}>Edit Project </Link></div></span>
-          <span  className='backed-project-edit'><div id='show-edit'><Link to={`/projects/${this.props.project.id}/rewards`} onClick={()=>this.handleScroll()}>Add/Edit Rewards </Link></div></span>
+          <span  className='backed-project-edit'><Link to={`/projects/${this.props.project.id}/edit`} onClick={()=>this.handleScroll()}><div id='show-edit'>Edit Project </div></Link></span>
+          <span  className='backed-project-edit'><Link to={`/projects/${this.props.project.id}/rewards`} onClick={()=>this.handleScroll()}><div id='show-edit'>Add/Edit Rewards</div></Link></span>
           <span><button className='backed-project-delete' onClick={this.handleDelete}>Delete Project</button></span>
         </section>
       )
