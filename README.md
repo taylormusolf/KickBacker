@@ -22,9 +22,8 @@ THe KickBacker build utilizes a React/Redux frontend framework integrated with a
 * Navbar modal that previews user backed and created projects and leads to their dashboard
 * User Dashboard that shows all user related projects and access to edit and delete links
 * User status management on project show page checks if user is already a backer, is the project creator or if they are signed in and displays appropriate messages.
-* User Sign Up/Log In utilizing Bcrypt and salting
 * Users can view existing projects while not logged in
-* Users can create, edit, delete and back projects if logged in
+* Users can create, edit, delete and back projects and rewards if logged in
 * Users can search for existing projects
 * Users can discover new projects through categories
 
