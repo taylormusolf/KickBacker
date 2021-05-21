@@ -131,7 +131,7 @@ class ProjectForm extends React.Component{
             />
           </label>
           
-          <label>Campaign
+          <label>Campaign (optional)
             <textarea 
               type="text"
               value={this.state.campaign}
@@ -141,7 +141,7 @@ class ProjectForm extends React.Component{
             />
           </label>
           
-          <label>Updates
+          <label>Updates (optional)
             <textarea
               type="text"
               value={this.state.updates}
@@ -151,7 +151,7 @@ class ProjectForm extends React.Component{
             />
           </label>
           
-          <label>FAQ
+          <label>FAQ (optional)
             <textarea
               type="text"
               value={this.state.faq}
@@ -196,7 +196,7 @@ class ProjectForm extends React.Component{
             />
           </label>
           {/* {this.hasPhoto()} */}
-          <label>Upload Project Image
+          <label>Upload Project Image (optional)
             <div className='picture-container'>
               <input
               className='picture-input'

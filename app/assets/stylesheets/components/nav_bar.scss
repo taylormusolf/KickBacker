@@ -4,7 +4,8 @@
   background: white;
   // border-bottom: 0.1rem solid #E8E8E8;
   margin: auto;
-  width: 1360px;
+  max-width: 1360px;
+  min-width: 900px;
 }
 .nav-box{
   display: flex;

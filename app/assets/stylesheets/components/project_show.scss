@@ -5,8 +5,6 @@
 
 }
 
-
-
 .show-header{
   width: 1246px;
   margin: auto;
@@ -303,3 +301,9 @@
   width: attr(featured-list-funding);
   margin-bottom: 10px;
 }
+
+// @media only screen and (max-width: 1385px) {
+//   .show-header {
+//     flex-direction: column;
+//   }
+// }

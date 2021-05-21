@@ -2,12 +2,12 @@
   background-color: white;
 }
 .category-header{
-  padding: 60px 60px 36px;
+  padding: 60px 60px 0px;
   
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 1300px;
+  max-width: 1300px;
   font-family: Georgia, Times, 'Times New Roman', serif;
   h1{
     color: #282828;
