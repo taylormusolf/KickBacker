@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-
   validates :username, :session_token, :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :password, length: {minimum: 6}, allow_nil: true
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
 
   after_initialize :ensure_session_token!
   attr_reader :password
@@ -52,6 +52,7 @@ class User < ApplicationRecord
   def ensure_session_token!
     self.session_token ||= SecureRandom::urlsafe_base64
   end
+
 
 
 end
