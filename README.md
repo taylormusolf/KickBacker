@@ -7,6 +7,8 @@ Try out the app here on [Heroku!](https://kickbacker.herokuapp.com)
 
 THe KickBacker build utilizes a React/Redux frontend framework integrated with a Rails/PostgreSQL backend.
 
+## Technologies:
+
 ### Frontend
 * `React` - Open source, component-based JavaScript/UI library
 * `Redux` - Commonly used with React, Redux is also a JavaScript library with a primary function of handling application state
@@ -236,7 +238,7 @@ results(){
 ```
 
 
-## Future Implementations
+## Future Implementations:
  - Project funded and ended features
  - Multi-page project creation interface
  - Search dropdown and additional filtering
