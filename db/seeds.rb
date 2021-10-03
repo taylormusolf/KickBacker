@@ -22,7 +22,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('rewards')
 ActiveRecord::Base.connection.reset_pk_sequence!('categories')
 
 
-user1 = User.create!(username:'Demo User', email: 'demo@demo', password: '123456', bio: 'Just your basic user.')
+user1 = User.create!(username:'Demo User', email: 'demo@demo.com', password: '123456', bio: 'Just your basic user.')
 user2 = User.create!(username:'Taylor Musolf', email: 't@email.com', password: '123456', bio: 'Bay Area based friendly, mild-mannered content creator')
 user3 = User.create!(username:'Karisa Musolf', email: 'k@email.com', password: '123456', bio: 'Bay Area based cooking personality that loves baking!')
 user4 = User.create!(username:'Bobs YourNeighbor', email: 'b@email.com', password: '123456', bio: 'Bob loves smart products.  Give Bob what he wants.')
