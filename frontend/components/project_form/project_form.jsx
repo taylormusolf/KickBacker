@@ -1,14 +1,15 @@
 import React from 'react';
-// import { withRouter } from 'react-router';
 import {Link, Redirect} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router';
+import { useHistory, useLocation, useParams } from 'react-router';
 import { updateProject, fetchProject,createProject, resetProjectErrors } from '../../actions/project_actions';
 
 export default function ProjectForm(){
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+  const [errors, setErrors] = useState([]);
   const [page, setPage] = useState(1);
   const [project, setProject] = useState({
     title: '',
@@ -53,7 +54,7 @@ export default function ProjectForm(){
         creator_id: oldProject.creator.id
       });
     }
-  }, [oldProject])
+  }, [oldProject, projectId])
 
 
   const update = (field) => {
@@ -109,18 +110,17 @@ export default function ProjectForm(){
   const renderErrors = ()=> {
     return(
       <ul>
-        {/* {this.props.errors.map((error, i) => (
+        {errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
           </li>
-        ))} */}
+        ))}
       </ul>
     );
   }
-  console.log('category', project.category_id)
 
   // if (!project) return null;
-  const preview = project.imageUrl? <img src={project.imageUrl}/> : project.photo_url ? <img src={project.photo_url}/> : null
+  const preview = project.imageUrl? <img src={project.imageUrl} alt='new'/> : oldProject?.photo_url ? <img src={oldProject.photo_url} alt='old'/> : null
   
   if(page === 1){
     return(
@@ -130,7 +130,7 @@ export default function ProjectForm(){
       <div className="new-project-form">
         <label>Project Category
           <br/>
-          {project?.category_id && <select defaultValue={project.category_id ? `${project.category_id}` : ''} className='new-project-categories' onChange={update('category_id')}>
+          {(!projectId || project?.category_id) && <select defaultValue={project.category_id ? `${project.category_id}` : ''} className='new-project-categories' onChange={update('category_id')}>
             <option value='' disabled={true}>Select your category</option>
             <option value="1">Art</option>
             <option value="2">Comics & Illustration</option>
@@ -141,10 +141,11 @@ export default function ProjectForm(){
             <option value="7">Music</option>
             <option value="8">Publishing</option>
           </select>}
+          <div className='project-errors'>{renderErrors()}</div>
         </label>
         <h1>Getting started with your project!</h1>
-        <button disabled={!project?.category_id} onClick={()=> setPage(2)}>Next:Project Title</button>
-        <div className='project-errors'>{renderErrors()}</div>
+        <button onClick={()=> !project?.category_id ? setErrors(['Need to fill out']) : setPage(2)}>Next:Project Title</button>
+        
       </div>
     </div>
     )
@@ -291,6 +292,7 @@ export default function ProjectForm(){
           </div>
           
         </label>
+        { project.imageUrl ? <button onClick={()=> setProject({...project, imageUrl: ''})}>Cancel</button>: null}
 
         <div className='project-errors'>{renderErrors()}</div>
         <button onClick={()=> setPage(5)}>Back: Project Dates and Goal</button>
