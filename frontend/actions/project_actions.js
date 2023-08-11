@@ -52,9 +52,7 @@ export const updateProject = (project, id) => dispatch => {
       .then(project => (dispatch(receiveProject(project))),
       errors => (dispatch(receiveProjectErrors(errors.responseJSON))
       ))
-}
-  
-;
+};
 
 export const deleteProject = projectId => dispatch => (
   APIUtil.deleteProject(projectId).then(() => (
