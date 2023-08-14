@@ -169,6 +169,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.3-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.3-x86_64-linux)
+      racc (~> 1.4)
     open-uri (0.3.0)
       stringio
       time
@@ -269,6 +271,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   annotate

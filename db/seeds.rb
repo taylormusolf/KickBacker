@@ -14,6 +14,8 @@ Backing.destroy_all
 Reward.destroy_all
 Category.destroy_all
 
+puts 'Tables destroyed'
+
 #reset the primary key sequence
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('projects')
@@ -21,7 +23,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('backings')
 ActiveRecord::Base.connection.reset_pk_sequence!('rewards')
 ActiveRecord::Base.connection.reset_pk_sequence!('categories')
 
-
+puts 'Creating Users...'
 user1 = User.create!(username:'Demo User', email: 'demo@demo.com', password: '123456', bio: 'Just your basic user.')
 user2 = User.create!(username:'Taylor Musolf', email: 't@email.com', password: '123456', bio: 'Bay Area based friendly, mild-mannered content creator')
 user3 = User.create!(username:'Karisa Musolf', email: 'k@email.com', password: '123456', bio: 'Bay Area based cooking personality that loves baking!')
@@ -48,6 +50,7 @@ user23 = User.create!(username:'Nasir Campbell', email: 'nasir@gmail.com', passw
 user24 = User.create!(username:'Gordon Griffin', email: 'gordygriff@gmail.com', password: '123456', bio: 'I come from a family of artists. Photography, Art and Design is in my blood. Originally from England, I have been lucky enough to travel the world and see things that I wouldn not remember if it had not been for a trusty camera by my side. Photography is not just about taking a photo. It goes beyond that! Many would say that the hard work begins in the editing room afterwards. Take a beef patty for instance! Its not a BURGER till you ad a bun, lettuce, tomato and cheese right? For me, photography is the same. By using the right ingredients at the right time the outcome will be amazing!')
 user25 = User.create!(username:'Kimberly Mesa', email: 'kimm@gmail.com', password: '123456', bio: "I'm a 24 year old entrepreneur.")
 
+puts 'Creating Categories...'
 category1 = Category.create!(name: "Arts", description: "Discover the artists and organizations using Kickbacker to realize ambitious projects in visual art and performance.");
 category2 = Category.create!(name: "Comics & Illustration", description:"Explore fantastical worlds and original characters from Kickbacker’s community of comics creators and illustrators.");
 category3 = Category.create!(name: "Design & Tech", description:"From fine design to innovative tech, discover projects from creators working to build a more beautiful future.");
@@ -58,7 +61,7 @@ category7 = Category.create!(name: "Music", description:"Discover new albums, pe
 category8 = Category.create!(name: "Publishing", description:"Explore how writers and publishers are using Kickbacker to bring new literature, periodicals, podcasts, and more to life.");
 
 
-
+puts 'Creating Projects...'
 project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     description: "What tool does a cinematographer build for himself? A stealthy silent, bluetooth controlled, orbiting camera dolly with lighting.",
     campaign: "The ORBIT is a suspended camera system that ORBITS around people, objects, or environments, at variable speeds and distances",
@@ -734,7 +737,7 @@ project37 = Project.create!(title: "Soft Bits In: Tribute to The Flaming Lips",
 file37 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/soft_bits.jpg")
 project37.photo.attach(io: file37, filename: "#{project37.id}.jpg")
 
-
+puts 'Creating Rewards...'
 reward1 = Reward.create!(
     title: "Digital High Five", 
     description: "You don't need one, but you want us to succeed anyway. Score yourself my respect and a digital high five from MAKE ART NOW for helping us reach the goal.",
@@ -1037,26 +1040,28 @@ reward32 = Reward.create!(
     project_id: project26.id, 
     cost: 50)
 
-    #randomize and generate backings
-    projects = Project.all.to_a
-    backers = User.all.to_a
-    backings = Hash.new {|h,k| h[k] = []}
-    projects.each do |project|
-        random_backings = rand(1..10)
-        until backings[project.id].length == random_backings
-            backer = backers.sample
-            if !backings[project.id].include?(backer.id) && project.creator_id != backer.id
-                 backings[project.id] << backer.id
-            end
-        end
-        backings[project.id].each do |backer|
-            if project.rewards[0]
-                Backing.create!(amount_pledged: project.rewards[0].cost, backer_id: backer, reward_id: project.rewards[0].id, project_id: project.id)
-            end
-        end
+puts 'Creating Backings...'
+#randomize and generate backings
+projects = Project.all.to_a
+backers = User.all.to_a
+backings = Hash.new {|h,k| h[k] = []}
+projects.each do |project|
+    random_backings = rand(1..10)
+    until backings[project.id].length == random_backings
         backer = backers.sample
-        amount = rand(100..100000)
         if !backings[project.id].include?(backer.id) && project.creator_id != backer.id
-            Backing.create!(amount_pledged: amount, backer_id: backer.id, project_id: project.id)
+                backings[project.id] << backer.id
         end
     end
+    backings[project.id].each do |backer|
+        if project.rewards[0]
+            Backing.create!(amount_pledged: project.rewards[0].cost, backer_id: backer, reward_id: project.rewards[0].id, project_id: project.id)
+        end
+    end
+    backer = backers.sample
+    amount = rand(100..100000)
+    if !backings[project.id].include?(backer.id) && project.creator_id != backer.id
+        Backing.create!(amount_pledged: amount, backer_id: backer.id, project_id: project.id)
+    end
+end
+puts 'Seeding Complete!'
