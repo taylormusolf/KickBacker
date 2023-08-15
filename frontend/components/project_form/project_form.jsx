@@ -122,185 +122,178 @@ export default function ProjectForm(){
   // if (!project) return null;
   const preview = project.imageUrl? <img src={project.imageUrl} alt='new'/> : oldProject?.photo_url ? <img src={oldProject.photo_url} alt='old'/> : null
   
-  if(page === 1){
+  const formContents = () => {
+    if(page === 1){
+      return(
+        <>
+          <label>Project Category
+            <br/>
+            {(!projectId || project?.category_id) && <select defaultValue={project.category_id ? `${project.category_id}` : ''} className='new-project-categories' onChange={update('category_id')}>
+              <option value='' disabled={true}>Select your category</option>
+              <option value="1">Art</option>
+              <option value="2">Comics & Illustration</option>
+              <option value="3">Design & Tech</option>
+              <option value="4">Film</option>
+              <option value="5">Food & Craft</option>
+              <option value="6">Games</option>
+              <option value="7">Music</option>
+              <option value="8">Publishing</option>
+            </select>}
+            <div className='project-errors'>{renderErrors()}</div>
+          </label>
+          <h1>Getting started with your project!</h1>
+          <button onClick={()=> !project?.category_id ? setErrors(['Need to fill out']) : setPage(2)}>Next:Project Title</button>
+        </>
+      )
+    } else if(page === 2){
+      return(
+        <>
+          <label>Project Title
+            <input
+              type="text"
+              value={project?.title}
+              placeholder="Your Memoirs" 
+              onChange={update('title')}
+              className="project-field"
+            />
+          </label>
+          <label>Project Description
+            <textarea
+              value={project?.description}
+              placeholder="What is your project about?" 
+              onChange={update('description')}
+              className="project-field"
+            />
+          </label>
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(1)}>Back:Project Category</button>
+          <button disabled={!project?.title || !project?.description} onClick={()=> setPage(3)}>Next:Project Campaign Details</button>
+        </>
+      )
+    } else if(page === 3){
+      return(
+        <>
+          <label>Campaign (optional)
+            <textarea 
+              type="text"
+              value={project?.campaign}
+              placeholder="What is the story and risks associated?" 
+              onChange={update('campaign')}
+              className="project-field"
+            />
+          </label>
+          
+          <label>Updates (optional)
+            <textarea
+              type="text"
+              value={project?.updates}
+              placeholder="Anything you would like to share?" 
+              onChange={update('updates')}
+              className="project-field"
+            />
+          </label>
+          
+          <label>FAQ (optional)
+            <textarea
+              type="text"
+              value={project?.faq}
+              placeholder="Frequently Asked Questions..." 
+              onChange={update('faq')}
+              className="project-field"
+            />
+          </label>
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(2)}>Back:Project Title</button>
+          <button onClick={()=> setPage(4)}>Next:Project Location</button>
+        </>
+      )
+    }else if(page === 4){
+      return(
+        <>
+          <label>Location
+            <input
+              type="text"
+              value={project?.location}
+              placeholder="Where you at?" 
+              onChange={update('location')}
+              className="project-field"
+            />
+          </label>
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(3)}>Back: Campaign Details</button>
+          <button disabled={!project?.location} onClick={()=> setPage(5)}>Next: Project Dates and Goal</button>
+        </>
+      )  
+    }else if (page === 5){
+      return(
+        <>
+          <label>Project Start Date
+            <input
+              type='date'              
+              value={project?.start_date.slice(0,10)}
+              onChange={update('start_date')}
+              className="project-field"
+            />
+          </label>
+          <label>Project End Date
+            <input
+              type='date'              
+              value={project?.end_date.slice(0,10)}
+              onChange={update('end_date')}
+              className="project-field"
+            />
+          </label>
+          <label>Funding Goal
+            <input required
+              type="currency"
+              value={project?.funding_goal}
+              placeholder="Be realistc"
+              onChange={update('funding_goal')}
+              className="project-field"
+            />
+          </label>
+
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(4)}>Back: Location</button>
+          <button disabled={!project?.start_date || !project?.end_date || !project?.funding_goal} onClick={()=> setPage(6)}>Next: Project Image</button>
+        
+        </>
+      )
+    } else if(page === 6){
+      return(
+        <>
+          <label>Upload Project Image (optional)
+            <div className='picture-container'>
+              <input
+              className='picture-input'
+              type="file"
+              onChange={handleFile}
+              />
+              {preview}
+            </div>
+          
+          </label>
+          { project.imageUrl ? <button onClick={()=> setProject({...project, imageUrl: ''})}>Cancel</button>: null}
+
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(5)}>Back: Project Dates and Goal</button>
+          <button onClick={handleSubmit}>Finalize</button>
+        </>
+      )
+    }
+  }
+
+
     return(
       <div className="new-project-container">
       <h1 className="new-project-title">Select a primary category for your project.</h1>
       <h2>These will help backers find your project, and you can change them later if you need to.</h2>
       <div className="new-project-form">
-        <label>Project Category
-          <br/>
-          {(!projectId || project?.category_id) && <select defaultValue={project.category_id ? `${project.category_id}` : ''} className='new-project-categories' onChange={update('category_id')}>
-            <option value='' disabled={true}>Select your category</option>
-            <option value="1">Art</option>
-            <option value="2">Comics & Illustration</option>
-            <option value="3">Design & Tech</option>
-            <option value="4">Film</option>
-            <option value="5">Food & Craft</option>
-            <option value="6">Games</option>
-            <option value="7">Music</option>
-            <option value="8">Publishing</option>
-          </select>}
-          <div className='project-errors'>{renderErrors()}</div>
-        </label>
-        <h1>Getting started with your project!</h1>
-        <button onClick={()=> !project?.category_id ? setErrors(['Need to fill out']) : setPage(2)}>Next:Project Title</button>
+        {formContents()}
+      </div>
+    </div>
+    )
         
-      </div>
-    </div>
-    )
-  } else if(page === 2){
-    return(
-      <div className="new-project-container">
-      <h1 className="new-project-title">{projectId ? 'Update Project': 'Create Project'}</h1>
-      <div className="new-project-form">
-        <label>Project Title
-          <input
-            type="text"
-            value={project?.title}
-            placeholder="Your Memoirs" 
-            onChange={update('title')}
-            className="project-field"
-          />
-          </label>
-        <label>Project Description
-          <textarea
-            value={project?.description}
-            placeholder="What is your project about?" 
-            onChange={update('description')}
-            className="project-field"
-          />
-        </label>
-        <div className='project-errors'>{renderErrors()}</div>
-        <button onClick={()=> setPage(1)}>Back:Project Category</button>
-        <button disabled={!project?.title || !project?.description} onClick={()=> setPage(3)}>Next:Project Campaign Details</button>
-      </div>
-    </div>
-    )
-  } else if(page === 3){
-    return(
-      <div className="new-project-container">
-      <h1 className="new-project-title">{projectId ? 'Update Project': 'Create Project'}</h1>
-      <div className="new-project-form">
-        <label>Campaign (optional)
-          <textarea 
-            type="text"
-            value={project?.campaign}
-            placeholder="What is the story and risks associated?" 
-            onChange={update('campaign')}
-            className="project-field"
-          />
-        </label>
-        
-        <label>Updates (optional)
-          <textarea
-            type="text"
-            value={project?.updates}
-            placeholder="Anything you would like to share?" 
-            onChange={update('updates')}
-            className="project-field"
-          />
-        </label>
-        
-        <label>FAQ (optional)
-          <textarea
-            type="text"
-            value={project?.faq}
-            placeholder="Frequently Asked Questions..." 
-            onChange={update('faq')}
-            className="project-field"
-          />
-        </label>
-        <div className='project-errors'>{renderErrors()}</div>
-        <button onClick={()=> setPage(2)}>Back:Project Title</button>
-        <button onClick={()=> setPage(4)}>Next:Project Location</button>
-      </div>
-    </div>
-    )
-  } else if(page === 4){
-    return(
-      <div className="new-project-container">
-      <h1 className="new-project-title">{projectId ? 'Update Project': 'Create Project'}</h1>
-      <div className="new-project-form">
-        
-        <label>Location
-          <input
-            type="text"
-            value={project?.location}
-            placeholder="Where you at?" 
-            onChange={update('location')}
-            className="project-field"
-          />
-        </label>
-
-        <div className='project-errors'>{renderErrors()}</div>
-        <button onClick={()=> setPage(3)}>Back: Campaign Details</button>
-        <button disabled={!project?.location} onClick={()=> setPage(5)}>Next: Project Dates and Goal</button>
-      </div>
-    </div>
-    )
-  } else if (page === 5){
-    return(
-      <div className="new-project-container">
-      <h1 className="new-project-title">{projectId ? 'Update Project': 'Create Project'}</h1>
-      <div className="new-project-form">
-        <label>Project Start Date
-          <input
-            type='date'              
-            value={project?.start_date.slice(0,10)}
-            onChange={update('start_date')}
-            className="project-field"
-          />
-        </label>
-        <label>Project End Date
-          <input
-            type='date'              
-            value={project?.end_date.slice(0,10)}
-            onChange={update('end_date')}
-            className="project-field"
-          />
-        </label>
-        <label>Funding Goal
-          <input required
-            type="currency"
-            value={project?.funding_goal}
-            placeholder="Be realistc"
-            onChange={update('funding_goal')}
-            className="project-field"
-          />
-        </label>
-
-        <div className='project-errors'>{renderErrors()}</div>
-        <button onClick={()=> setPage(4)}>Back: Location</button>
-        <button disabled={!project?.start_date || !project?.end_date || !project?.funding_goal} onClick={()=> setPage(6)}>Next: Project Image</button>
-      </div>
-    </div>
-    )
-  } else if(page === 6){
-    return(
-      <div className="new-project-container">
-      <h1 className="new-project-title">{projectId ? 'Update Project': 'Create Project'}</h1>
-      <div className="new-project-form">
-        <label>Upload Project Image (optional)
-          <div className='picture-container'>
-            <input
-            className='picture-input'
-            type="file"
-            onChange={handleFile}
-            />
-            {preview}
-          </div>
-          
-        </label>
-        { project.imageUrl ? <button onClick={()=> setProject({...project, imageUrl: ''})}>Cancel</button>: null}
-
-        <div className='project-errors'>{renderErrors()}</div>
-        <button onClick={()=> setPage(5)}>Back: Project Dates and Goal</button>
-        <button onClick={handleSubmit}>Finalize</button>
-      </div>
-    </div>
-    )
-  }
 
 
 
