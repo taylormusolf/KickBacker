@@ -28,15 +28,19 @@ class SessionForm extends React.Component {
           this.props.receiveSessionErrors(['Passwords need to match']);
       } else {
         this.props.processForm(user);
+        // this.props.history.goBack()
+        
       }
     } else {
       this.props.processForm(user);
+      // this.props.history.goBack()
     }
   }
 
   demoUser(e) {
     e.preventDefault();
     this.props.demoUser({username: 'Demo User', password: '123456'})
+    // this.props.history.goBack()
   }
 
   renderErrors() {

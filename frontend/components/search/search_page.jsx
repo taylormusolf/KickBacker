@@ -7,7 +7,7 @@ class SearchPage extends React.Component{
 
   }
   componentDidMount(){
-    this.props.fetchProjects();
+    this.props.fetchProjects(this.props.query);
   }
 
 

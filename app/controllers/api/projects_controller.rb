@@ -3,6 +3,11 @@ class Api::ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    if params[:query]
+      # downcased_query = params[:query].downcase
+      @projects = @projects.joins(:category).where('title ILIKE (?)', "%#{params[:query]}%").or.where()
+    end
+
     render :index
   end
 

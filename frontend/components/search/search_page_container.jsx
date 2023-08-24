@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) =>{
 }
 
 const mapDispatchoProps = (dispatch) =>({
-  fetchProjects: () => dispatch(fetchProjects())
+  fetchProjects: (query) => dispatch(fetchProjects(query))
 })
 
 export default connect(mapStateToProps, mapDispatchoProps)(SearchPage);

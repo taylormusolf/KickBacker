@@ -315,8 +315,8 @@ class ProjectShow extends React.Component {
               <ul className='show-side-subbar'>
                 <div className='show-subbar-sub'>
                   <li className='show-list-funding' style={{width: funding(project)}}><h1></h1></li>
-                  <li className='show-pledged-total'>${fundingTotal(project)}</li>
-                  <li className='show-goal-total'>pledged of ${project.funding_goal} goal</li>
+                  <li className='show-pledged-total'>${fundingTotal(project).toLocaleString("en-US")}</li>
+                  <li className='show-goal-total'>pledged of ${project.funding_goal.toLocaleString("en-US")} goal</li>
                 </div>
                 <div className='show-subbar-sub'>
                   <li className='show-backer-total'>{backers(project)}</li>
