@@ -1,6 +1,7 @@
 class Api::SessionsController < ApplicationController
   def create
-    @user = User.find_by_crendentials(params[:user][:username], params[:user][:password])
+    @user = User.includes({projects: [:backings, {photo_attachment: :blob}]}, {backings: [:reward, {project: {photo_attachment: :blob}}]})
+      .find_by_crendentials(params[:user][:username], params[:user][:password])
     if @user
       login!(@user)
       render 'api/users/show'

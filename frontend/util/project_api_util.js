@@ -1,9 +1,15 @@
-export const fetchProjects = (query) => (
-  $.ajax({
+export const fetchProjects = (query) => {
+  let path;
+  if(query){
+    path = `/api/projects?query=${query}`
+  } else {
+    path = `/api/projects`
+  }
+  return $.ajax({
     method: 'GET',
-    url: `/api/projects?query=${query}`
+    url: path
   })
-);
+};
 
 export const fetchProject = projectId => (
   $.ajax({

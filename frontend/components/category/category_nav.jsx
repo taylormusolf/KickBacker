@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 class CategoryNav extends React.Component{
 
-  componentDidMount(){
-    this.props.fetchCategories();
-  }
+  // componentDidMount(){
+  //   this.props.fetchCategories();
+  // }
 
   render(){
     return(
