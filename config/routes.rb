@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show]
     resources :rewards, only: [:index, :show, :create, :update, :destroy]
   end
-  root 'static_pages#root'
+
+  get '/', to: 'static_pages#root', constraints: lambda {|request| !request.xhr? && request.format.html? }
+  get '*path', to: 'static_pages#root', constraints: lambda {|request| !request.xhr? && request.format.html? } #checking that request is for html and not xhr(ajax request) so that frontend requests will hit it and requests for active record will pass it
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

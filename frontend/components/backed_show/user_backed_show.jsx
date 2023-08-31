@@ -39,7 +39,7 @@ class UserBackedShow extends React.Component {
             <li><Link to={`/projects/${backing.project.id}`} onClick={()=>this.handleScroll()}><img className='smaller-img' src={backing.project.photo_url}/></Link></li>
             <li className='backed-project-title'><Link to={`/projects/${backing.project.id}`} onClick={()=>this.handleScroll()}>{backing.project.title}</Link></li>
           </ul>
-          <li className='backed-amount'>${backing.amount_pledged}.00</li>
+          <li className='backed-amount'>${backing.amount_pledged.toLocaleString("en-US")}.00</li>
           <li className='backed-reward-title'>{this.backingReward(backing.reward)}</li>
           <li ><button className='backed-reward-delete' onClick={()=>this.handleDeleteBacking(backing.id)}>Delete</button></li>
         </ul>
@@ -52,7 +52,7 @@ class UserBackedShow extends React.Component {
   userProjects(){
       
     if (this.props.currentUser.projects){
-      const array = (Object.values(this.props.currentUser.projects)).reverse().slice(0,4);
+      const array = (Object.values(this.props.currentUser.projects)).reverse();
       const fundingTotal = (project) =>{
         let sum = 0;
         if(project.backings){
@@ -69,7 +69,7 @@ class UserBackedShow extends React.Component {
               <li><Link to={`/projects/${project.id}`} onClick={()=>this.handleScroll()}><img className='smaller-img' src={project.photo_url}/></Link></li>
               <li className='backed-project-title'><Link to={`/projects/${project.id}`} onClick={()=>this.handleScroll()}>{project.title}</Link></li>
             </ul>
-          <li className='backed-amount'>${fundingTotal(project)}.00</li>
+          <li className='backed-amount'>${fundingTotal(project).toLocaleString("en-US")}.00</li>
           <li className='backed-reward-edit'><Link to={`/projects/${project.id}/edit`} onClick={()=>this.handleScroll()}><div>Edit </div></Link></li>
           <li className='backed-reward-edit'><Link to={`/projects/${project.id}/rewards`} onClick={()=>this.handleScroll()}><div>Edit </div></Link></li>
           <li><button className='backed-reward-delete' onClick={()=>this.handleDelete(project.id)}>Delete</button></li>

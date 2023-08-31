@@ -12,6 +12,7 @@ class ProjectIndex extends React.Component {
   }
   componentDidMount() {
     this.props.fetchProjects();
+    this.props.fetchCategories();
   }
   selectPage(num) {
     this.setState({currentPage: num});

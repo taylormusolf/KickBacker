@@ -2,12 +2,16 @@ class Api::ProjectsController < ApplicationController
   before_action :require_logged_in!, only: [:create, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = Project.all.with_attached_photo.includes({creator: [:projects, :backings]}, :backings, :rewards, :category)
+    if params[:query]
+      # downcased_query = params[:query].downcase
+      @projects = @projects.joins(:category).where('projects.title ILIKE (?) or categories.name ILIKE (?)', "%#{params[:query]}%", "%#{params[:query]}%")
+    end
     render :index
   end
 
   def show
-    @project = Project.find_by(id: params[:id])
+    @project = Project.with_attached_photo.includes({creator: [:projects, :backings]}, :backings, :rewards, :category).find_by(id: params[:id])
     render :show
   end
 

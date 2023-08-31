@@ -1,87 +1,116 @@
 import React from 'react';
-import { withRouter } from 'react-router';
 import {Link, Redirect} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation, useParams } from 'react-router';
+import { updateProject, fetchProject,createProject, resetProjectErrors } from '../../actions/project_actions';
+
+export default function ProjectForm(){
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
+  const [errors, setErrors] = useState([]);
+  const [page, setPage] = useState(1);
+  const [project, setProject] = useState({
+    title: '',
+    category_id: '',
+    description: '',
+    campaign: '',
+    updates: '',
+    faq: '',
+    location: '',
+    start_date: '',
+    end_date: '',
+    funding_goal: '',
+    creator_id: ''
+  });
+  const {projectId} = useParams();
+  const oldProject = useSelector((state) => state?.entities?.projects ? state.entities.projects[projectId] : null);
+  const currentUser = useSelector((state) => state.session);
+
+  useEffect(()=>{
+    resetProjectErrors();
+    handScroll();
+    if(projectId){
+      dispatch(fetchProject(projectId));
+    }
+  }, [projectId]);
+
+  useEffect(()=>{
+    if(projectId && oldProject){
+      const {title, description, campaign, location, faq, id, funding_goal, start_date, end_date, updates} = oldProject;
+      setProject({
+        id,
+        title,
+        category_id: oldProject.category.id,
+        description,
+        campaign,
+        updates,
+        faq,
+        location,
+        start_date,
+        end_date,
+        funding_goal,
+        creator_id: oldProject.creator.id
+      });
+    }
+  }, [oldProject, projectId])
 
 
-
-class ProjectForm extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = this.props.project;
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleFile = this.handleFile.bind(this);
+  const update = (field) => {
+    return e => setProject({...project, [field]: e.target.value});
   }
-  componentDidMount(){
-    this.props.resetProjectErrors();
-    // if(this.props.formType === 'Update Project'){
-    //   this.props.fetchProject(this.props.match.params.projectId)
-    // }
-  }
-  update(field) {
-    return e => this.setState({[field]: e.target.value});
-  }
 
-  handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-      const formData = new FormData();
-      formData.append('id', this.state.id);
-      formData.append('project[title]', this.state.title);
-      formData.append('project[category_id]', this.state.category_id);
-      formData.append('project[description]', this.state.description);
-      formData.append('project[campaign]', this.state.campaign);
-      formData.append('project[updates]', this.state.updates);
-      formData.append('project[faq]', this.state.faq);
-      formData.append('project[location]', this.state.location);
-      formData.append('project[start_date]', this.state.start_date);
-      formData.append('project[end_date]', this.state.end_date);
-      formData.append('project[funding_goal]', this.state.funding_goal);
-      formData.append('project[creator_id]', this.props.creatorId);
-      if (this.state.imageFile) {
-        formData.append('project[photo]', this.state.imageFile);
-      }
-    
-
-    
-    this.props.action((this.state.formType === "Create Project" || this.state.imageFile) ? formData : formData, this.state.id)
-    .then((action) => this.props.history.push(`/projects/${action.project.id}`)
-    );
-
-    
+    const formData = new FormData();
+    formData.append('id', project.id);
+    formData.append('project[title]', project.title);
+    formData.append('project[category_id]', project.category_id);
+    formData.append('project[description]', project.description);
+    formData.append('project[campaign]', project.campaign);
+    formData.append('project[updates]', project.updates);
+    formData.append('project[faq]', project.faq);
+    formData.append('project[location]', project.location);
+    formData.append('project[start_date]', project.start_date);
+    formData.append('project[end_date]', project.end_date);
+    formData.append('project[funding_goal]', project.funding_goal);
+    formData.append('project[creator_id]', currentUser.id);
+    if (project.imageFile) {
+      formData.append('project[photo]', project.imageFile);
+    }
+    if(projectId){
+      dispatch(updateProject(formData, oldProject.id)).then(action => history.push(`/projects/${action.project.id}`))
+    } else {
+      dispatch(createProject(formData).then(action => history.push(`/projects/${action.project.id}`)))
+    }
   }
-  handScroll(){
+  const handScroll = () =>{
     window.scrollTo(0, 0)
   }
-  
 
-  handleFile(e){
+
+  const handleFile = (e) =>{
     const file = e.currentTarget.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
-      this.setState({imageFile: file, imageUrl: reader.result})
+      setProject({...project, imageFile: file, imageUrl: reader.result})
     }
     if (file) {
       reader.readAsDataURL(file)
     } else {
-      this.setState({imageUrl: '', imageFile: null})
+      setProject({...project, imageUrl: '', imageFile: null})
     }
-    this.setState({
+    setProject(...project, {
       imageFile: e.currentTarget.files[0],
       imageUrl: e.currentTarget.files[0],
     })
   }
 
-  // hasPhoto(){
-  //   if(this.props.formType === 'Update Project' && this.state.photo_url.length){
-  //     return(
-  //       <p>Project has existing photo attached</p>
-  //     )
-  //   }
-  // }
-  
-  renderErrors() {
+  const renderErrors = ()=> {
     return(
       <ul>
-        {this.props.errors.map((error, i) => (
+        {errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
           </li>
@@ -90,18 +119,16 @@ class ProjectForm extends React.Component{
     );
   }
 
-
-  render() {
-    const { project } = this.props;
-    if (!project) return null;
-    const preview = this.state.imageUrl? <img src={this.state.imageUrl}/> : this.state.photo_url ? <img src={this.state.photo_url}/> : null
-    return (
-      <div className="new-project-container">
-        <h1 className="new-project-title">{this.props.formType}</h1>
-        <form className="new-project-form" onSubmit={this.handleSubmit}>
+  // if (!project) return null;
+  const preview = project.imageUrl? <img src={project.imageUrl} alt='new'/> : oldProject?.photo_url ? <img src={oldProject.photo_url} alt='old'/> : null
+  
+  const formContents = () => {
+    if(page === 1){
+      return(
+        <>
           <label>Project Category
             <br/>
-            <select defaultValue={this.state.category_id ? `${this.state.category_id}` : ''} className='new-project-categories' onChange={this.update('category_id')}>
+            {(!projectId || project?.category_id) && <select defaultValue={project.category_id ? `${project.category_id}` : ''} className='new-project-categories' onChange={update('category_id')}>
               <option value='' disabled={true}>Select your category</option>
               <option value="1">Art</option>
               <option value="2">Comics & Illustration</option>
@@ -111,32 +138,47 @@ class ProjectForm extends React.Component{
               <option value="6">Games</option>
               <option value="7">Music</option>
               <option value="8">Publishing</option>
-            </select>
+            </select>}
+            <div className='project-errors'>{renderErrors()}</div>
           </label>
+          <h1>Getting started with your project!</h1>
+          <button onClick={()=> !project?.category_id ? setErrors(['Need to fill out']) : setPage(2)}>Next:Project Title</button>
+        </>
+      )
+    } else if(page === 2){
+      return(
+        <>
           <label>Project Title
             <input
               type="text"
-              value={this.state.title}
+              value={project?.title}
               placeholder="Your Memoirs" 
-              onChange={this.update('title')}
-              className="project-field"
-            />
-            </label>
-          <label>Project Description
-            <textarea
-              value={this.state.description}
-              placeholder="What is your project about?" 
-              onChange={this.update('description')}
+              onChange={update('title')}
               className="project-field"
             />
           </label>
-          
+          <label>Project Description
+            <textarea
+              value={project?.description}
+              placeholder="What is your project about?" 
+              onChange={update('description')}
+              className="project-field"
+            />
+          </label>
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(1)}>Back:Project Category</button>
+          <button disabled={!project?.title || !project?.description} onClick={()=> setPage(3)}>Next:Project Campaign Details</button>
+        </>
+      )
+    } else if(page === 3){
+      return(
+        <>
           <label>Campaign (optional)
             <textarea 
               type="text"
-              value={this.state.campaign}
+              value={project?.campaign}
               placeholder="What is the story and risks associated?" 
-              onChange={this.update('campaign')}
+              onChange={update('campaign')}
               className="project-field"
             />
           </label>
@@ -144,9 +186,9 @@ class ProjectForm extends React.Component{
           <label>Updates (optional)
             <textarea
               type="text"
-              value={this.state.updates}
+              value={project?.updates}
               placeholder="Anything you would like to share?" 
-              onChange={this.update('updates')}
+              onChange={update('updates')}
               className="project-field"
             />
           </label>
@@ -154,73 +196,105 @@ class ProjectForm extends React.Component{
           <label>FAQ (optional)
             <textarea
               type="text"
-              value={this.state.faq}
+              value={project?.faq}
               placeholder="Frequently Asked Questions..." 
-              onChange={this.update('faq')}
+              onChange={update('faq')}
               className="project-field"
             />
           </label>
-          
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(2)}>Back:Project Title</button>
+          <button onClick={()=> setPage(4)}>Next:Project Location</button>
+        </>
+      )
+    }else if(page === 4){
+      return(
+        <>
           <label>Location
             <input
               type="text"
-              value={this.state.location}
+              value={project?.location}
               placeholder="Where you at?" 
-              onChange={this.update('location')}
+              onChange={update('location')}
               className="project-field"
             />
           </label>
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(3)}>Back: Campaign Details</button>
+          <button disabled={!project?.location} onClick={()=> setPage(5)}>Next: Project Dates and Goal</button>
+        </>
+      )  
+    }else if (page === 5){
+      return(
+        <>
           <label>Project Start Date
             <input
               type='date'              
-              value={this.state.start_date.slice(0,10)}
-              onChange={this.update('start_date')}
+              value={project?.start_date.slice(0,10)}
+              onChange={update('start_date')}
               className="project-field"
             />
           </label>
           <label>Project End Date
             <input
               type='date'              
-              value={this.state.end_date.slice(0,10)}
-              onChange={this.update('end_date')}
+              value={project?.end_date.slice(0,10)}
+              onChange={update('end_date')}
               className="project-field"
             />
           </label>
           <label>Funding Goal
             <input required
               type="currency"
-              value={this.state.funding_goal}
+              value={project?.funding_goal}
               placeholder="Be realistc"
-              onChange={this.update('funding_goal')}
+              onChange={update('funding_goal')}
               className="project-field"
             />
           </label>
-          {/* {this.hasPhoto()} */}
+
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(4)}>Back: Location</button>
+          <button disabled={!project?.start_date || !project?.end_date || !project?.funding_goal} onClick={()=> setPage(6)}>Next: Project Image</button>
+        
+        </>
+      )
+    } else if(page === 6){
+      return(
+        <>
           <label>Upload Project Image (optional)
             <div className='picture-container'>
               <input
               className='picture-input'
               type="file"
-              onChange={this.handleFile}
+              onChange={handleFile}
               />
               {preview}
             </div>
-            
+          
           </label>
-          <input
-                type="submit"
-                value={this.props.formType}
-                onClick={this.handScroll()}
-                className="new-project-button"
-              />
-          <div className='project-errors'>{this.renderErrors()}</div>
-        </form>
-      </div>
-    );
+          { project.imageUrl ? <button onClick={()=> setProject({...project, imageUrl: ''})}>Cancel</button>: null}
+
+          <div className='project-errors'>{renderErrors()}</div>
+          <button onClick={()=> setPage(5)}>Back: Project Dates and Goal</button>
+          <button onClick={handleSubmit}>Finalize</button>
+        </>
+      )
+    }
   }
+
+
+    return(
+      <div className="new-project-container">
+      <h1 className="new-project-title">Select a primary category for your project.</h1>
+      <h2>These will help backers find your project, and you can change them later if you need to.</h2>
+      <div className="new-project-form">
+        {formContents()}
+      </div>
+    </div>
+    )
+        
+
+
+
 }
-
-
-
-
-export default withRouter(ProjectForm);

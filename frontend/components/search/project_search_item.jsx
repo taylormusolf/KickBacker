@@ -70,7 +70,7 @@ const ProjectSearchItem = props => {
         <ul className='search-project-list-details-2'>
           <li className='search-project-list-funding-bar' style={{width: fundingMax(project)}}><h1></h1></li>
           <li className='search-project-list-funding'>
-            ${fundingTotal(project)} pledged
+            ${fundingTotal(project).toLocaleString('en-US')} pledged
           </li>
           <li className='search-project-list-percentage'> {funding(project)} funded</li>
           <li className='search-project-list-days'> {daysLeft(project.end_date)} days to go</li>

@@ -30,8 +30,8 @@ export const resetProjectErrors = () => ({
   type: RESET_PROJECT_ERRORS
 });
 
-export const fetchProjects = () => dispatch => (
-  APIUtil.fetchProjects()
+export const fetchProjects = (query) => dispatch => (
+  APIUtil.fetchProjects(query)
     .then(projects => (dispatch(receiveProjects(projects))))
 );
 
@@ -52,9 +52,7 @@ export const updateProject = (project, id) => dispatch => {
       .then(project => (dispatch(receiveProject(project))),
       errors => (dispatch(receiveProjectErrors(errors.responseJSON))
       ))
-}
-  
-;
+};
 
 export const deleteProject = projectId => dispatch => (
   APIUtil.deleteProject(projectId).then(() => (

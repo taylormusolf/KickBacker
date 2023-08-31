@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ProjectIndex from './project_index';
 import { fetchProjects} from '../../actions/project_actions';
+import {fetchCategories} from '../../actions/category_actions'
 
 
 
@@ -59,7 +60,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchProjects: () => dispatch(fetchProjects())
+  fetchProjects: () => dispatch(fetchProjects()),
+  fetchCategories: () => dispatch(fetchCategories()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectIndex);
