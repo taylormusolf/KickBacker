@@ -5,9 +5,8 @@ class Api::ProjectsController < ApplicationController
     @projects = Project.all.with_attached_photo.includes({creator: [:projects, :backings]}, :backings, :rewards, :category)
     if params[:query]
       # downcased_query = params[:query].downcase
-      @projects = @projects.joins(:category).where('title ILIKE (?)', "%#{params[:query]}%").or.where()
+      @projects = @projects.joins(:category).where('projects.title ILIKE (?) or categories.name ILIKE (?)', "%#{params[:query]}%", "%#{params[:query]}%")
     end
-
     render :index
   end
 
