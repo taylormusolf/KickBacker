@@ -49,13 +49,17 @@ class ProjectShow extends React.Component {
     }
   }
 
-  handleReward(e){
-    e.preventDefault();
-    if (!this.props.project || !this.props.session) return null;
-    if (this.props.session !== this.props.project.creator.id){
-      this.props.createBacking(this.backing)
-        .then((action) => window.location.reload())
-        .then(()=> window.scrollTo(0, 0));
+  handleReward(min){
+    return e => {
+      e.preventDefault();
+      if (!this.props.project || !this.props.session) return null;
+      this.backing['amount_pledged'] = min
+      console.log(this.backing)
+      if (this.props.session !== this.props.project.creator.id){
+        this.props.createBacking(this.backing)
+          .then((action) => window.location.reload())
+          .then(()=> window.scrollTo(0, 0));
+      }
     }
   }
 
@@ -67,7 +71,7 @@ class ProjectShow extends React.Component {
   }
 
   update(field) {
-    return e => this.backing[field] = e.target.value;
+    return e => this.backing[field] = e.target.value
   }
 
   selectedContent(){
@@ -230,7 +234,7 @@ class ProjectShow extends React.Component {
         <li className='reward-cost'>Pledge US$ {reward.cost} or more</li>
         <li className='reward-title'>{reward.title}</li>
         <li className='reward-desc'>{reward.description}</li>
-        <form className='reward-form' onSubmit={this.handleReward}>
+        <form className='reward-form' onSubmit={this.handleReward(reward.cost)}>
           <label>Pledge amount
           <div className='show-support-input-container'>
             <li className='show-support-dollar'> <p>$</p></li>
