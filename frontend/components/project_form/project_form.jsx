@@ -10,7 +10,7 @@ export default function ProjectForm(){
   const history = useHistory();
   const location = useLocation();
   const [errors, setErrors] = useState([]);
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(3);
   const [project, setProject] = useState({
     title: '',
     category_id: '',
@@ -170,17 +170,20 @@ export default function ProjectForm(){
             </div>
           {/* </label> */}
           {/* <label>Project Description */}
+          <div className="input-container">
             <textarea
               value={project?.description}
-              placeholder="Describe what you'll be creating." 
+              // placeholder="Describe what you'll be creating." 
               onChange={update('description')}
               className="project-field"
             />
+            <label id={project?.description && 'filled'}>Project Description</label>
+          </div>
           {/* </label> */}
           <div className='project-errors'>{renderErrors()}</div>
           <div className='new-project-buttons'>
-            <button className='new-project-form-button' onClick={()=> setPage(1)}>Back:Project Category</button>
-            <button className='new-project-form-button' disabled={!project?.title || !project?.description} onClick={()=> setPage(3)}>Next:Project Campaign Details</button>
+            <button onClick={()=> setPage(1)}>{"<- Back: Project Category"}</button>
+            <button className='new-project-form-button' disabled={!project?.title || !project?.description} onClick={()=> setPage(3)}> Next: Project Campaign Details</button>
           </div>
         </>
       )
