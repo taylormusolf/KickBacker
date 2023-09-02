@@ -136,6 +136,15 @@
   width: 45%;
   margin-top: 5px;
 }
+.new-project-back-button{
+  padding: 10px;
+  font-size: 14px;
+}
+.arrow-icon{
+  position: relative;
+  top: 4px;
+  font-size: 1.2rem;
+}
 
 .new-project-form-button:disabled{
   background-color: lightgray;
@@ -147,6 +156,11 @@
 
 .new-project-form-button:disabled:hover{
   background-color:gray
+}
+
+.new-project-dates-container{
+  display: flex;
+  justify-content: space-between;
 }
 
 .picture-container{
