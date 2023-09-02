@@ -2,13 +2,13 @@
   background-color: white;
   // border-top: 0.1rem solid #E8E8E8;
   // border-bottom: 0.1rem solid #E8E8E8;
-  margin: auto;
+  // margin: auto;
   max-width: 1360px;
 }
 
 .category-links-container-top, .category-links-container-bottom, .nav-bar-container{
   border-bottom: 0.1rem solid #E8E8E8;
-  width: auto;
+  // width: auto;
 }
 
 .category-links-container-bottom{
@@ -187,7 +187,7 @@
   cursor: default;
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1350px) {
   .projects-header {
     flex-direction: column;
   }
@@ -197,5 +197,6 @@
   }
   #featured-project{
     border: none;
+    width: 100vw;
   }
 }

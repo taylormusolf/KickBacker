@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { createProject, resetProjectErrors } from '../../actions/project_actions';
-import { fetchCategories} from '../../actions/category_actions'
-import ProjectForm from './project_form';
+import { createProject, resetProjectErrors } from '../../../actions/project_actions';
+import { fetchCategories} from '../../../actions/category_actions'
+import ProjectForm from '../project_form';
 
 const mSTP = (state) => ({
   errors: state.errors.project,

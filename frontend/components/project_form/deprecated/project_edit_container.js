@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { updateProject, fetchProject, resetProjectErrors } from '../../actions/project_actions';
-import ProjectForm from './project_form';
+import { updateProject, fetchProject, resetProjectErrors } from '../../../actions/project_actions';
+import ProjectForm from '../project_form';
 import React from 'react';
 
 class EditProjectForm extends React.Component {
