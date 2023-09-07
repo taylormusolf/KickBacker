@@ -19,15 +19,16 @@ export const fetchProject = projectId => (
 );
 
 
-export const createProject = FormData => (
-  $.ajax({
+export const createProject = FormData => {
+  const project = $.ajax({
     method: 'POST',
     url: '/api/projects/',
     data: FormData,
     contentType: false,
     processData: false
   })
-);
+  return project;
+}
 
 export const updateProject = (FormData, projectId) => (
   $.ajax({
