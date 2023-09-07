@@ -63,7 +63,7 @@
   text-align: center;
   justify-content: center;
   margin: auto;
-  width: 1300px;
+  max-width: 1300px;
 }
 .search-word{
   color: #282828;
@@ -77,11 +77,11 @@
   display: flex;
   justify-content: center;
   margin: auto;
-  width: 1300px;
+  max-width: 1300px;
 }
 
 .search-results{
-  width: 1366px;
+  max-width: 1366px;
   padding: 36px 60px 60px;
 }
 .search-results h1{

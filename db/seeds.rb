@@ -71,7 +71,7 @@ project1 = Project.create!(title: "Orbit: A suspended Orbiting Camera Dolly",
     start_date: Date.new(2021,3,15),
     end_date: Date.new(2021,4,15), 
     funding_goal: 7500,
-    creator_id: user1.id,
+    creator_id: user2.id,
     category_id: category3.id
 )
 file1 = URI.open("https://kickbacker-seeds.s3-us-west-1.amazonaws.com/orbit.jpg")

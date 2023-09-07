@@ -56,7 +56,7 @@ const ProjectSearchItem = props => {
     <li className='search-project-list-item'>
       <span >
         <Link to={`/projects/${project.id}`} onClick={()=>handleScroll()}>
-          <img className='search-project-list-img'src={project.photo_url}/>
+          <img className='search-project-list-img'src={project.photo_url ? project.photo_url : 'https://kickbacker-seeds.s3.us-west-1.amazonaws.com/placeholder.jpg'}/>
         </Link>
       </span>
       <span>
