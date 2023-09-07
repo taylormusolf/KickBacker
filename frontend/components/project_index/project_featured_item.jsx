@@ -25,7 +25,7 @@ const ProjectFeaturedItem = props => {
   return (
     <ul className='featured-list-item'>
       <span>
-      <Link to={`/projects/${props.project.id}`}><img src={props.project.photo_url}/></Link>
+      <Link to={`/projects/${props.project.id}`}><img src={props.project.photo_url ? props.project.photo_url : 'https://kickbacker-seeds.s3.us-west-1.amazonaws.com/placeholder.jpg'}/></Link>
       <li className='featured-list-funding' style={{width: funding(props.project)}}><h1></h1></li>
       </span>
       <ul>
