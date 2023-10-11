@@ -151,7 +151,7 @@ export default function ProjectForm(){
             </select>}
             <div className='project-errors'>{renderErrors()}</div>
           <div className='new-project-buttons'>
-            {formType === 'create' && <h1>Getting started with your project!</h1>}
+            {formType === 'create' ? <h1>Getting started with your project!</h1>: <h1></h1>}
             <button className='new-project-form-button' disabled={!project?.category_id} onClick={()=> !project?.category_id ? setErrors(['Need to fill out']) : setPage(2) || setErrors([])}>Next: Project Title</button>
           </div>
         </>
