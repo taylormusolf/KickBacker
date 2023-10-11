@@ -306,7 +306,7 @@ class ProjectShow extends React.Component {
           <section className='show-top-main'>
             <div className='show-img-container'>
               <div className='show-img-box'>
-                <img src={project.photo_url}/>
+                {project.photo_url ? <img src={project.photo_url}/> : <img src='https://kickbacker-seeds.s3.us-west-1.amazonaws.com/placeholder.jpg'/>}
               </div>
               
               <ul className='under-photo-items'>

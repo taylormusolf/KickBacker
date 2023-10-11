@@ -36,7 +36,7 @@ class UserBackedShow extends React.Component {
         array.map((backing => ( 
         <ul key={backing.project.id} className='backed-project-item'>
           <ul className='backed-project-name-container'>
-            <li><Link to={`/projects/${backing.project.id}`} onClick={()=>this.handleScroll()}><img className='smaller-img' src={backing.project.photo_url}/></Link></li>
+            <li><Link to={`/projects/${backing.project.id}`} onClick={()=>this.handleScroll()}><img className='smaller-img' src={backing.project.photo_url ? backing.project.photo_url : 'https://kickbacker-seeds.s3.us-west-1.amazonaws.com/placeholder.jpg'}/></Link></li>
             <li className='backed-project-title'><Link to={`/projects/${backing.project.id}`} onClick={()=>this.handleScroll()}>{backing.project.title}</Link></li>
           </ul>
           <li className='backed-amount'>${backing.amount_pledged.toLocaleString("en-US")}.00</li>

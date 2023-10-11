@@ -18,7 +18,7 @@ const Profile = (props) =>{
         return(
           array.map((project => (
               <li key={project.id} className='profile-created-project'>
-                <span><Link to={`/projects/${project.id}`} onClick={()=>handleClick(project.id)}><img className='small-img' src={project.photo_url}/></Link></span>
+                <span><Link to={`/projects/${project.id}`} onClick={()=>handleClick(project.id)}><img className='small-img' src={project.photo_url ? project.photo_url : 'https://kickbacker-seeds.s3.us-west-1.amazonaws.com/placeholder.jpg'}/></Link></span>
                 <span> <Link to={`/projects/${project.id}`} onClick={()=>handleClick(project.id)}>{project.title}</Link></span>
               </li>
             )))

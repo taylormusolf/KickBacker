@@ -16,7 +16,7 @@ const ProjectIndexItem = props => {
   return(
     <li className='project-list-item'>
       <span>
-      <Link to={`/projects/${props.project.id}`}><img src={props.project.photo_url}/></Link>
+      <Link to={`/projects/${props.project.id}`}><img src={props.project.photo_url ? props.project.photo_url : 'https://kickbacker-seeds.s3.us-west-1.amazonaws.com/placeholder.jpg'}/></Link>
       </span>
       <ul>
         <li className='project-list-link'>

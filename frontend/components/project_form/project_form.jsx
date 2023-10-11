@@ -85,7 +85,8 @@ export default function ProjectForm(){
     if(projectId){
       dispatch(updateProject(formData, oldProject.id)).then(action => history.push(`/projects/${action.project.id}`))
     } else {
-      dispatch(createProject(formData).then(action => history.push(`/projects/${action.project.id}`)))
+      console.log(createProject, 'createProject')
+      dispatch(createProject(formData)).then(action => history.push(`/projects/${action.project.id}`))
     }
   }
   const handScroll = () =>{
@@ -288,7 +289,7 @@ export default function ProjectForm(){
           <div className='project-errors'>{renderErrors()}</div>
           <div className='new-project-buttons'>
             <button className='new-project-back-button'  onClick={()=> setPage(4) || setErrors([])}><span className='arrow-icon'><CgArrowLongLeft /></span> Back: Location</button>
-            <button className='new-project-form-button' disabled={!project?.start_date || !project?.end_date || !project?.funding_goal} onClick={ project?.end_date < project?.start_date ? ()=> setErrors(['Project end date must come after start date']) : ()=> setPage(6) || setErrors([])}>Next: Project Image</button>
+            <button className='new-project-form-button' disabled={!project?.start_date || !project?.end_date || !project?.funding_goal} onClick={ project?.end_date < project?.start_date ? ()=> setErrors(['Project end date must come after start date']) : project?.funding_goal <= 0 ? ()=> setErrors(['Project funding goal must be greater than 0']) : ()=> setPage(6) || setErrors([])}>Next: Project Image</button>
           </div>
         </>
       )
