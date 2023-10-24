@@ -1,4 +1,4 @@
-## <div align="center"><img width="500" alt="kickbacker_logo" src="https://user-images.githubusercontent.com/71670060/119078326-d25fba80-b9aa-11eb-8578-35f03d680a2b.PNG"></div>
+<div align='center'><img width="400" alt="kickbacker_logo" src="https://user-images.githubusercontent.com/71670060/119078326-d25fba80-b9aa-11eb-8578-35f03d680a2b.PNG"></div>
 
 
 KickBacker, a Kickstarter clone, is a crowdfunding platform that allows content creators to post their dream projects that they would like others to help bring to life by meeting their funding goal. Users can create their own projects or search for and view other users' projects by category as well as back them for a reward.
